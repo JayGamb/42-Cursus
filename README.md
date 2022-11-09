@@ -2,8 +2,9 @@
 Start: October 24, 2022
 
 ## 42 Lausanne
-Rue de Lausanne 64,
-1020 Renens, Suisse
+Rue de Lausanne 64  
+1020 Renens  
+Suisse
 
 info@42lausanne.ch
 
