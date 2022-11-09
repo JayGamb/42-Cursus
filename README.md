@@ -19,12 +19,7 @@ In this part I will learn:
 - about file system access and unix process management.
 - simple approach to network architecture as well as system administration.
 
-# Projects:
-
-[libft](https://github.com/JayGamb/42-Cursus/tree/master/libft) -In progress-
-
-[get_next_line](https://www.notion.so/get_next_line-851d29c3b5914a69967ceb1d05cbbb4a)
-
-[ft_printf](https://www.notion.so/ft_printf-f92c4131cd7148d98b9491b7c862a792)
-
-[born2beroot](https://www.notion.so/born2beroot-85dbf90a226842ff9f7f8ad6b2705136)
+# 📑Projects:
+| CIRCLE | PROJECT | LANGUAGE | STATUS |  
+|--|--|--|--|
+| 00 | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/libft) | ```C``` | _In progress_ |
