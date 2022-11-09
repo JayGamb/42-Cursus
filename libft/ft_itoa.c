@@ -3,59 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:54:58 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/08 18:37:49 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:42:07 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int n_digits( int n)
+static char	*ft_tab(char *x, unsigned int number, long int len)
 {
-	long long nb;
-	int count;
-
-	nb = n;
-	count = 0;
-	while (nb != 0)
+	while (number > 0)
 	{
-		nb /= 10;
-		count++;
-		nb--;
+		x[len--] = (number % 10) + '0';
+		number = number / 10;
 	}
-	return (count);
+	return (x);
 }
 
-char	*ft_itoa(int nb)
+long int	ft_len(int n)
 {
-	char	*str;
 	int		i;
 
-	str = (char*)malloc(sizeof(char) * (n_digits(nb) + 1));
-	if (!str)
-		return (0);
-	i = n_digits(nb);
-	while (nb)
+	i = 0;
+	if (n <= 0)
+		i = 1;
+	while (n != 0)
 	{
-		if (nb == 0)
-		{
-			str[0] = 48;
-			return (str);
-		}
-		if (nb < 0)
-		{
-			str[0] = '-';
-			nb = nb * -1;
-		}
-		while (nb > 0)
-		{
-			str[i] = 48 + (nb % 10);
-			nb = nb / 10;
-			i++;
-			nb--;
-		} 
+		i++;
+		n = n / 10;
 	}
-	return (str);
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	char				*x;
+	long int			len;
+
+	len = ft_len(n);
+	x = ft_char_malloc(len);
+	if (x)
+	{
+		x[len--] = 0;
+		if (n == 0)
+			x[0] = '0';
+		if (n < 0)
+		{
+			n *= -1;
+			x[0] = '-';
+		}
+		ft_tab(x, n, len);
+	}
+	return (x);
 }

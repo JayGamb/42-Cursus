@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/08 18:18:24 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:22:11 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 /* Mines */
 char	*ft_strcat(char *dest, char *src);
+char    *ft_char_malloc(size_t size);
 #endif
