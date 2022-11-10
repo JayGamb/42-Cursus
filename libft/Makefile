@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 11:06:26 by jgamboa-          #+#    #+#              #
-#    Updated: 2022/11/09 15:20:40 by jgamboa-         ###   ########.fr        #
+#    Updated: 2022/11/10 20:37:14 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,17 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen
 		ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c\
 		ft_atoi.c ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c\
 		ft_substr.c ft_strjoin.c ft_strtrim.c  ft_split.c ft_itoa.c ft_strmapi.c \
+		ft_striteri.c\
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
-		ft_strcat.c ft_char_malloc.c
+		ft_strcat.c ft_char_malloc.c\
+
+BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c\
+		ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c
+
 
 OBJS = $(SRC:.c=.o)
+
+OBJS_BONUS = $(BONUS:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -32,6 +39,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(OBJS)
+
+bonus: $(OBJS_BONUS)
+	$(AR) $(NAME) $(OBJS_BONUS)
 
 clean: 
 	rm -f $(OBJS)
