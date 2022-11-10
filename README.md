@@ -20,6 +20,8 @@ In this part I will learn:
 - about file system access and unix process management.
 - simple approach to network architecture as well as system administration.
 
+[![jgamboa-'s 42 stats](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/stats?cursusId=21&coalitionId=191)](https://github.com/JaeSeoKim/badge42)
+
 # 📑Projects:
 | CIRCLE | PROJECT | LANGUAGE | STATUS |  
 |--|--|--|--|
