@@ -1,5 +1,9 @@
 # 42-Cursus
-Start: October 24, 2022
+Start: October 24, 2022  
+[![jgamboa-'s 42 stats](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/stats?cursusId=21&coalitionId=191)](https://github.com/JaeSeoKim/badge42)
+
+
+
 
 ## 42 Lausanne
 Rue de Lausanne 64  
@@ -20,9 +24,8 @@ In this part I will learn:
 - about file system access and unix process management.
 - simple approach to network architecture as well as system administration.
 
-[![jgamboa-'s 42 stats](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/stats?cursusId=21&coalitionId=191)](https://github.com/JaeSeoKim/badge42)
-
 # 📑Projects:
 | CIRCLE | PROJECT | LANGUAGE | STATUS |  
 |--|--|--|--|
-| 00 | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/libft) | ```C``` | _In progress_ |
+| 00 | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/libft) | ```C``` | Need evaluation|
+| 00 | ✍🏼 [ft_printf] | ```C``` | _In progress_ |
