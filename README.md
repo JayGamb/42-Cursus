@@ -27,5 +27,5 @@ In this part I will learn:
 # 📑Projects:
 | CIRCLE | PROJECT | LANGUAGE | STATUS |  
 |--|--|--|--|
-| [00](https://github.com/JayGamb/42-Cursus/tree/master/c00) | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/libft) | ```C``` | Need evaluation|
-| [01](https://github.com/JayGamb/42-Cursus/tree/master/c01) | ✍🏼 [ft_printf] | ```C``` | _In progress_ |
+| [00](https://github.com/JayGamb/42-Cursus/tree/master/c00) | 📚 [libft](tps://github.com/JayGamb/42-Cursus/tree/master/c00/libft) | ```C``` | Need evaluation|
+| [01 | ✍🏼 [ft_printf] | ```C``` | _In progress_ |
