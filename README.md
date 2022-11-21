@@ -28,6 +28,6 @@ In this part I will learn:
 | CIRCLE | PROJECT | LANGUAGE | STATUS |  
 |--|--|--|--|
 | [00](https://github.com/JayGamb/42-Cursus/tree/master/c00) | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/c00/libft) | ```C``` | [![jgamboa-'s 42 Libft Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2848390)](https://github.com/JaeSeoKim/badge42) |
-| [01](https://github.com/JayGamb/42-Cursus/tree/master/c01) | ✍🏼 [ft_printf](https://github.com/JayGamb/42-Cursus/tree/master/c01/ft_printf) | ```C``` | [![jgamboa-'s 42 ft_printf Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2877942)](https://github.com/JaeSeoKim/badge42)(_In progress_) |
+| [01](https://github.com/JayGamb/42-Cursus/tree/master/c01) | ✍🏼 [ft_printf](https://github.com/JayGamb/42-Cursus/tree/master/c01/ft_printf) | ```C``` | [![jgamboa-'s 42 ft_printf Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2877942)](https://github.com/JaeSeoKim/badge42)(_need evaluation_) |
 | 01 | ↩️ get_next_line| ```C``` | _not started_|
 
