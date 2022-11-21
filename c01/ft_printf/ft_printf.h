@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:08:54 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/21 00:48:59 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:39:53 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ int			ft_hexminmaj(char c, va_list args);
 int			ft_intoa(int n);
 int			ft_uitoa(unsigned int n);
 int			ft_printstr(const char *str);
+int			ft_charstr(char c, va_list args);
+
 #endif

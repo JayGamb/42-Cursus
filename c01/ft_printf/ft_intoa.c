@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_intoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:13:22 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/21 00:33:03 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:44:16 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*ft_tab(char *str, unsigned int number, long int len)
 	return (str);
 }
 
-long int	ft_lennbr(int n)
+static long int	ft_lennbr(int n)
 {
 	int		i;
 

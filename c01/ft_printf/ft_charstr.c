@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexminmaj.c                                     :+:      :+:    :+:   */
+/*   ft_charstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 00:36:20 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/21 12:13:09 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/21 12:18:40 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/21 12:31:19 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hexminmaj(char c, va_list args)
+int	ft_charstr(char c, va_list args)
 {
-	if (c == 'x')
-		return (ft_dectohex_min(va_arg(args, int)));
-	else if (c == 'X')
-		return (ft_dectohex_maj(va_arg(args, unsigned int)));
-	else if (c == 'p')
-		return (ft_dectohex_min_ptr(va_arg(args, unsigned long long)));
+	if (c == 'c')
+		return (ft_printchar(va_arg(args, int)));
+	else if (c == 's')
+		return (ft_printstr(va_arg(args, const char *)));
 	return (0);
 }

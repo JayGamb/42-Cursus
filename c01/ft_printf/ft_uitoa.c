@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 00:16:01 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/21 00:31:40 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:43:22 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned int		ft_lentnbr(unsigned long int nbr)
+static unsigned int	ft_lentnbr(unsigned long int nbr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (nbr == 0)
@@ -39,11 +39,11 @@ static char	*ft_tab2(char *str, unsigned int number, long int len)
 
 int	ft_uitoa(unsigned int n)
 {
-	char			*str;
-	unsigned long int		i;
+	char				*str;
+	unsigned long int	i;
 
 	i = ft_lentnbr(n);
-	str = (char *)malloc( sizeof(char) * i + 1);
+	str = (char *)malloc(sizeof(char) * i + 1);
 	if (!str)
 		return (0);
 	str[i--] = 0;

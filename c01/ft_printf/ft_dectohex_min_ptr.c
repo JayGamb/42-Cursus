@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dectohex_min_ptr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:56:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/20 23:47:14 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:59:09 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_dectohex_min_ptr(unsigned long long n)
 
 	i = 1;
 	if (n == 0)
-		return (ft_printchar('0'));
+		return (ft_printstr("0x0"));
 	while (n != 0)
 	{
 		temp = n % 16;
@@ -33,6 +33,7 @@ int	ft_dectohex_min_ptr(unsigned long long n)
 		n = n / 16;
 	}
 	j = i - 1;
+	i += ft_printstr("0x");
 	while (j > 0)
 		ft_printchar(num[j--]);
 	return (i - 1);
