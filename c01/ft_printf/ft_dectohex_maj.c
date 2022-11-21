@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dectohex.c                                      :+:      :+:    :+:   */
+/*   ft_dectohex_maj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:56:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/14 17:53:01 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/21 01:09:36 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-void ft_dectohex(int decimal)
+int	ft_dectohex_maj(unsigned int n)
 {
+	int		i;
+	int		j;
+	int		temp;
+	char	num[100];
 
-	char reversedDigits[100];
-	int i = 0;
-	
-	while(decimal > 0) {
-		
-		int remain = decimal % 16;
-		
-		if(remain < 10)
-			reversedDigits[i] = '0' + remain;
+	i = 1;
+	if (n == 0)
+		return (ft_printchar('0'));
+	while (n != 0)
+	{
+		temp = n % 16;
+		if (temp < 10)
+			temp = temp + 48;
 		else
-			reversedDigits[i] = 'A' + (remain - 10);
-		
-		decimal = decimal / 16;
-		i++;
+			temp = temp + 55;
+		num[i++] = temp;
+		n = n / 16;
 	}
-	
-	printf("Hexadecimal number: ");
-	while(i--) {
-		
-		ft_putchar(reversedDigits[i]);
-	}
+	j = i - 1;
+	while (j > 0)
+		ft_printchar(num[j--]);
+	return (i - 1);
 }

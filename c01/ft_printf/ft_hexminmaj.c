@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_hexminmaj.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 11:08:54 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/14 17:00:59 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/21 00:36:20 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/21 01:39:13 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-void	ft_putnbr(int nb);
-void    ft_putchar(char c);
-void    ft_dectohex(int decimal);
-
-#endif
+int	ft_hexminmaj(char c, va_list args)
+{
+	if (c == 'x')
+		return (ft_dectohex_min(va_arg(args, int)));
+	else if (c == 'X')
+		return (ft_dectohex_maj(va_arg(args, unsigned int)));
+	return (1);
+}

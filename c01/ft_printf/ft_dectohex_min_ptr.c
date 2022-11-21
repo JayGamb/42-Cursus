@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dectohex_min_ptr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 11:36:08 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/20 23:41:06 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/14 16:56:51 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/20 23:47:14 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_dectohex_min_ptr(unsigned long long n)
 {
-	int		len;
-	va_list	args;
+	int		i;
+	int		j;
+	int		temp;
+	char	num[100];
 
-	va_start (args, format);
-	len = ft_vprintf(format, args);
-	va_end(args);
-	return (len);
+	i = 1;
+	if (n == 0)
+		return (ft_printchar('0'));
+	while (n != 0)
+	{
+		temp = n % 16;
+		if (temp < 10)
+			temp = temp + 48;
+		else
+			temp = temp + 87;
+		num[i++] = temp;
+		n = n / 16;
+	}
+	j = i - 1;
+	while (j > 0)
+		ft_printchar(num[j--]);
+	return (i - 1);
 }
