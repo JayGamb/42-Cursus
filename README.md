@@ -28,4 +28,4 @@ In this part I will learn:
 | CIRCLE | PROJECT | LANGUAGE | STATUS |  
 |--|--|--|--|
 | [00](https://github.com/JayGamb/42-Cursus/tree/master/c00) | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/c00/libft) | ```C``` | ✅ |
-| 01 | ✍🏼 ft_printf | ```C``` | _In progress_ |
+| 01 | ✍🏼 [ft_printf](https://github.com/JayGamb/42-Cursus/tree/master/c01/ft_printf) | ```C``` | _In progress_ |
