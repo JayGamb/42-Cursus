@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 12:39:25 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/23 17:58:30 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/23 12:37:22 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/23 12:53:58 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*get_next_line(int fd)
-{
-	char buffer[100];
-	int bytes_read;
-	char *str;
-	char *save;
-	
-	str = (char *)malloc(sizeof(char*) * 10 + 1);
-	if (!str)
-				str = strdup("");
-	while (fd != '\n')
-	{
-		bytes_read = read(fd, buffer, 10);
-		while (*buffer != '\n')
-		{
-			printf("%d\n", bytes_read);
-			save = strncpy(str, buffer, 10);
-		}
-	}
-	return (str);
-}
+# include <stdio.h>
+# include <unistd.h>
+# include <string.h>
+# include <libc.h>
+
+char	*get_next_line(int fd);
+
+#endif
