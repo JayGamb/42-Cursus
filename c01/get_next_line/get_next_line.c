@@ -3,33 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:39:25 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/23 17:58:30 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/24 20:38:34 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+
+char *ft_linebro(char *dst, int fd, int size)
+{
+    int c;
+    char *p;
+	static char x;
+
+	p = dst;
+    while (size-- > 0) 
+	{
+		c = read(fd, &x, 1);
+        *p++ = x;
+        if (x == '\n')
+		{
+			*p = 0;
+			return (dst);
+		}
+
+    }
+    *p = 0;
+    if (p == dst || c == -1 || !c)
+        return NULL;
+    return (dst);
+}
+
 char	*get_next_line(int fd)
 {
-	char buffer[100];
-	int bytes_read;
+	// char buffer[100]
 	char *str;
-	char *save;
+	// int dex = 0;
+	int size = 10;
+	char *temp;
+
 	
-	str = (char *)malloc(sizeof(char*) * 10 + 1);
+	str = (char *)malloc(sizeof(char*) * size + 1);
+	temp = (char *)malloc(sizeof(char*) * size + 1);
 	if (!str)
-				str = strdup("");
-	while (fd != '\n')
+		str = strdup("");
+	if (!fd)
+		return (0);
+	while (fd)
 	{
-		bytes_read = read(fd, buffer, 10);
-		while (*buffer != '\n')
-		{
-			printf("%d\n", bytes_read);
-			save = strncpy(str, buffer, 10);
-		}
+		temp = ft_linebro(temp, fd, size);
+		str = strcat(str, temp);
+		if (strchr(temp, '\n'))
+				return(str);
+			
 	}
 	return (str);
 }
