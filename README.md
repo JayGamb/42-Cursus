@@ -27,7 +27,7 @@ In this part I will learn:
 # 📑Projects:
 | CIRCLE | PROJECT | LANGUAGE | STATUS |  
 |--|--|--|--|
-| [00](https://github.com/JayGamb/42-Cursus/tree/master/c00) | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/c00/libft) | ```C``` | [![jgamboa-'s 42 Libft Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2848390)](https://github.com/JaeSeoKim/badge42) |
-| [01](https://github.com/JayGamb/42-Cursus/tree/master/c01) | ✍🏼 [ft_printf](https://github.com/JayGamb/42-Cursus/tree/master/c01/ft_printf) | ```C``` | [![jgamboa-'s 42 ft_printf Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2877942)](https://github.com/JaeSeoKim/badge42)(_need evaluation_) |
-| [01](https://github.com/JayGamb/42-Cursus/tree/master/c01) | ↩️ get_next_line| ```C``` |[![jgamboa-'s 42 get_next_line Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2887861)](https://github.com/JaeSeoKim/badge42)(_in progess_)|
+| [00](https://github.com/JayGamb/42-Cursus/tree/master/c00) | 📚 [libft](https://github.com/JayGamb/42-Cursus/tree/master/c00/libft) | ```C``` | [![jgamboa-'s 42 Libft Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2848390)](https://github.com/JaeSeoKim/badge42)|
+| [01](https://github.com/JayGamb/42-Cursus/tree/master/c01) | ✍🏼 [ft_printf](https://github.com/JayGamb/42-Cursus/tree/master/c01/ft_printf) | ```C``` | [![jgamboa-'s 42 ft_printf Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2877942)](https://github.com/JaeSeoKim/badge42)|
+| [01](https://github.com/JayGamb/42-Cursus/tree/master/c01) | ↩️ [get_next_line](https://github.com/JayGamb/42-Cursus/tree/master/c01/get_next_line)| ```C``` |[![jgamboa-'s 42 get_next_line Score](https://badge42.vercel.app/api/v2/clabd757901060fjsqiusbo7e/project/2887861)](https://github.com/JaeSeoKim/badge42)(_in progess_)|
 
