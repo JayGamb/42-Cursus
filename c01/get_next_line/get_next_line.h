@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:37:22 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/23 12:53:58 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/25 14:42:54 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,10 @@
 # include <libc.h>
 
 char	*get_next_line(int fd);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
 
 #endif
