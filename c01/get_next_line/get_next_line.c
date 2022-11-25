@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:39:25 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/24 20:38:34 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/25 12:29:22 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ char	*get_next_line(int fd)
 		temp = ft_linebro(temp, fd, size);
 		str = strcat(str, temp);
 		if (strchr(temp, '\n'))
-				return(str);
-			
+				return(str);	
 	}
+	
 	return (str);
 }
