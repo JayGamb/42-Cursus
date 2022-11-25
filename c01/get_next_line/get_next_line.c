@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:40:44 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/25 17:24:48 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:03:37 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,96 +72,75 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new_s);
 }
 
-// char *ft_linebro(char *dst, int fd, int size)
-// {
-//     int c;
-//     char *p;
-// 	char x;
-
-// 	p = dst;
-//     while (size-- > 0) 
-// 	{
-// 		c = read(fd, &x, 1);
-//         *p++ = x;
-//         if (x == '\n')
-// 		{
-// 			*p = 0;
-// 			return (dst);
-// 		}
-//     }
-//     *p = 0;
-//     if (p == dst || c == -1 || !c)
-//         return NULL;
-//     return (dst);
-// }
-
-
-// char *ft_linebro(char *dst, int fd, int size)
-// {
-//     int c;
-//     char *p;
-// 	char x;
-
-// 	p = dst;
-//     while (size-- > 0) 
-// 	{
-// 		c = read(fd, &x, 1);
-//         *p++ = x;
-//         if (x == '\n')
-// 		{
-// 			*p = 0;
-// 			return (dst);
-// 		}
-//     }
-//     *p = 0;
-//     if (c == -1 || !c)
-//         return NULL;
-//     return (dst);
-// }
-
-char	*get_next_line(int fd)
+char *ft_linebro(char *dst, int fd, int size)
 {
-	int c;
-    char *str;
-	static char buffer[1000];
+    int c;
+    char *p;
+	char x;
 
-    while ( fd > 0) 
+	p = dst;
+    while (size-- > 0) 
 	{
-		c = read(fd, buffer, BUFFER_SIZE);
-        str = ft_strjoin(str, buffer);
-		if (strchr(str, '\n'))
-			break;
+		c = read(fd, &x, 1);
+        *p++ = x;
+        if (x == '\n')
+		{
+			*p = 0;
+			return (dst);
+		}
     }
-    if (c == -1 || !c)
+    *p = 0;
+    if (p == dst || c == -1 || !c)
         return NULL;
-    return (str);
+    return (dst);
 }
-
-
 
 
 
 // char	*get_next_line(int fd)
 // {
-// 	// static char buffer[1000]
-// 	char *str;
-// 	// int dex = 0;
-// 	char *temp;
-
+// 	int c;
+//     char *str;
+// 	static char buffer[1000];
 // 	if (!fd || fd == -1)
 // 		return (0);
-// 	str = (char *)malloc(sizeof(char*) * BUFFER_SIZE);
-// 	temp = (char *)malloc(sizeof(char*) * BUFFER_SIZE);
-// 	if (!str)
-// 		return (0);
-// 	while (fd)
+//     while ( fd > 0) 
 // 	{
-// 		temp = ft_linebro(temp, fd, BUFFER_SIZE);
-// 		str = ft_strjoin(str, temp);
-// 		if (strchr(temp, '\n'))
-// 		{
-// 				return(str);	
-// 		}
-// 	}
-// 	return (str);
+// 		c = read(fd, buffer, BUFFER_SIZE);
+//         str = ft_strjoin(str, buffer);
+// 		if (strchr(str, '\n'))
+// 			break;
+//     }
+//     if (c == -1 || !c)
+//         return NULL;
+//     return (str);
 // }
+
+
+
+
+
+char	*get_next_line(int fd)
+{
+	// static char buffer[1000]
+	char *str;
+	// int dex = 0;
+	char *temp;
+
+	if (!fd || fd == -1)
+		return (0);
+	str = (char *)malloc(sizeof(char*) * BUFFER_SIZE);
+	temp = (char *)malloc(sizeof(char*) * BUFFER_SIZE);
+	if (!str)
+		return (0);
+	while (fd)
+	{
+		temp = ft_linebro(temp, fd, BUFFER_SIZE);
+		str = ft_strjoin(str, temp);
+		if (strchr(temp, '\n'))
+		{
+				return(str);	
+		}
+	}
+	return (str);
+}
