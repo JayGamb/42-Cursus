@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 12:54:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2022/11/25 15:01:59 by jgamboa-         ###   ########.fr        #
+#    Updated: 2022/11/29 16:13:11 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(OBJ_DIR):
 					mkdir -p $(OBJ_DIR)
 
 go: all
-	$(CC) $(CFLAGS) -D BUFFER_SIZE=9999 $(NAME) main.c -o $(NAME) && ./$(NAME) \
+	$(CC) $(CFLAGS) -D BUFFER_SIZE=5 $(NAME) main.c -o $(NAME) && ./$(NAME) \
 	# \
 	Output:
 	#\
