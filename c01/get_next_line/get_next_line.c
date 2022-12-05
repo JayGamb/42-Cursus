@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:40:44 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/12/01 18:10:11 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:04:34 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ size_t	ft_strlen(const char *s)
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
-	size_t	len_dest;
 
-	len_dest = ft_strlen(dest);
 	i = 0;
 	if (!dest || n == 0)
 		return (ft_strlen(src));
@@ -286,10 +284,8 @@ char	*ft_strchr(const char *s, int c)
 char	*ft_addchar(char *s1, int c)
 {
 	size_t		i;
-	size_t		i2;
 
 	i = 0;
-	i2 = 0;
 	while (s1[i])
 		i++;
 	s1[i] = c;
@@ -310,39 +306,37 @@ char *ft_line(char *str)
 	return (line);
 }
 
-char	*ft_linebro(char *dst, int fd)
+char	*ft_linebro(int fd)
 {
     int c;
 	char *temp;
-	char *line;
-	char *lecture;
+	char static *dst;
 
 	c = 1;
 	if (c == -1 || !c)
 		return NULL;
-	// temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char *));
-	temp = malloc(sizeof(char *) * BUFFER_SIZE + 1);
+	temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char *));
+	dst = malloc(sizeof(char *) * BUFFER_SIZE + 1);
+	// temp = malloc(sizeof(char *) * BUFFER_SIZE + 1);
 	while ( c != 0 && !ft_strchr(dst, '\n')) 
 	{
 		c = read(fd, dst, BUFFER_SIZE);
+		printf("dest = %s\n", dst);
+
 		temp = ft_strjoin(temp, dst);
-		line = ft_line(temp);
+		printf("temp = %s\n", temp);
     }
 	free(dst);
-	return (line);
+	return (temp);
 }
 
 char	*get_next_line(int fd)
 {
-	// static char buffer[1000];
 	char *str;
-	// int dex = 0;
-	static char *temp;
 
 	if (!fd || fd < 0)
 		return (0);
-	temp = (char *)malloc(sizeof(char*) * BUFFER_SIZE + 1);
-	str = ft_linebro(temp, fd);
+	str = ft_linebro(fd);
 	return (str);
 }
 
