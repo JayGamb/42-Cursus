@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:37:22 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/25 14:42:54 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:57:37 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <libc.h>
 
 char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dest, const char *src, size_t n);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strchr(const char *s, int c);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
