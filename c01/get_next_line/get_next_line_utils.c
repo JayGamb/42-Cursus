@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:39:36 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/12/08 17:56:21 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:03:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t n)
+char	*ft_strlcpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
 	if (!dest || n == 0)
-		return (ft_strlen(src));
+		return (0);
 	else if (n > 1)
 	{
 		while (i < n - 1 && src[i])
@@ -39,7 +39,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 		}
 	}
 	dest[i] = 0;
-	return (ft_strlen(src));
+	return (dest);
 }
 
 
@@ -116,3 +116,4 @@ char	*ft_strchr(const char *s, int c)
 		return (&letter[i]);
 	return (0);
 }
+
