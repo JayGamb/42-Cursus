@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:37:22 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/12/14 19:42:41 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/17 00:15:30 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ void	*ft_memset(void *s, int c, size_t n);
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
-
 
 #endif

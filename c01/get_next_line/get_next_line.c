@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:40:44 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/12/14 20:42:30 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/17 00:15:46 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@
 // 	return (ret_line);
 // }
 
-
-
-
 char *get_fline(char *dst)
 {
 	int i;
@@ -110,9 +107,9 @@ char *get_line(char *dst)
 	if (!ret_line)
 		return (0);
 	ft_strlcpy(ret_line, dst, i + 2);
+
 	return (ret_line);
 }
-
 
 char	*readline(int fd, char *dst)
 {
