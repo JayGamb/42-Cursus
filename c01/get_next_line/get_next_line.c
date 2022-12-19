@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:40:44 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/12/19 17:41:20 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/19 21:24:42 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char *get_fline(char *dst)
 	i = 0;
 	while (dst[i] && dst[i] != '\n')
 		i++;
-	if (!dst[0])
+	if (!dst[i])
 	{
 		free(dst);
 		return (0);
