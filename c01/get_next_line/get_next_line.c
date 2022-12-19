@@ -3,83 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:40:44 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/12/17 00:15:46 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:41:20 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// char *ft_line(char *dst)
-// {
-// 	int i;
-// 	char *ret_line;
-
-// 	i = 0;
-// 	if(!dst[i])
-// 		return (0);
-// 	while (dst[i] && dst[i] != '\n')
-// 		i++;		
-// 	ret_line = (char *)malloc(sizeof(char) * (i + 2));
-// 	if (!ret_line)
-// 		return (0);
-// 	i = 0;
-// 	while (dst[i] && dst[i] != '\n')
-// 	{
-// 		ret_line[i] = dst[i];
-// 		i++;
-// 	}
-// 	if (dst[i] == '\n')
-// 	{
-// 		ret_line[i] = dst[i];
-// 		i++;
-// 	}
-// 	ret_line[i] = '\0';
-// 	return (ret_line);
-// }
-
-// char *following_line(char *dst)
-// {
-// 	int i;
-// 	int j;
-// 	char *ret_line;
-
-// 	i = 0;
-// 	while (dst[i] && dst[i] != '\n')
-// 		i++;
-// 	if (!dst)
-// 	{
-// 		free(dst);
-// 		return (0);
-// 	}
-// 	ret_line = (char *)malloc(sizeof(char) * (ft_strlen(dst) - i + 1));
-// 	if (!ret_line)
-// 		return (0);
-// 	i++;
-// 	j = 0;
-// 	while(dst[i])
-// 	{
-// 		ret_line[j] = dst[i];
-// 		i++;
-// 		j++;
-// 	}
-// 	ret_line[j] = 0;
-// 	free(dst);
-// 	return (ret_line);
-// }
-
-char *get_fline(char *dst)
+static char *get_fline(char *dst)
 {
 	int i;
 	int len_ret;
 	char *ret_line;
-
+	
 	i = 0;
 	while (dst[i] && dst[i] != '\n')
 		i++;
-	if (!dst)
+	if (!dst[0])
 	{
 		free(dst);
 		return (0);
@@ -93,7 +35,7 @@ char *get_fline(char *dst)
 	return (ret_line);
 }
 
-char *get_line(char *dst)
+static char *get_theline(char *dst)
 {
 	int i;
 	char *ret_line;
@@ -111,7 +53,7 @@ char *get_line(char *dst)
 	return (ret_line);
 }
 
-char	*readline(int fd, char *dst)
+static char *readline(int fd, char *dst)
 {
     int c;
 	char *buff;
@@ -141,11 +83,16 @@ char	*get_next_line(int fd)
 	static char *dst;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free(dst);
+		line = 0;
 		return (0);
+	}
 	dst = readline(fd, dst);
 	if (!dst)
 		return (0);
-	line = get_line(dst);
+	line = get_theline(dst);
 	dst = get_fline(dst);
+	// printf("dst value: *%s*\n", dst);
 	return (line);
 }
