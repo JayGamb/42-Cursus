@@ -6,12 +6,11 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:39:36 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/12/19 17:40:16 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:15:33 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 int	ft_strlen(const char *s)
 {
@@ -23,7 +22,6 @@ int	ft_strlen(const char *s)
 		free((char *)s);
 		return (0);
 	}
-
 	while (s[i] != '\0')
 		i++;
 	return (i);
@@ -52,9 +50,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (new_s);
 }
 
-char *free_join(char *dst, char *buff)
+char	*free_join(char *dst, char *buff)
 {
-	char *ret_line;
+	char	*ret_line;
 
 	if (!dst)
 	{
@@ -89,6 +87,7 @@ char	*ft_strchr(const char *s, int c)
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
+
 	i = 0;
 	if (!dest)
 		return (ft_strlen(src));
@@ -103,11 +102,3 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 	dest[i] = 0;
 	return (ft_strlen(src));
 }
-
-
-// char *dup_ret(char *dest, const char *src, size_t n)
-// {
-
-// 	ft_strlcpy(dest, src, n);
-// 	return (dest);
-// }
