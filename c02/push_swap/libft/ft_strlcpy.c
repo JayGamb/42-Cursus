@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:46:36 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/28 14:15:02 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/01/03 03:00:44 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-	t_list *pile_a;
-	t_list *pile_b;
-	int i;
+	size_t	i;
 
-	pile_b = list_init(0);
-	if (argc > 1)
+	i = 0;
+	if (!dest || n == 0)
+		return (ft_strlen(src));
+	else if (n > 1)
 	{
-		pile_a = list_init(ft_atoi(argv[i]));
-		i++;
-		while (argv[i])
+		while (i < n - 1 && src[i])
 		{
-			stacking(pile_a, ft_atoi(argv[i]));
+			dest[i] = src[i];
 			i++;
 		}
 	}
-	printlist(pile_a);
-	swap(pile_a);
-	printlist(pile_a);
-	return (0);
+	dest[i] = 0;
+	return (ft_strlen(src));
 }

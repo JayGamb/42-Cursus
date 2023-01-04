@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:46:36 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/14 11:36:08 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/20 23:41:06 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+int	ft_printf(const char *format, ...)
 {
-	t_list *pile_a;
-	t_list *pile_b;
-	int i;
+	int		len;
+	va_list	args;
 
-	pile_b = list_init(0);
-	if (argc > 1)
-	{
-		pile_a = list_init(ft_atoi(argv[i]));
-		i++;
-		while (argv[i])
-		{
-			stacking(pile_a, ft_atoi(argv[i]));
-			i++;
-		}
-	}
-	printlist(pile_a);
-	swap(pile_a);
-	printlist(pile_a);
-	return (0);
+	va_start (args, format);
+	len = ft_vprintf(format, args);
+	va_end(args);
+	return (len);
 }

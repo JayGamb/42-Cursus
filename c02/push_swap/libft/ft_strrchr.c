@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:46:36 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/29 14:30:03 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 17:46:12 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_list *pile_a;
-	t_list *pile_b;
-	int i;
+	char	*letter;
+	int		i;
 
-	pile_b = list_init(0);
-	if (argc > 1)
+	letter = (char *)s;
+	i = ft_strlen(s);
+	if (!s)
+		return (0);
+	while (i >= 0)
 	{
-		pile_a = list_init(ft_atoi(argv[i]));
-		i++;
-		while (argv[i])
-		{
-			stacking(pile_a, ft_atoi(argv[i]));
-			i++;
-		}
+		if (letter[i] == (unsigned char)c)
+			return (&letter[i]);
+		i--;
 	}
-	printlist(pile_a);
-	swap(pile_a);
-	printlist(pile_a);
 	return (0);
 }

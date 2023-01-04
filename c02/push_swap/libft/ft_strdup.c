@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:46:36 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/02 17:01:02 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 18:04:09 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strdup(const char *s)
 {
-	t_list *pile_a;
-	t_list *pile_b;
-	int i;
+	char	*mem;
 
-	pile_b = list_init(0);
-	if (argc > 1)
-	{
-		pile_a = list_init(ft_atoi(argv[i]));
-		i++;
-		while (argv[i])
-		{
-			stacking(pile_a, ft_atoi(argv[i]));
-			i++;
-		}
-	}
-	printlist(pile_a);
-	swap(pile_a);
-	printlist(pile_a);
-	return (0);
+	mem = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (mem == NULL)
+		return (0);
+	ft_memcpy(mem, s, ft_strlen(s) * sizeof(char) + 1);
+	mem[ft_strlen(s)] = 0;
+	return (mem);
 }

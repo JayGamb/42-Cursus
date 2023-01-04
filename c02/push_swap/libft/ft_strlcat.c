@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:46:36 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/28 16:27:09 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 16:34:34 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	t_list *pile_a;
-	t_list *pile_b;
-	int i;
+	size_t	i;
+	size_t	j;
+	size_t	len;
 
-	pile_b = list_init(0);
-	if (argc > 1)
+	i = ft_strlen(dest);
+	j = 0;
+	len = ft_strlen(src);
+	if (size == 0)
+		return (len);
+	if (size < i)
+		len += size;
+	else
+		len += i;
+	while (src[j] && i < size - 1)
 	{
-		pile_a = list_init(ft_atoi(argv[i]));
+		dest[i] = src[j];
 		i++;
-		while (argv[i])
-		{
-			stacking(pile_a, ft_atoi(argv[i]));
-			i++;
-		}
+		j++;
 	}
-	printlist(pile_a);
-	swap(pile_a);
-	printlist(pile_a);
-	return (0);
+	dest[i] = 0;
+	return (len);
 }

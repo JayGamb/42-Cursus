@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/02 17:12:15 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/28 17:09:03 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 17:52:00 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-void push_swap(int *a, int *b);
-
-typedef struct s_pile
+int	ft_toupper(int c)
 {
-    int val;
-    struct s_pile *nxt;
-} t_pile;
-
-#endif PUSH_SWAP_H
+	if (c < 97 || c > 122)
+		return (c);
+	else
+		c -= 32;
+	return (c);
+}

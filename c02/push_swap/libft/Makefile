@@ -5,19 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/23 12:54:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/01/03 14:25:07 by jgamboa-         ###   ########.fr        #
+#    Created: 2022/10/24 11:06:26 by jgamboa-          #+#    #+#              #
+#    Updated: 2023/01/03 13:15:09 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	push_swap
+NAME = libft.a
 
-LPUSH_SWAP = push_swap.a
-LIBS_MERGE = libtool -static -o $(LPUSH_SWAP) $(LPUSH_SWAP) ./ft_printf/libftprintf.a\
-			 ./libft/libft.a
-HEADERS = ./headers
-SOURCES	=	push_swap_utils.c linkdlist_ops.c
+SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c\
+		ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c\
+		ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c\
+		ft_atoi.c ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c\
+		ft_substr.c ft_strjoin.c ft_strtrim.c  ft_split.c ft_itoa.c ft_strmapi.c \
+		ft_striteri.c\
+		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 
+HEADERS = ../headers
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -27,28 +30,23 @@ RM		=	rm -rf
 OBJ_DIR	=	objets
 OBJETS	=	$(SOURCES:%.c=$(OBJ_DIR)/%.o)
 
-
+# REiGLES
 $(OBJ_DIR)/%.o	:		%.c
 					$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
-
+					
 all				:	$(NAME)
-		
+
 $(NAME)			:	$(OBJ_DIR) $(OBJETS) 
-					make -C libft && make -C ft_printf
-					$(AR) $(LPUSH_SWAP) $(OBJETS)
-					$(LIBS_MERGE)
-					$(CC) -I $(HEADERS) $(LPUSH_SWAP) push_swap.c -o $(NAME)  
+					$(AR) $(NAME) $(OBJETS)
 
 $(OBJ_DIR)		:
 					mkdir -p $(OBJ_DIR)
 
-
-clean		:
-					$(RM) $(OBJ_DIR)
+clean			: 
+					$(RM) -f $(OBJ_DIR)
 
 fclean			:	clean
-						$(RM) $(NAME) $(LPUSH_SWAP) 
-						make fclean -C libft
-						make fclean -C ft_printf
+						rm -f $(NAME)
 
-re				:	fclean all
+re: fclean all
+

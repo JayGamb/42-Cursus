@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:46:36 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/31 10:59:49 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 17:48:56 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	t_list *pile_a;
-	t_list *pile_b;
-	int i;
+	unsigned char	*s1;
+	unsigned char	*s2;
+	size_t			i;
 
-	pile_b = list_init(0);
-	if (argc > 1)
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	if (n == 0)
+		return (0);
+	while (i < n - 1)
 	{
-		pile_a = list_init(ft_atoi(argv[i]));
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
-		while (argv[i])
-		{
-			stacking(pile_a, ft_atoi(argv[i]));
-			i++;
-		}
 	}
-	printlist(pile_a);
-	swap(pile_a);
-	printlist(pile_a);
-	return (0);
+	return (s1[i] - s2[i]);
 }

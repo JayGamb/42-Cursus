@@ -5,19 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/23 12:54:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/01/03 14:25:07 by jgamboa-         ###   ########.fr        #
+#    Created: 2022/11/14 15:56:21 by jgamboa-          #+#    #+#              #
+#    Updated: 2023/01/03 14:24:11 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	push_swap
+NAME	=	libftprintf.a
 
-LPUSH_SWAP = push_swap.a
-LIBS_MERGE = libtool -static -o $(LPUSH_SWAP) $(LPUSH_SWAP) ./ft_printf/libftprintf.a\
-			 ./libft/libft.a
-HEADERS = ./headers
-SOURCES	=	push_swap_utils.c linkdlist_ops.c
+SOURCES	=	ft_printf.c ft_vprintf.c ft_printchar.c ft_dectohex_min.c ft_dectohex_maj.c\
+			ft_intoa.c ft_uitoa.c ft_hexminmaj.c ft_printstr.c ft_dectohex_min_ptr.c\
+			ft_charstr.c
 
+HEADERS = ../headers
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -28,27 +27,22 @@ OBJ_DIR	=	objets
 OBJETS	=	$(SOURCES:%.c=$(OBJ_DIR)/%.o)
 
 
-$(OBJ_DIR)/%.o	:		%.c
+$(OBJ_DIR)/%.o:		%.c
 					$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
 
-all				:	$(NAME)
-		
-$(NAME)			:	$(OBJ_DIR) $(OBJETS) 
-					make -C libft && make -C ft_printf
-					$(AR) $(LPUSH_SWAP) $(OBJETS)
-					$(LIBS_MERGE)
-					$(CC) -I $(HEADERS) $(LPUSH_SWAP) push_swap.c -o $(NAME)  
+all:				$(NAME)
 
-$(OBJ_DIR)		:
+$(NAME)	:			$(OBJ_DIR) $(OBJETS) 
+						$(AR) $(NAME) $(OBJETS)
+
+$(OBJ_DIR):
 					mkdir -p $(OBJ_DIR)
 
-
-clean		:
+clean:
 					$(RM) $(OBJ_DIR)
 
-fclean			:	clean
-						$(RM) $(NAME) $(LPUSH_SWAP) 
-						make fclean -C libft
-						make fclean -C ft_printf
+fclean:				clean
+					$(RM) $(NAME)
 
-re				:	fclean all
+re:					fclean all
+

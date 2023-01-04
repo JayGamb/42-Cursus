@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_dectohex_maj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:46:36 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/14 16:56:51 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/21 01:09:36 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+int	ft_dectohex_maj(unsigned int n)
 {
-	t_list *pile_a;
-	t_list *pile_b;
-	int i;
+	int		i;
+	int		j;
+	int		temp;
+	char	num[100];
 
-	pile_b = list_init(0);
-	if (argc > 1)
+	i = 1;
+	if (n == 0)
+		return (ft_printchar('0'));
+	while (n != 0)
 	{
-		pile_a = list_init(ft_atoi(argv[i]));
-		i++;
-		while (argv[i])
-		{
-			stacking(pile_a, ft_atoi(argv[i]));
-			i++;
-		}
+		temp = n % 16;
+		if (temp < 10)
+			temp = temp + 48;
+		else
+			temp = temp + 55;
+		num[i++] = temp;
+		n = n / 16;
 	}
-	printlist(pile_a);
-	swap(pile_a);
-	printlist(pile_a);
-	return (0);
+	j = i - 1;
+	while (j > 0)
+		ft_printchar(num[j--]);
+	return (i - 1);
 }
