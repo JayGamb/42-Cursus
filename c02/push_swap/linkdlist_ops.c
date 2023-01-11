@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/03 19:48:39 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:27:04 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,35 @@ void printlist(t_list *list)
 		current = current->nxt;
 	}
 	ft_printf("----------\n");
-	ft_printf("A\n\n");
+}
+
+void printstacks(t_list *list_a, t_list *list_b)
+{
+	t_element *current_a;
+	t_element *current_b;
+
+	if (!list_a)
+	{
+		ft_printf("NOP!");
+		exit(EXIT_FAILURE);
+	}
+	current_a = list_a->first;
+	current_b = list_b->first;
+	while (current_a != NULL )
+	{
+		ft_printf("%d\t\t", current_a->val);
+		if (!current_b->val)
+		{
+			ft_printf(" \n");
+		}
+		else
+		{
+			ft_printf("%d\n", current_b->val);
+			current_b = current_b->nxt;
+		}
+		current_a = current_a->nxt;
+		
+	}
+	ft_printf("----------\t----------\n");
+	ft_printf("A\t\tB\n");
 }
