@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkdlist_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/05 20:27:04 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:06:39 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,61 @@
 
 t_list	*list_init(int value)
 {
-	t_list *list;
+	t_list *stack;
 	t_element   *element;
 
-	list = malloc(sizeof(t_list));
+	stack = malloc(sizeof(t_list));
 	element = malloc(sizeof(t_element));
-	if (!list || !element)
-		return (0);
+	if (!stack || !element)
+	{
+		if (stack == NULL)
+			free(element);
+		if (element == NULL)
+			free(stack);
+		exit(EXIT_FAILURE);
+	}
 	element->val = value;
 	element->nxt = NULL;
-	list->first = element;
-	return (list);
+	element->prev = NULL;
+	stack->first = element;
+	return (stack);
 }
 
-void stacking(t_list *list, int new_val)
+void stacking(t_list *stack, int new_val)
 {
 	t_element *new_element;
 
 	new_element = malloc(sizeof(t_element));
-	if (!new_element || !list)
+	if (!new_element || !stack)
 		exit(EXIT_FAILURE);
 	new_element->val = new_val;
-	new_element->nxt = list->first;
-	list->first = new_element;
+	new_element->nxt = stack->first;
+	stack->first = new_element;
 }
 
-void deletion(t_list *list)
+void deletion(t_list *stack)
 {
 	t_element *eltodel;
 
-	if (!list)
+	if (!stack)
 		exit(EXIT_FAILURE);
-	if (list->first != 0)
+	if (stack->first != 0)
 	{
-		eltodel = list->first;
-		list->first = list->first->nxt;
+		eltodel = stack->first;
+		stack->first = stack->first->nxt;
 		free(eltodel);
 	}
 }
 
-void printlist(t_list *list)
+void printlist(t_list *stack)
 {
 	t_element *current;
-	if (!list)
+	if (!stack)
 	{
 		ft_printf("NOP!");
 		exit(EXIT_FAILURE);
 	}
-	current = list->first;
+	current = stack->first;
 	while (current != NULL)
 	{
 		ft_printf("%d\n", current->val);
