@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 12:54:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/01/03 14:25:07 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/01/13 12:48:37 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LPUSH_SWAP = push_swap.a
 LIBS_MERGE = libtool -static -o $(LPUSH_SWAP) $(LPUSH_SWAP) ./ft_printf/libftprintf.a\
 			 ./libft/libft.a
 HEADERS = ./headers
-SOURCES	=	push_swap_utils.c linkdlist_ops.c
+SOURCES	=	push_swap_utils.c linkdlist_ops.c check_utils.c
 
 
 CC		=	gcc
@@ -37,7 +37,7 @@ $(NAME)			:	$(OBJ_DIR) $(OBJETS)
 					make -C libft && make -C ft_printf
 					$(AR) $(LPUSH_SWAP) $(OBJETS)
 					$(LIBS_MERGE)
-					$(CC) -I $(HEADERS) $(LPUSH_SWAP) push_swap.c -o $(NAME)  
+					$(CC) $(CFLAGS) -I $(HEADERS) $(LPUSH_SWAP) push_swap.c -o $(NAME)  
 
 $(OBJ_DIR)		:
 					mkdir -p $(OBJ_DIR)

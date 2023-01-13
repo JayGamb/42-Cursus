@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/12 17:27:57 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:33:15 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void sa_sb(t_list *list)
 	ft_printf("sa\n");
 }
 
-
-void fill_stack(t_list stack_a, int argc, char **argv)
+/* void fill_stack(t_list stack_a, int argc, char **argv)
 {
 	int	i;
 
@@ -62,8 +61,4 @@ void fill_stack(t_list stack_a, int argc, char **argv)
 		i++;
 	}
 }
-
-int args(char **argv)
-{
-
-}
+ */

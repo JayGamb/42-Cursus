@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:28:08 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:45:51 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void printlist(t_list *list);
 void printstacks(t_list *list_a, t_list *list_b);
 
 /* fts swaps */
-void sa(t_list *stack_a, t_list *stack_b);
-void	pa_pb(t_list *stack_a, t_list *stack_b);
+void    sa(t_list *stack_a, t_list *stack_b);
+void    pa_pb(t_list *stack_a, t_list *stack_b);
+void    check_args(int argc, char  **argv, t_list *stack_a);
+int arrlen(char **str);
 
 #endif
