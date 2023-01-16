@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/10 20:35:13 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/14 01:25:01 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 /* Mines */
 char	*ft_strcat(char *dest, char *src);
 char	*ft_char_malloc(size_t size);
+int		ft_strcmp(char *s1, char *s2);
 #endif

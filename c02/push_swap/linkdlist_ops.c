@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   linkdlist_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/12 16:06:39 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:39:13 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*list_init(int value)
+t_list	*list_init(t_list *stack, int value)
 {
-	t_list *stack;
 	t_element   *element;
 
-	stack = malloc(sizeof(t_list));
 	element = malloc(sizeof(t_element));
 	if (!stack || !element)
 	{
@@ -25,7 +23,7 @@ t_list	*list_init(int value)
 			free(element);
 		if (element == NULL)
 			free(stack);
-		exit(EXIT_FAILURE);
+		exit (EXIT_FAILURE);
 	}
 	element->val = value;
 	element->nxt = NULL;
@@ -42,8 +40,21 @@ void stacking(t_list *stack, int new_val)
 	if (!new_element || !stack)
 		exit(EXIT_FAILURE);
 	new_element->val = new_val;
-	new_element->nxt = stack->first;
-	stack->first = new_element;
+	new_element->prev = stack->last;
+	new_element->nxt = NULL;
+	if (stack->first != NULL)
+	{
+		if (stack->last == NULL)
+		{
+			stack->first->nxt = new_element;
+			stack->last = new_element;
+			new_element->prev = stack->first;
+		}
+		stack->last->nxt = new_element;
+		stack->last = new_element;
+	}
+	else
+		stack->first = new_element;
 }
 
 void deletion(t_list *stack)
@@ -68,6 +79,8 @@ void printlist(t_list *stack)
 		ft_printf("NOP!");
 		exit(EXIT_FAILURE);
 	}
+	if (!stack->first)
+		ft_printf("(empty stack)\n");
 	current = stack->first;
 	while (current != NULL)
 	{

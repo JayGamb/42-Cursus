@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 12:54:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/01/13 12:48:37 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/01/16 13:28:36 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LPUSH_SWAP = push_swap.a
 LIBS_MERGE = libtool -static -o $(LPUSH_SWAP) $(LPUSH_SWAP) ./ft_printf/libftprintf.a\
 			 ./libft/libft.a
 HEADERS = ./headers
-SOURCES	=	push_swap_utils.c linkdlist_ops.c check_utils.c
+SOURCES	=	push_swap_utils.c linkdlist_ops.c check_utils.c instructions.c
 
 
 CC		=	gcc

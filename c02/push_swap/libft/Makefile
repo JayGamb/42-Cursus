@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 11:06:26 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/01/03 13:15:09 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/01/14 01:32:01 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_st
 		ft_atoi.c ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c\
 		ft_substr.c ft_strjoin.c ft_strtrim.c  ft_split.c ft_itoa.c ft_strmapi.c \
 		ft_striteri.c\
+		ft_strcmp.c\
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 
 HEADERS = ../headers

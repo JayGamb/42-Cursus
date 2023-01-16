@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/13 15:45:51 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:00:53 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 typedef struct s_element t_element;
 struct s_element
 {
-    int val;
-    t_element   *nxt;
-    t_element	*prev;
+	int val;
+	t_element	*prev;
+	t_element   *nxt;
 };
 
 typedef struct s_list
@@ -41,17 +41,27 @@ typedef struct s_instructions
 
 
 /* Functions listes chainées */
-void sa_sb(t_list *list);
-t_list	*list_init(int value);
+t_list	*list_init(t_list *stack, int value);
 void stacking(t_list *list, int new_val);
 void deletion(t_list *list);
 void printlist(t_list *list);
 void printstacks(t_list *list_a, t_list *list_b);
 
+/* Check Utils */
+void	check_args(int argc, char  **argv, t_list *stack_a);
+int		arrlen(char **str);
+void	pushatoi(t_list *stack, char **array);
+int 	find_occurrences(char **array);
+
 /* fts swaps */
-void    sa(t_list *stack_a, t_list *stack_b);
-void    pa_pb(t_list *stack_a, t_list *stack_b);
-void    check_args(int argc, char  **argv, t_list *stack_a);
-int arrlen(char **str);
+void	instructions(t_list *stack_a, t_list *stack_b, char *inst);
+void	swap(t_list *stack);
+void	push(t_list *dest, t_list *src);
+void	rotate(t_list *stack);
+void	reverse(t_list *stack);
+void	sa_sb(t_list *stack_a, t_list *stack_b, char *inst);
+void	pa_pb(t_list *stack_a, t_list *stack_b, char *inst);
+void	ra_rb(t_list *stack_a, t_list *stack_b, char *inst);
+void	rra_rrb(t_list *stack_a, t_list *stack_b, char *inst);
 
 #endif

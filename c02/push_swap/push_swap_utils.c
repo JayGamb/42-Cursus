@@ -3,62 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/13 11:33:15 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:47:02 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa_pb(t_list *stack_a, t_list *stack_b)
+void	swap(t_list *stack)
 {
-	t_list *temp_a;
+	t_element	*temp;
 
-	
-	temp_a = malloc(sizeof(t_list));
-	if (!temp_a)
-		exit(EXIT_FAILURE);
-	if (!stack_b->first)
-	{
-		temp_a->first = stack_a->first->nxt;
-		stack_b->first = stack_a->first;
-		stack_b->first->nxt = NULL;
-		stack_a->first = temp_a->first;
-		free(temp_a);
-		ft_printf("pb\n");
-	}
-}
-
-void sa_sb(t_list *list)
-{
-	t_list *temp;
-
-	if (!list->first)
+	if (!stack->first)
 		return ;
-	temp = malloc(sizeof(t_list));
-	if (!temp)
-		exit(EXIT_FAILURE);
-	temp->first = list->first->nxt;
-	list->first->nxt = temp->first->nxt;
-	temp->first->nxt = list->first;
-	list->first = temp->first;
-	free(temp);
-	ft_printf("sa\n");
+	temp = stack->first->nxt;
+	stack->first->prev = temp;
+	stack->first->nxt = temp->nxt;
+	temp->prev = NULL;
+	temp->nxt = stack->first;
+	stack->first = temp;
 }
 
-/* void fill_stack(t_list stack_a, int argc, char **argv)
+void	push(t_list *dest, t_list *src)
 {
-	int	i;
+	t_element	*temp;
 
-	i = 1;
-	stack_a = list_init(ft_atoi(argv[i]));
-	i++;
-	while (i < argc)
+
+	if (!src->first)
+		return ;
+	temp = src->first;
+	src->first = src->first->nxt;
+	src->first->prev = temp->prev;
+	if (!dest->first)
+		list_init(dest, temp->val);
+	else if (!dest->first->nxt)
 	{
-		stacking(stack_a, ft_atoi(argv[i]));
-		i++;
+		temp->nxt = dest->first;
+		dest->first->prev = temp;
+		dest->last = temp->nxt;
+		dest->first =  temp;
 	}
+	else
+	{
+		temp->nxt = dest->first;
+		dest->first->prev = temp;
+		dest->first =  temp;
+
+	}		
+
 }
- */
+
+void	rotate(t_list *stack)
+{
+	t_element	*temp;
+	
+	if (!stack->first && !stack->first->nxt)
+		return ;
+	temp = stack->first;
+	stack->first = stack->first->nxt;
+	stack->first->prev = NULL;
+	temp->prev = stack->last;
+	temp->nxt = NULL;
+	stack->last->nxt = temp;
+	stack->last = temp;
+}
+
+void	reverse(t_list *stack)
+{
+	t_element	*temp;
+	
+	if (!stack->first && !stack->first->nxt)
+		return ;
+	temp = stack->last;
+	stack->last = stack->last->prev;
+	stack->last->nxt = NULL;
+	temp->nxt = stack->first;
+	temp->prev = NULL;
+	stack->first->prev = temp;
+	stack->first = temp;
+}
