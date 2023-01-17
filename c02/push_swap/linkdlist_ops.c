@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkdlist_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/16 18:39:13 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:10:13 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void stacking(t_list *stack, int new_val)
 void deletion(t_list *stack)
 {
 	t_element *eltodel;
-
+ 
 	if (!stack)
 		exit(EXIT_FAILURE);
 	if (stack->first != 0)

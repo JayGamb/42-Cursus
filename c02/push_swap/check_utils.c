@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/16 13:56:10 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:29:02 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ void pushatoi(t_list *stack, char **array)
 	i = 0;
 	while (array[i])
 	{
-		if (ft_strchr(array[i], '.') && ft_strchr(array[i - 1], '/'))
-			i++;
+/* 		if (ft_strchr(array[i], '.') && ft_strchr(array[i + 1], '/'))
+			i++; */
 		stacking(stack, atoi_check(array[i]));
 		i++;
 	}
@@ -152,5 +152,8 @@ void	check_args(int argc, char  **argv, t_list *stack_a)
 		pushatoi(stack_a, array);
 	}
 	else
+	{
+		find_occurrences(&argv[1]);
 		pushatoi(stack_a, &argv[1]);
+	}
 }
