@@ -3,67 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:29:02 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:44:38 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* char **joinsplit_args(char **argv)
-{
-	char *joined_str;
-	char **args_array;
-	int total_len;
-	int i;
-
-	i = 1;
-	total_len = 0;
-	while (argv[i])
-	{
-		total_len += ft_strlen(argv[i]);
-		i++;
-	}
-	joined_str = (char *)malloc(sizeof(char) * total_len + 1);
-	i = 1;
-	while (argv[i])
-	{   
-		if (!joined_str)
-			strlcpy(joined_str, argv[i], ft_strlen(argv[i]));
-		joined_str = ft_strjoin(joined_str, " ");
-		joined_str = ft_strjoin(joined_str, argv[i]);
-		i++;
-	}
-	args_array = ft_split(joined_str, ' ');
-	return (args_array);
-} */
-
-/* int    find_occurrencesint(int **array)
-{
-    int    c1;
-    int    c2;
-    int c3;
-
-    c1 = 0;
-    while (array[c1])
-    {
-        c2 = c1 + 1;
-        while (array[c2])
-        {
-            c3 = (array[c1] - array[c2])
-            if (c3 == 0)
-            {
-                printf("Error\n");
-                exit (EXIT_FAILURER);
-            }
-            c2++++;
-        }
-        c1++;
-    }
-    return (0);
-} */
 
 int	find_occurrences(char **array)
 {
@@ -156,4 +103,30 @@ void	check_args(int argc, char  **argv, t_list *stack_a)
 		find_occurrences(&argv[1]);
 		pushatoi(stack_a, &argv[1]);
 	}
+}
+
+int	check_sort(t_list *stack)
+{
+    t_element *current;
+	int nb_element;
+	int is_sorted;
+
+	is_sorted = 0;
+	nb_element = 0;
+    current = stack->first;
+    while (current)
+    {
+		
+		if (current->nxt)
+		{
+			if(current->val > current->nxt->val)
+				is_sorted = 1;
+		}
+		current = current->nxt;
+		nb_element++;
+    }
+	if (is_sorted != 0)
+		return (nb_element);
+	ft_printf("sorted\n");
+	exit (EXIT_FAILURE);
 }

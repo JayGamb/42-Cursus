@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/17 18:09:12 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:17:10 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,21 @@
 int	main(int argc, char **argv)
 {
 	t_list *stack_a;
-	t_list *stack_b;	
+	t_list *stack_b;
+	int		nb_elements;	
+	t_instructions	*inst;
 	
+	inst->instruction = "pb";
 	stack_a = malloc(sizeof(t_list));
 	stack_b = malloc(sizeof(t_list));	
 	check_args(argc, argv, stack_a);
+	nb_elements = check_sort(stack_a);
+	while (nb_elements != 0)
+	{
+		
+		instructions(stack_a, stack_b, inst);
+	}
+	ft_printf("\nnb elements : %d\n", nb_elements);
 /* 	list */
 
 	ft_printf("\nfirst element : %d\n", stack_a->first->val);
