@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/18 17:44:38 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:45:36 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	check_sort(t_list *stack)
 		
 		if (current->nxt)
 		{
-			if(current->val > current->nxt->val)
+			if (current->val > current->nxt->val)
 				is_sorted = 1;
 		}
 		current = current->nxt;

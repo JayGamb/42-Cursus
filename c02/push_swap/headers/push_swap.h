@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/18 16:33:12 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:44:52 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,10 @@ void	pa_pb(t_list *stack_a, t_list *stack_b, char *inst);
 void	ra_rb(t_list *stack_a, t_list *stack_b, char *inst);
 void	rra_rrb(t_list *stack_a, t_list *stack_b, char *inst);
 int		check_sort(t_list *stack);
+void get_index(t_list *stack_a, t_list * stack_b);
 
+
+
+/* sorting */
+void 	sort_three(t_list *stack_a, t_list *stack_b);
 #endif
