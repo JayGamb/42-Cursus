@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/19 16:44:52 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/20 12:06:18 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_element t_element;
 struct s_element
 {
 	int val;
+	int pos;
 	t_element	*prev;
 	t_element   *nxt;
 };
