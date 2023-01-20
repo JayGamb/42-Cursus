@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/19 16:50:34 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:15:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,20 @@ int	main(int argc, char **argv)
 	stack_b = malloc(sizeof(t_list));	
 	check_args(argc, argv, stack_a);
 	nb_elements = check_sort(stack_a);
-
+/* 
 	printlist(stack_a);
 	ft_printf("A\n\n");
 	printlist(stack_b);
-	ft_printf("B\n\n");
+	ft_printf("B\n\n"); */
 
-	get_index(stack_a, stack_b);
+	sort_three(stack_a, stack_b);
+/* 	get_index(stack_a, stack_b); */
 
-	printlist(stack_a);
+/* 	printlist(stack_a);
 	ft_printf("A\n\n");
 	printlist(stack_b);
 	ft_printf("B\n\n");
-
+ */
 
 /* 	list */
 

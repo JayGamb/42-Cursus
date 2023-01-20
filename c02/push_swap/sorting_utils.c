@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/20 12:22:38 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:24:41 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,30 +118,31 @@ void get_index(t_list *stack_a, t_list * stack_b)
 
 void get_sortedpos(t_list *stack)
 {
+	t_element	*next;
 	t_element	*current;
-	t_element	*temp;
+	int			temp;
 	int			pos;
 	int			size;
 
+	next = stack->first;
+	current = next;
 	size = check_sort(stack);
-	temp = stack->first;
-	current = temp;
+	temp = 0;
 	pos = 1;
 	while (pos < size)
 	{
-		current = temp;
+		current = next;
 		while (current)
 		{
-			if (current->val < current->nxt->nxt)
-			{
-				
+			if ()
+			if (current->val < current->nxt->nxt || temp != pos)
+			{	
 				current->pos = pos;
 			}
 			current = current->nxt;
-
 		}
-
+		temp = pos;
+		next = next->nxt;
+		pos++;
 	}
-
-
 }
