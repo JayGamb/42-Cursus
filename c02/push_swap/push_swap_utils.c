@@ -6,24 +6,28 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/16 16:47:02 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/22 18:46:47 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list *stack)
+void swap(t_list *stack)
 {
-	t_element	*temp;
+    t_element *temp;
 
-	if (!stack->first)
-		return ;
-	temp = stack->first->nxt;
-	stack->first->prev = temp;
-	stack->first->nxt = temp->nxt;
-	temp->prev = NULL;
-	temp->nxt = stack->first;
-	stack->first = temp;
+    if (!stack->first || !stack->first->nxt)
+        return;
+    temp = stack->first;
+    stack->first = stack->first->nxt;
+    temp->nxt = stack->first->nxt;
+    stack->first->prev = NULL;
+    if (temp->nxt)
+        temp->nxt->prev = temp;
+    else
+        stack->last = temp;
+    stack->first->nxt = temp;
+    temp->prev = stack->first;
 }
 
 void	push(t_list *dest, t_list *src)

@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/20 12:06:18 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/22 16:46:24 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ void	pa_pb(t_list *stack_a, t_list *stack_b, char *inst);
 void	ra_rb(t_list *stack_a, t_list *stack_b, char *inst);
 void	rra_rrb(t_list *stack_a, t_list *stack_b, char *inst);
 int		check_sort(t_list *stack);
-void get_index(t_list *stack_a, t_list * stack_b);
+
 
 
 
 /* sorting */
 void 	sort_three(t_list *stack_a, t_list *stack_b);
+int get_position(t_list *stack);
 #endif

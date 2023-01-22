@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/20 16:24:41 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/22 18:40:04 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 } */
 
-int	bigorsmall(t_list *stack_a)
+/* int	bigorsmall(t_list *stack_a)
 {
 	t_element *current;
-	int is_big_or_small = 0;
+	int comb = 0;
 
 	current = stack_a->first;
 	while (current)
@@ -29,120 +29,82 @@ int	bigorsmall(t_list *stack_a)
 		{
 			if (current->val > current->nxt->val)
 			{
-				is_big_or_small *= 10;
-				is_big_or_small += 1;
+				comb *= 10;
+				comb += 1;
 			}
 			else
 			{
-				is_big_or_small *= 10;
-				is_big_or_small += 2;
+				comb *= 10;
+				comb += 2;
 			}
 		}
 		current = current->nxt;
 	}
 	if(stack_a->last->val > stack_a->first->val)
 	{
-		is_big_or_small *= 10;
-		is_big_or_small += 1;
+		comb *= 10;
+		comb += 1;
 	}
 	else
 	{
-		is_big_or_small *= 10;
-		is_big_or_small += 2;
+		comb *= 10;
+		comb += 2;
 	}
-	return (is_big_or_small);
+	return (comb);
+} */
+
+int get_position(t_list *stack)
+{
+    t_element *current;
+	int comb;
+  
+	comb = 0;
+	current = stack->first;
+    while (current)
+    {
+		t_element *comp = stack->first;
+		while (comp)
+		{
+			if (current->val > comp->val)
+			{
+				current->pos--;
+			}
+			comp = comp->nxt;
+		}
+		current->pos += current->pos * -2 + 1;
+		comb = comb * 10 + current->pos;
+		printf("position comb: %d\n", comb);
+        current = current->nxt;
+    }
+/* 	current = stack->first; */
+/* 	while (current)
+    {
+		comb = comb * 10 + current->pos;
+		printf("gtcomb: %d\n", comb);
+        current = current->nxt;
+	} */
+	return (comb);
 }
 
 void sort_three(t_list *stack_a, t_list *stack_b)
 {
-	int is_big_or_small = bigorsmall(stack_a);
+	int comb = get_position(stack_a);
+	printf("comb: %d\n", comb);
 
-	if (is_big_or_small == 112)
+	if (comb == 132)
 	{
-		ra_rb(stack_a, stack_b, "ra");
+		rra_rrb(stack_a, stack_b, "rra");
 		sa_sb(stack_a, stack_b, "sa");
 	}
-	if (is_big_or_small == 121)
+	if (comb == 213)
 		sa_sb(stack_a, stack_b, "sa");
-	if (is_big_or_small == 122)
+	if (comb == 231)
+		rra_rrb(stack_a, stack_b, "rra");
+	if (comb == 312)
 		ra_rb(stack_a, stack_b, "ra");
-	if (is_big_or_small == 211)
+	if (comb == 321)
 	{
 		sa_sb(stack_a, stack_b, "sa");
-		ra_rb(stack_a, stack_b, "ra");
-	}
-	if (is_big_or_small == 212)
-		ra_rb(stack_a, stack_b, "rra");
-}
-
-void get_index(t_list *stack_a, t_list * stack_b)
-{
-	int greater;
-	int size;
-	int max_bits;
-	int	i;
-	int j;
-	int num;
-
-	i = 0;
-	max_bits = 0;
-	j = 0;
-	size = check_sort(stack_a);
-	greater = size - 1;
-
-	while ((greater >> max_bits) != 0)
-		++max_bits;
-	while (i < max_bits)
-	{
-		while (j < size)
-		{
-			num = stack_a->first->val;
-			if (((num >> i)&1) == 1)
-				instructions(stack_a, stack_b, "ra");
-			else
-			{
-				instructions(stack_a, stack_b, "pb");
-			}
-			j++;
-		}
-		i++;
-	}
-	while (stack_b->first)
-	{
-		if (!stack_b->first->nxt)
-			break;
-		instructions(stack_a, stack_b, "pa");
-
-	}
-}
-
-void get_sortedpos(t_list *stack)
-{
-	t_element	*next;
-	t_element	*current;
-	int			temp;
-	int			pos;
-	int			size;
-
-	next = stack->first;
-	current = next;
-	size = check_sort(stack);
-	temp = 0;
-	pos = 1;
-	while (pos < size)
-	{
-		current = next;
-		while (current)
-		{
-			if ()
-			if (current->val < current->nxt->nxt || temp != pos)
-			{	
-				current->pos = pos;
-			}
-			current = current->nxt;
-		}
-		temp = pos;
-		next = next->nxt;
-		pos++;
+		rra_rrb(stack_a, stack_b, "rra");
 	}
 }
