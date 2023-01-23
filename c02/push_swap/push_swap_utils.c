@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/22 18:46:47 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:45:46 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,28 @@ void	push(t_list *dest, t_list *src)
 
 	if (!src->first)
 		return ;
+		
 	temp = src->first;
-	src->first = src->first->nxt;
-	src->first->prev = temp->prev;
-	if (!dest->first)
-		list_init(dest, temp->val);
-	else if (!dest->first->nxt)
+	if (src->first->nxt)
 	{
-		temp->nxt = dest->first;
-		dest->first->prev = temp;
-		dest->last = temp->nxt;
-		dest->first =  temp;
+		src->first = src->first->nxt;
+		src->first->prev = NULL;
+	}
+	if (!dest->first)
+	{
+		dest->first = temp;
+		dest->first->nxt = NULL;
+		dest->first->prev = NULL;
 	}
 	else
 	{
+		
 		temp->nxt = dest->first;
 		dest->first->prev = temp;
+		if (!dest->first->nxt)
+			dest->last = dest->first;
 		dest->first =  temp;
-
-	}		
-
+	}
 }
 
 void	rotate(t_list *stack)
@@ -78,7 +80,7 @@ void	reverse(t_list *stack)
 {
 	t_element	*temp;
 	
-	if (!stack->first && !stack->first->nxt)
+	if (!stack->first || !stack->first->nxt)
 		return ;
 	temp = stack->last;
 	stack->last = stack->last->prev;

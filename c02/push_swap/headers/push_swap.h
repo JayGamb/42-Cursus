@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/22 16:46:24 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:31:42 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@
 # include "ft_printf.h"
 
 /* Structures */
+
+
+
 typedef struct s_element t_element;
 struct s_element
 {
 	int val;
 	int pos;
+	int index;
 	t_element	*prev;
 	t_element   *nxt;
 };
@@ -71,5 +75,6 @@ int		check_sort(t_list *stack);
 
 /* sorting */
 void 	sort_three(t_list *stack_a, t_list *stack_b);
+void	sort_four(t_list *stack_a, t_list *stack_b);
 int get_position(t_list *stack);
 #endif
