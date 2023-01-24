@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/23 14:31:42 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:37:00 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int		check_sort(t_list *stack);
 /* sorting */
 void 	sort_three(t_list *stack_a, t_list *stack_b);
 void	sort_four(t_list *stack_a, t_list *stack_b);
+void sort_five(t_list *stack_a, t_list *stack_b);
 int get_position(t_list *stack);
 #endif

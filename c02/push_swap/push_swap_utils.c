@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/23 15:45:46 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:32:10 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void swap(t_list *stack)
     temp->prev = stack->first;
 }
 
-void	push(t_list *dest, t_list *src)
+/* void	push(t_list *dest, t_list *src)
 {
 	t_element	*temp;
 
@@ -59,7 +59,32 @@ void	push(t_list *dest, t_list *src)
 			dest->last = dest->first;
 		dest->first =  temp;
 	}
+} */
+
+void push(t_list *dest, t_list *src) 
+{
+	 t_element *temp;
+
+    if (!src->first)
+        return;
+    temp = src->first;
+    if (src->first == src->last) {
+        src->first = src->last = NULL;
+    } else {
+        src->first = temp->nxt;
+        src->first->prev = NULL;
+    }
+    temp->nxt = dest->first;
+    temp->prev = NULL;
+    if (dest->first) {
+        dest->first->prev = temp;
+    }
+    dest->first = temp;
+    if (!dest->last) {
+        dest->last = temp;
+    }
 }
+
 
 void	rotate(t_list *stack)
 {
