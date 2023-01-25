@@ -3,55 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/24 16:12:37 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/25 22:41:18 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* void dispatch_algo(int nb_elment, t_list *stack_a, t_list *stack_b)
-{
-
-} */
-
-/* int	bigorsmall(t_list *stack_a)
-{
-	t_element *current;
-	int comb = 0;
-
-	current = stack_a->first;
-	while (current)
-	{
-		if (current->nxt)
-		{
-			if (current->val > current->nxt->val)
-			{
-				comb *= 10;
-				comb += 1;
-			}
-			else
-			{
-				comb *= 10;
-				comb += 2;
-			}
-		}
-		current = current->nxt;
-	}
-	if(stack_a->last->val > stack_a->first->val)
-	{
-		comb *= 10;
-		comb += 1;
-	}
-	else
-	{
-		comb *= 10;
-		comb += 2;
-	}
-	return (comb);
-} */
 
 int get_position(t_list *stack)
 {
@@ -94,13 +54,8 @@ void sort_three(t_list *stack_a, t_list *stack_b)
 {
 	int comb = get_position(stack_a);
 
-/* 	printf("combi %d", comb); */
-
 	if (comb == 132)
-	{
-		rra_rrb(stack_a, stack_b, "rra");
-		sa_sb(stack_a, stack_b, "sa");
-	}
+		instructionsf(2, stack_a, stack_b, "rra", "sa");
 	if (comb == 213)
 		sa_sb(stack_a, stack_b, "sa");
 	if (comb == 231)
@@ -108,45 +63,40 @@ void sort_three(t_list *stack_a, t_list *stack_b)
 	if (comb == 312)
 		ra_rb(stack_a, stack_b, "ra");
 	if (comb == 321)
-	{
-		sa_sb(stack_a, stack_b, "sa");
-		rra_rrb(stack_a, stack_b, "rra");
-	}
+		instructionsf(2, stack_a, stack_b, "sa", "rra");
 }
 
 void sort_four(t_list *stack_a, t_list *stack_b)
 {
 	t_element *current;
-	get_position(stack_a);
-
 	
+	get_position(stack_a);
 	current = stack_a->first;
-/* 	printf("sort_four comb: %d\n", comb); */
 	while (current)
 	{
 		if (current->pos == 1)
 			break;
 		current = current->nxt;
 	}
-/* 	printf("\nsort_four - index %d -> pos: %d\n", current->index, current->pos); */
-
-
 	if (current->index == 0)
 		pa_pb(stack_a, stack_b, "pb");
 	if (current->index == 1)
 	{
 		sa_sb(stack_a, stack_b, "sa");
+		check_sort(stack_a);
 		pa_pb(stack_a, stack_b, "pb");
 	}
 	if (current->index == 2)
 	{
 		rra_rrb(stack_a, stack_b, "rra");
 		rra_rrb(stack_a, stack_b, "rra");
+		check_sort(stack_a);
 		pa_pb(stack_a, stack_b, "pb");
 	}
 	if (current->index == 3)
 	{
 		rra_rrb(stack_a, stack_b, "rra");
+		check_sort(stack_a);
 		pa_pb(stack_a, stack_b, "pb");
 	}
 	sort_three(stack_a, stack_b);
@@ -189,11 +139,30 @@ void sort_five(t_list *stack_a, t_list *stack_b)
 		rra_rrb(stack_a, stack_b, "rra");
 		pa_pb(stack_a, stack_b, "pb");
 	}
-/* 	printlist(stack_a);
-	ft_printf("A\n\n");
-	printlist(stack_b);
-	ft_printf("B\n\n"); */
 	sort_four(stack_a, stack_b);
 	pa_pb(stack_a,	stack_b, "pa");
 	sa_sb(stack_a, stack_b, "sa");
+}
+
+void sort_four2(t_list *stack_a, t_list *stack_b)
+{
+	int comb;
+
+	comb = get_position(stack_a);
+	if (comb == 1243 || comb == 1324 || comb == 1432 || comb == 2143 || comb == 2314)
+		instructionsf(2, stack_a, stack_b, "pb","sa");
+	if (comb == 4123 || comb == 1342 || comb == 3124 || comb == 4231)
+		instructionsf(4, stack_a, stack_b, "rra", "sa", "ra", "ra");
+	if (comb == 2341 || comb == 3412 || comb == 3421)
+		instructionsf(3, stack_a, stack_b, "rra", "rra", "sa");
+	if (comb == 2413 || comb == 3214)
+		instructionsf(5, stack_a, stack_b, "rra", "sa", "rra", "rra", "sa");	
+	if (comb == 2134 || comb == 1423 || comb == 4312 || comb == 4321)
+		instructionsf(4, stack_a, stack_b, "sa", "ra", "ra", "sa");
+	if (comb == 3142 || comb == 3241)
+		instructionsf(4, stack_a, stack_b, "sa", "rra", "sa" );
+	if (comb == 4213 || comb == 2431)
+		instructionsf(4, stack_a, stack_b, "ra", "sa", "ra", "ra");
+	if (comb == 4132)
+		instructionsf(2, stack_a, stack_b, "sa", "pb");	
 }

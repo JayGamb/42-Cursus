@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/24 15:37:00 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:55:31 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 # include "ft_printf.h"
 
 /* Structures */
-
-
-
 typedef struct s_element t_element;
 struct s_element
 {
@@ -60,6 +57,7 @@ int 	find_occurrences(char **array);
 
 /* fts swaps */
 void	instructions(t_list *stack_a, t_list *stack_b, char *inst);
+void	instructionsf(int num, t_list *stack_a, t_list *stack_b, ...);
 void	swap(t_list *stack);
 void	push(t_list *dest, t_list *src);
 void	rotate(t_list *stack);
@@ -76,6 +74,7 @@ int		check_sort(t_list *stack);
 /* sorting */
 void 	sort_three(t_list *stack_a, t_list *stack_b);
 void	sort_four(t_list *stack_a, t_list *stack_b);
+void sort_four2(t_list *stack_a, t_list *stack_b);
 void sort_five(t_list *stack_a, t_list *stack_b);
 int get_position(t_list *stack);
 #endif
