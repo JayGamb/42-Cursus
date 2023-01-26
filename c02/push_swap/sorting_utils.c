@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/25 22:41:18 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/26 16:09:57 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void sort_four2(t_list *stack_a, t_list *stack_b)
 	comb = get_position(stack_a);
 	if (comb == 1243 || comb == 1324 || comb == 1432 || comb == 2143 || comb == 2314)
 		instructionsf(2, stack_a, stack_b, "pb","sa");
-	if (comb == 4123 || comb == 1342 || comb == 3124 || comb == 4231)
+	if (comb == 1342 || comb == 3124 || comb == 4231)
 		instructionsf(4, stack_a, stack_b, "rra", "sa", "ra", "ra");
 	if (comb == 2341 || comb == 3412 || comb == 3421)
 		instructionsf(3, stack_a, stack_b, "rra", "rra", "sa");
@@ -161,7 +161,7 @@ void sort_four2(t_list *stack_a, t_list *stack_b)
 		instructionsf(4, stack_a, stack_b, "sa", "ra", "ra", "sa");
 	if (comb == 3142 || comb == 3241)
 		instructionsf(4, stack_a, stack_b, "sa", "rra", "sa" );
-	if (comb == 4213 || comb == 2431)
+	if (comb == 4123 || comb == 4213 || comb == 2431)
 		instructionsf(4, stack_a, stack_b, "ra", "sa", "ra", "ra");
 	if (comb == 4132)
 		instructionsf(2, stack_a, stack_b, "sa", "pb");	

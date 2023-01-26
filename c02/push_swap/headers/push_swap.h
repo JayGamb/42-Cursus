@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/25 20:55:31 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:13:04 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int 	find_occurrences(char **array);
 /* fts swaps */
 void	instructions(t_list *stack_a, t_list *stack_b, char *inst);
 void	instructionsf(int num, t_list *stack_a, t_list *stack_b, ...);
+/* void	instructionsf(int num, t_list *stack_a, t_list *stack_b, char *ins1, char  *inst2,  */
 void	swap(t_list *stack);
 void	push(t_list *dest, t_list *src);
 void	rotate(t_list *stack);

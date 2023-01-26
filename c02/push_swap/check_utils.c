@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/25 20:57:39 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:16:39 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	find_occurrences(char **array)
 		{
 			if (!ft_strcmp(array[i], array[j]))
 			{
-				printf("Error\n");
+				ft_printf("Error\n");
 				exit (1);
 			}
 			j++;
