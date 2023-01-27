@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/26 15:16:39 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:51:05 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,5 @@ int	check_sort(t_list *stack)
     }
 	if (is_sorted != 0)
 		return (nb_element);
-	exit (EXIT_FAILURE);
+	return (0);
 }

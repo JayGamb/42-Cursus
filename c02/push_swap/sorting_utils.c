@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/26 16:09:57 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:19:29 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int get_position(t_list *stack)
 {
-    t_element	*current;
+	t_element	*current;
 	t_element	*comp;
 	int			comb;
 	int			index;
@@ -46,8 +46,27 @@ int get_position(t_list *stack)
 		current->index += index;
 		index++;
 		current = current->nxt;
-    }
+	}
 	return (comb);
+}
+
+void	small_sort(size)
+{	
+	if (size == 3)
+		sort_three(stack_a, stack_b);
+	if (size == 4)
+		sort_four2(stack_a, stack_b);
+	if (size == 5)
+		sort_five(stack_a, stack_b);
+}
+
+void big_sort()
+{
+	int i;
+
+
+	while (size > 50
+
 }
 
 void sort_three(t_list *stack_a, t_list *stack_b)
@@ -66,48 +85,11 @@ void sort_three(t_list *stack_a, t_list *stack_b)
 		instructionsf(2, stack_a, stack_b, "sa", "rra");
 }
 
-void sort_four(t_list *stack_a, t_list *stack_b)
+void	sort_five(t_list *stack_a, t_list *stack_b)
 {
 	t_element *current;
 	
 	get_position(stack_a);
-	current = stack_a->first;
-	while (current)
-	{
-		if (current->pos == 1)
-			break;
-		current = current->nxt;
-	}
-	if (current->index == 0)
-		pa_pb(stack_a, stack_b, "pb");
-	if (current->index == 1)
-	{
-		sa_sb(stack_a, stack_b, "sa");
-		check_sort(stack_a);
-		pa_pb(stack_a, stack_b, "pb");
-	}
-	if (current->index == 2)
-	{
-		rra_rrb(stack_a, stack_b, "rra");
-		rra_rrb(stack_a, stack_b, "rra");
-		check_sort(stack_a);
-		pa_pb(stack_a, stack_b, "pb");
-	}
-	if (current->index == 3)
-	{
-		rra_rrb(stack_a, stack_b, "rra");
-		check_sort(stack_a);
-		pa_pb(stack_a, stack_b, "pb");
-	}
-	sort_three(stack_a, stack_b);
-	pa_pb(stack_a,	stack_b, "pa");
-}
-
-void sort_five(t_list *stack_a, t_list *stack_b)
-{
-	t_element *current;
-	get_position(stack_a);
-
 	current = stack_a->first;
 	while (current)
 	{
@@ -116,41 +98,24 @@ void sort_five(t_list *stack_a, t_list *stack_b)
 		current = current->nxt;
 	}
 	if (current->index == 0)
-		pa_pb(stack_a, stack_b, "pb");
+		instructionsf(1, stack_a, stack_b, "pb");
 	if (current->index == 1)
-	{
-		sa_sb(stack_a, stack_b, "sa");
-		pa_pb(stack_a, stack_b, "pb");
-	}
+		instructionsf(2, stack_a, stack_b, "sa", "pb");
 	if (current->index == 2)
-	{
-		ra_rb(stack_a, stack_b, "ra");
-		ra_rb(stack_a, stack_b, "ra");
-		pa_pb(stack_a, stack_b, "pb");
-	}
+		instructionsf(3, stack_a, stack_b, "ra", "ra", "pb");
 	if (current->index == 3)
-	{
-		rra_rrb(stack_a, stack_b, "rra");
-		rra_rrb(stack_a, stack_b, "rra");
-		pa_pb(stack_a, stack_b, "pb");
-	}
+		instructionsf(3, stack_a, stack_b, "rra", "rra", "pb");
 	if (current->index == 4)
-	{
-		rra_rrb(stack_a, stack_b, "rra");
-		pa_pb(stack_a, stack_b, "pb");
-	}
-	sort_four(stack_a, stack_b);
-	pa_pb(stack_a,	stack_b, "pa");
-	sa_sb(stack_a, stack_b, "sa");
+		instructionsf(2, stack_a, stack_b, "rra", "pb");
 }
 
-void sort_four2(t_list *stack_a, t_list *stack_b)
+void	sort_four2(t_list *stack_a, t_list *stack_b)
 {
 	int comb;
 
 	comb = get_position(stack_a);
 	if (comb == 1243 || comb == 1324 || comb == 1432 || comb == 2143 || comb == 2314)
-		instructionsf(2, stack_a, stack_b, "pb","sa");
+		instructionsf(2, stack_a, stack_b, "pb", "sa");
 	if (comb == 1342 || comb == 3124 || comb == 4231)
 		instructionsf(4, stack_a, stack_b, "rra", "sa", "ra", "ra");
 	if (comb == 2341 || comb == 3412 || comb == 3421)
