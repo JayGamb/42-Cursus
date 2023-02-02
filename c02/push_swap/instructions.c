@@ -3,46 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:27:03 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/27 16:16:18 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:39:18 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* void	instructionsf(int num, t_list *stack_a, t_list *stack_b, char **inst)
-{
-
-	while (num > 0)
-	{
-		if (ft_strcmp(*inst, "sa") == 0 || ft_strcmp(*inst, "sb") == 0
-		|| ft_strcmp(*inst, "ss") == 0)
-			sa_sb(stack_a, stack_b, *inst);
-		else if (ft_strcmp(*inst, "pa") == 0 || ft_strcmp(*inst, "pb") == 0)
-		{	
-			pa_pb(stack_a, stack_b, *inst);
-			if (ft_strcmp(*inst, "pb") == 0)
-			{
-				sort_three(stack_a, stack_b);
-				pa_pb(stack_a, stack_b, "pa");
-			}
-		}
-		else if (ft_strcmp(*inst, "ra") == 0 || ft_strcmp(*inst, "rb") == 0
-		|| ft_strcmp(*inst, "rr") == 0)
-			ra_rb(stack_a, stack_b, *inst);
-		else if (ft_strcmp(*inst, "rra") == 0 || ft_strcmp(*inst, "rrb") == 0
-		|| ft_strcmp(*inst, "rrr") == 0)
-			rra_rrb(stack_a, stack_b, *inst);
-		else
-			ft_printf("Error: instruction '%s' does not exist.", *inst);	
-		if (!stack_b->first)
-			check_sort(stack_a);
-		num--;
-		inst++:
-	}
-} */
 
 void	instructionsf(int num, t_list *stack_a, t_list *stack_b, ...)
 {
@@ -50,8 +18,6 @@ void	instructionsf(int num, t_list *stack_a, t_list *stack_b, ...)
 	va_start(args, stack_b);
 	char *inst;
 
-	
-	
 	while (num > 0)
 	{	
 		int size = check_sort(stack_a);
@@ -86,11 +52,6 @@ void	instructionsf(int num, t_list *stack_a, t_list *stack_b, ...)
 			rra_rrb(stack_a, stack_b, inst);
 		else
 			ft_printf("Error: instruction '%s' does not exist.", inst);	
-/* 			printf("List:\n");
-		printlist(stack_a);
-		ft_printf("A\n\n");
-		printlist(stack_b);
-		ft_printf("B\n\n"); */
 		if (check_sort(stack_a) == 0)
 			return ;
 		num--;

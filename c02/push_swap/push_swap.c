@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/27 16:31:21 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/02 19:24:38 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,31 @@ int	main(int argc, char **argv)
 {
 	t_list *stack_a;
 	t_list *stack_b;
-	int size;
 
 
 	stack_a = malloc(sizeof(t_list));
 	stack_b = malloc(sizeof(t_list));	
 	check_args(argc, argv, stack_a);
-	size = check_sort(stack_a);
-/* 	printf("List:\n");
-	printlist(stack_a);
-	ft_printf("A\n\n");
-	printlist(stack_b);
-	ft_printf("B\n\n");
+	get_position(stack_a);
 
- */ 
-void	small_sort(size)
-{	
-	if (size == 3)
-		sort_three(stack_a, stack_b);
-	if (size == 4)
-		sort_four2(stack_a, stack_b);
-	if (size == 5)
-		sort_five(stack_a, stack_b);
-}
-/* 	
+
+	int size = stack_size(stack_a);
+	instructionsf(4, stack_a, stack_b, "pb", "pb", "pb", "pb");
+	int posdif = smallest_diff(stack_a->first, stack_b);
+	int ops = count_op(stack_b, posdif, size);
+
 	printf("List:\n");
 	printlist(stack_a);
 	ft_printf("A\n\n");
 	printlist(stack_b);
-	ft_printf("B\n\n"); */
+	ft_printf("b\n\n");
+
+	
+	ft_printf("size: %d\n", size);
+	ft_printf("pos diff: %d\n", posdif);
+	ft_printf("nb ops: %d\n", ops);
+
+ 
+
+
 }

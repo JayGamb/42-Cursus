@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:19:29 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/01/27 23:15:07 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int get_position(t_list *stack)
 	return (comb);
 }
 
-void	small_sort(size)
+/* void	small_sort(size)
 {	
 	if (size == 3)
 		sort_three(stack_a, stack_b);
@@ -67,7 +67,7 @@ void big_sort()
 
 	while (size > 50
 
-}
+} */
 
 void sort_three(t_list *stack_a, t_list *stack_b)
 {
