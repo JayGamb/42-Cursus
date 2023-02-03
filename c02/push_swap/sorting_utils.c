@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/27 23:15:07 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:49:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,3 +131,6 @@ void	sort_four2(t_list *stack_a, t_list *stack_b)
 	if (comb == 4132)
 		instructionsf(2, stack_a, stack_b, "sa", "pb");	
 }
+
+
+

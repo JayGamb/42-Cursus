@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/02 18:43:00 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/03 18:01:50 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,16 @@ void sort_four2(t_list *stack_a, t_list *stack_b);
 void sort_five(t_list *stack_a, t_list *stack_b);
 int get_position(t_list *stack);
 
-int stack_size(t_list *stack);
+/* int stack_size(t_list *stack);
 int	smallest_diff(t_element *element, t_list *stack_b);
-int	count_op(t_list *stack_b, int pos, int size);
+int	count_op(t_list *stack_b, int pos, int size); */
+void pb_unlessbig(t_list *stack_a, t_list *stack_b);
+void best_sort_option(t_list *stack_a, t_list *stack_b);
+int get_bigtop(t_list *stack_b);
+int get_smalltop(t_list *stack_b);
+int get_bigbottom(t_list *stack_b);
+int get_smallbottom(t_list *stack_b);
+void nb_rb (t_list *stack_a, t_list *stack_b, int ret_pos);
+void nb_rrb (t_list *stack_a, t_list *stack_b, int ret_pos);
+void caca_sort_ex (t_list *stack_a, t_list *stack_b);
 #endif

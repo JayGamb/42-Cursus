@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/02 19:24:38 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/03 18:04:02 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,6 @@ int	main(int argc, char **argv)
 	get_position(stack_a);
 
 
-	int size = stack_size(stack_a);
-	instructionsf(4, stack_a, stack_b, "pb", "pb", "pb", "pb");
-	int posdif = smallest_diff(stack_a->first, stack_b);
-	int ops = count_op(stack_b, posdif, size);
-
-	printf("List:\n");
-	printlist(stack_a);
-	ft_printf("A\n\n");
-	printlist(stack_b);
-	ft_printf("b\n\n");
-
-	
-	ft_printf("size: %d\n", size);
-	ft_printf("pos diff: %d\n", posdif);
-	ft_printf("nb ops: %d\n", ops);
-
- 
-
+	caca_sort_ex(stack_a, stack_b);
 
 }
