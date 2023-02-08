@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/03 15:49:25 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/05 15:06:53 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,13 @@ int get_position(t_list *stack)
 	t_element	*current;
 	t_element	*comp;
 	int			comb;
-	int			index;
-  
+
 	comb = 0;
-	index = 0;
 	current = stack->first;
 	while (current)
     {
 		if (current->pos)
-			current->pos = 0;
-		if (current->index)
-			current->index = 0;	
+			current->pos = 0;	
 		current = current->nxt;
 	}
 	current = stack->first;
@@ -43,8 +39,6 @@ int get_position(t_list *stack)
 		}
 		current->pos += current->pos * -2 + 1;
 		comb = comb * 10 + current->pos;
-		current->index += index;
-		index++;
 		current = current->nxt;
 	}
 	return (comb);
@@ -69,7 +63,7 @@ void big_sort()
 
 } */
 
-void sort_three(t_list *stack_a, t_list *stack_b)
+/* void sort_three(t_list *stack_a, t_list *stack_b)
 {
 	int comb = get_position(stack_a);
 
@@ -83,7 +77,24 @@ void sort_three(t_list *stack_a, t_list *stack_b)
 		ra_rb(stack_a, stack_b, "ra");
 	if (comb == 321)
 		instructionsf(2, stack_a, stack_b, "sa", "rra");
+} */
+
+void sort_three(t_list *stack_a, t_list *stack_b)
+{
+	int comb = ((stack_a->first->pos * 10) + stack_a->first->nxt->pos) * 10 + stack_a->first->nxt->nxt->pos;
+
+	if (comb == 132)
+		instructionsf(2, stack_a, stack_b, "rra", "sa");
+	if (comb == 213)
+		sa_sb(stack_a, stack_b, "sa");
+	if (comb == 231)
+		rra_rrb(stack_a, stack_b, "rra");
+	if (comb == 312)
+		ra_rb(stack_a, stack_b, "ra");
+	if (comb == 321)
+		instructionsf(2, stack_a, stack_b, "sa", "rra");
 }
+
 
 void	sort_five(t_list *stack_a, t_list *stack_b)
 {

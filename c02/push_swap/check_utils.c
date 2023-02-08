@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/27 12:51:05 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/08 04:31:52 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void pushatoi(t_list *stack, char **array)
 	i = 0;
 	while (array[i])
 	{
-/* 		if (ft_strchr(array[i], '.') && ft_strchr(array[i + 1], '/'))
-			i++; */
 		stacking(stack, atoi_check(array[i]));
 		i++;
 	}
@@ -108,11 +106,9 @@ void	check_args(int argc, char  **argv, t_list *stack_a)
 int	check_sort(t_list *stack)
 {
     t_element *current;
-	int nb_element;
 	int is_sorted;
 
 	is_sorted = 0;
-	nb_element = 0;
     current = stack->first;
     while (current)
     {
@@ -123,9 +119,8 @@ int	check_sort(t_list *stack)
 				is_sorted = 1;
 		}
 		current = current->nxt;
-		nb_element++;
     }
 	if (is_sorted != 0)
-		return (nb_element);
-	return (0);
+		return (is_sorted);
+	return (is_sorted);
 }

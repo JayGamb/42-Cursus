@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/03 18:01:50 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:04:16 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	pushatoi(t_list *stack, char **array);
 int 	find_occurrences(char **array);
 
 /* fts swaps */
-void	instructions(t_list *stack_a, t_list *stack_b, char *inst);
+void	instructions(int num, t_list *stack_a, t_list *stack_b, ...);
 void	instructionsf(int num, t_list *stack_a, t_list *stack_b, ...);
 /* void	instructionsf(int num, t_list *stack_a, t_list *stack_b, char *ins1, char  *inst2,  */
 void	swap(t_list *stack);
@@ -79,10 +79,11 @@ void sort_four2(t_list *stack_a, t_list *stack_b);
 void sort_five(t_list *stack_a, t_list *stack_b);
 int get_position(t_list *stack);
 
-/* int stack_size(t_list *stack);
-int	smallest_diff(t_element *element, t_list *stack_b);
-int	count_op(t_list *stack_b, int pos, int size); */
+int stack_size(t_list *stack);
+int	count_op(t_list *stack_b, int pos, int size);
+int	get_closest(t_element *element, t_list *stack_b);
 void pb_unlessbig(t_list *stack_a, t_list *stack_b);
+void pb_sorting(t_list *stack_a, t_list *stack_b);
 void best_sort_option(t_list *stack_a, t_list *stack_b);
 int get_bigtop(t_list *stack_b);
 int get_smalltop(t_list *stack_b);
@@ -90,5 +91,11 @@ int get_bigbottom(t_list *stack_b);
 int get_smallbottom(t_list *stack_b);
 void nb_rb (t_list *stack_a, t_list *stack_b, int ret_pos);
 void nb_rrb (t_list *stack_a, t_list *stack_b, int ret_pos);
-void caca_sort_ex (t_list *stack_a, t_list *stack_b);
+void caca_sort_ex(t_list *stack_a, t_list *stack_b);
+void caca_sort(t_list *stack_a, t_list *stack_b);
+t_element *min_ops(t_list *stack_a, t_list *stack_b);
+void ratate_ops(t_list *stack_a, t_list *stack_b, int ops, char *stack_name);
+void pa_sorting(t_list *stack_a, t_list *stack_b);
+int total_ops(int ops_a, int ops_b);
+void put_index(t_list *stack);
 #endif
