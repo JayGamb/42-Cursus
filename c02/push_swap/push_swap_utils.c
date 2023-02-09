@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/03 23:48:10 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:41:14 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,20 @@ void push(t_list *dest, t_list *src)
     if (!src->first)
         return;
     temp = src->first;
-    if (src->first == src->last) {
+    if (src->first == src->last) 
         src->first = src->last = NULL;
-    } else {
+    else 
+    {
         src->first = temp->nxt;
         src->first->prev = NULL;
     }
     temp->nxt = dest->first;
     temp->prev = NULL;
-    if (dest->first) {
+    if (dest->first)
         dest->first->prev = temp;
-    }
     dest->first = temp;
-    if (!dest->last) {
+    if (!dest->last)
         dest->last = temp;
-    }
 }
 
 
@@ -85,3 +84,22 @@ void	reverse(t_list *stack)
 	stack->first->prev = temp;
 	stack->first = temp;
 }
+
+/* void   reverse(t_list *stack)
+{
+    t_element    *temp_first;
+    t_element    *temp_last;
+    t_element    *temp_second;
+
+    if (stack->first == NULL || stack->last == NULL)
+        return ;
+    temp_first = stack->first;
+    temp_last = stack->last;
+    temp_second = temp_first->nxt;
+    stack->first = temp_second;
+    temp_second->prev = NULL;
+    stack->last = temp_first;
+    temp_first->nxt = NULL;
+    temp_first->prev = temp_last;
+    temp_last->nxt = stack->first;
+} */

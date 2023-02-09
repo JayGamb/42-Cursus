@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:04:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/08 17:55:22 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:19:24 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int stack_size(t_list *stack)
 
 
 	size = 0;
-    current = stack->first;
-    while (current)
-    {
+	current = stack->first;
+	while (current)
+	{
 		current = current->nxt;
 	 	size++;
 	}
@@ -140,14 +140,14 @@ t_element *min_ops(t_list *stack_a, t_list *stack_b)
 	{	
 		ops_a = count_op(stack_a, current->pos, stack_size(stack_a));
 		ops_b = count_op(stack_b, get_closest(current, stack_b), stack_size(stack_b));
-		printf("ops_a:%d\n", ops_a);
-		printf("ops_b:%d\n", ops_b);
+/* 		printf("ops_a:%d\n", ops_a);
+		printf("ops_b:%d\n", ops_b); */
 		if (ops_b <= 0)
 			ops_b++;
 		if (current->pos > get_closest(current, stack_b))
 			ops_b--;
 		total = total_ops(ops_a, ops_b);
-		printf("Total ops : %d\n\n", total);
+	/* 	printf("Total ops : %d\n\n", total); */
 		if (total < last_option)		
 		{
 			best_option = current;
@@ -156,7 +156,7 @@ t_element *min_ops(t_list *stack_a, t_list *stack_b)
 /* 		printf("current index : %d\t last option: %d \t best option: %d\t total: %d\n\n", current->index, last_option, best_option, total); */
 		current = current->nxt;
 	}
-	printf("Best option ops : %d\n\n", best_option->pos);
+/* 	printf("Best option ops : %d\n\n", best_option->pos); */
 	return (best_option);
 }
 
@@ -234,21 +234,21 @@ void pb_sorting(t_list *stack_a, t_list *stack_b)
 
 		ops_a = count_op(stack_a, best_pos->pos, size);
 		ops_b = count_op(stack_b, posclosest, stack_size(stack_b));
-		printf("the closest to %d --> %d\n", best_pos->pos, posclosest);
+/* 		printf("the closest to %d --> %d\n", best_pos->pos, posclosest);
 		printf("In Stack_A number of ops for pos %d --> %d\n\n", best_pos->pos, ops_a);
-		printf("In Stack_B number of ops for pos %d --> %d\n\n", posclosest, ops_b);
+		printf("In Stack_B number of ops for pos %d --> %d\n\n", posclosest, ops_b); */
 		if (best_pos->pos < posclosest)
 			ops_b++;
 		ratate_ops(stack_a, stack_b, ops_a, "a");
 		ratate_ops(stack_a, stack_b, ops_b, "b");
 		pa_pb(stack_a, stack_b, "pb");
-		printf("\n");
+	/* 	printf("\n");
 		printf("\n");
 		printlist(stack_a);
 		printf("stack A\n");
 		printlist(stack_b);
 		printf("stack b\n");
-		printf("\n");
+		printf("\n"); */
 		size = stack_size(stack_a);
 	}
 }
@@ -257,7 +257,7 @@ void pb_sorting(t_list *stack_a, t_list *stack_b)
 void caca_sort(t_list *stack_a, t_list *stack_b)
 {
 	instructions(2, stack_a, stack_b, "pb", "pb");
-    pb_sorting(stack_a, stack_b);
+	pb_sorting(stack_a, stack_b);
 
 } */
 
