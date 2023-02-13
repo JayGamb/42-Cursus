@@ -6,30 +6,58 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/05 15:06:53 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/12 13:46:27 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	put_index(t_list *stack)
+{
+	t_element	*current;
+	int			index;
+	
+	index = 0;
+	current = stack->first;
+	while (current)
+	{
+		current->index = index;
+		current = current->nxt;
+		index++;
+	}
+}
 
-int get_position(t_list *stack)
+int	get_index(t_list *stack, int pos)
+{
+	t_element	*current;
+	put_index(stack);
+	current = stack->first;
+	while (current)
+	{
+		if (current->pos == pos)
+		{
+			break ;
+		}
+		current = current->nxt;
+	}
+	return (current->index);
+}
+
+void	get_position(t_list *stack)
 {
 	t_element	*current;
 	t_element	*comp;
-	int			comb;
 
-	comb = 0;
 	current = stack->first;
 	while (current)
-    {
+	{
 		if (current->pos)
-			current->pos = 0;	
+			current->pos = 0;
 		current = current->nxt;
 	}
 	current = stack->first;
-    while (current)
-    {
+	while (current)
+	{
 		comp = stack->first;
 		while (comp)
 		{
@@ -38,110 +66,35 @@ int get_position(t_list *stack)
 			comp = comp->nxt;
 		}
 		current->pos += current->pos * -2 + 1;
-		comb = comb * 10 + current->pos;
 		current = current->nxt;
+	}
+}
+
+int	get_permutation(t_list *stack)
+{	
+	t_element	*current;
+	int			comb;
+	int			*array;
+	int			i;
+
+	array = malloc(sizeof(int) * stack_size(stack));
+	current = stack->first;
+	i = 0;
+	while (current)
+	{
+		array[i++] = current->pos;
+		current = current->nxt;
+	}
+	get_position(stack);
+	current = stack->first;
+	comb = 0;
+	i = 0;
+	while (current)
+	{
+		comb = comb * 10 + current->pos;
+		current->pos = array[i];
+		current = current->nxt;
+		i++;
 	}
 	return (comb);
 }
-
-/* void	small_sort(size)
-{	
-	if (size == 3)
-		sort_three(stack_a, stack_b);
-	if (size == 4)
-		sort_four2(stack_a, stack_b);
-	if (size == 5)
-		sort_five(stack_a, stack_b);
-}
-
-void big_sort()
-{
-	int i;
-
-
-	while (size > 50
-
-} */
-
-/* void sort_three(t_list *stack_a, t_list *stack_b)
-{
-	int comb = get_position(stack_a);
-
-	if (comb == 132)
-		instructionsf(2, stack_a, stack_b, "rra", "sa");
-	if (comb == 213)
-		sa_sb(stack_a, stack_b, "sa");
-	if (comb == 231)
-		rra_rrb(stack_a, stack_b, "rra");
-	if (comb == 312)
-		ra_rb(stack_a, stack_b, "ra");
-	if (comb == 321)
-		instructionsf(2, stack_a, stack_b, "sa", "rra");
-} */
-
-void sort_three(t_list *stack_a, t_list *stack_b)
-{
-	int comb = ((stack_a->first->pos * 10) + stack_a->first->nxt->pos) * 10 + stack_a->first->nxt->nxt->pos;
-
-	if (comb == 132)
-		instructionsf(2, stack_a, stack_b, "rra", "sa");
-	if (comb == 213)
-		sa_sb(stack_a, stack_b, "sa");
-	if (comb == 231)
-		rra_rrb(stack_a, stack_b, "rra");
-	if (comb == 312)
-		ra_rb(stack_a, stack_b, "ra");
-	if (comb == 321)
-		instructionsf(2, stack_a, stack_b, "sa", "rra");
-}
-
-
-void	sort_five(t_list *stack_a, t_list *stack_b)
-{
-	t_element *current;
-	
-	get_position(stack_a);
-	current = stack_a->first;
-	while (current)
-	{
-		if (current->pos == 2)
-			break;
-		current = current->nxt;
-	}
-	if (current->index == 0)
-		instructionsf(1, stack_a, stack_b, "pb");
-	if (current->index == 1)
-		instructionsf(2, stack_a, stack_b, "sa", "pb");
-	if (current->index == 2)
-		instructionsf(3, stack_a, stack_b, "ra", "ra", "pb");
-	if (current->index == 3)
-		instructionsf(3, stack_a, stack_b, "rra", "rra", "pb");
-	if (current->index == 4)
-		instructionsf(2, stack_a, stack_b, "rra", "pb");
-}
-
-void	sort_four2(t_list *stack_a, t_list *stack_b)
-{
-	int comb;
-
-	comb = get_position(stack_a);
-	if (comb == 1243 || comb == 1324 || comb == 1432 || comb == 2143 || comb == 2314)
-		instructionsf(2, stack_a, stack_b, "pb", "sa");
-	if (comb == 1342 || comb == 3124 || comb == 4231)
-		instructionsf(4, stack_a, stack_b, "rra", "sa", "ra", "ra");
-	if (comb == 2341 || comb == 3412 || comb == 3421)
-		instructionsf(3, stack_a, stack_b, "rra", "rra", "sa");
-	if (comb == 2413 || comb == 3214)
-		instructionsf(5, stack_a, stack_b, "rra", "sa", "rra", "rra", "sa");	
-	if (comb == 2134 || comb == 1423 || comb == 4312 || comb == 4321)
-		instructionsf(4, stack_a, stack_b, "sa", "ra", "ra", "sa");
-	if (comb == 3142 || comb == 3241)
-		instructionsf(4, stack_a, stack_b, "sa", "rra", "sa" );
-	if (comb == 4123 || comb == 4213 || comb == 2431)
-		instructionsf(4, stack_a, stack_b, "ra", "sa", "ra", "ra");
-	if (comb == 4132)
-		instructionsf(2, stack_a, stack_b, "sa", "pb");	
-}
-
-
-

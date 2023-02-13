@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkdlist_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:10:13 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/12 13:09:26 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*list_init(t_list *stack, int value)
 {
-	t_element   *element;
+	t_element	*element;
 
 	element = malloc(sizeof(t_element));
 	if (!stack || !element)
@@ -32,9 +32,9 @@ t_list	*list_init(t_list *stack, int value)
 	return (stack);
 }
 
-void stacking(t_list *stack, int new_val)
+void	stacking(t_list *stack, int new_val)
 {
-	t_element *new_element;
+	t_element	*new_element;
 
 	new_element = malloc(sizeof(t_element));
 	if (!new_element || !stack)
@@ -44,36 +44,20 @@ void stacking(t_list *stack, int new_val)
 	new_element->nxt = NULL;
 	if (stack->first != NULL)
 	{
-		if (stack->last == NULL)
-		{
-			stack->first->nxt = new_element;
-			stack->last = new_element;
-			new_element->prev = stack->first;
-		}
 		stack->last->nxt = new_element;
 		stack->last = new_element;
 	}
 	else
-		stack->first = new_element;
-}
-
-void deletion(t_list *stack)
-{
-	t_element *eltodel;
- 
-	if (!stack)
-		exit(EXIT_FAILURE);
-	if (stack->first != 0)
 	{
-		eltodel = stack->first;
-		stack->first = stack->first->nxt;
-		free(eltodel);
+		stack->first = new_element;
+		stack->last = new_element;
 	}
 }
 
-void printlist(t_list *stack)
+void	printlist(t_list *stack)
 {
-	t_element *current;
+	t_element	*current;
+
 	if (!stack)
 	{
 		ft_printf("NOP!");
@@ -84,39 +68,8 @@ void printlist(t_list *stack)
 	current = stack->first;
 	while (current != NULL)
 	{
-		ft_printf("%d\n", current->val);
+		printf("%d\t pos:%d\n", current->val, current->pos);
 		current = current->nxt;
 	}
 	ft_printf("----------\n");
-}
-
-void printstacks(t_list *list_a, t_list *list_b)
-{
-	t_element *current_a;
-	t_element *current_b;
-
-	if (!list_a)
-	{
-		ft_printf("NOP!");
-		exit(EXIT_FAILURE);
-	}
-	current_a = list_a->first;
-	current_b = list_b->first;
-	while (current_a != NULL )
-	{
-		ft_printf("%d\t\t", current_a->val);
-		if (!current_b->val)
-		{
-			ft_printf(" \n");
-		}
-		else
-		{
-			ft_printf("%d\n", current_b->val);
-			current_b = current_b->nxt;
-		}
-		current_a = current_a->nxt;
-		
-	}
-	ft_printf("----------\t----------\n");
-	ft_printf("A\t\tB\n");
 }

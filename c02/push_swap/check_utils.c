@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/08 04:31:52 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:00:02 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,25 @@ int	find_occurrences(char **array)
 	return (0);
 }
 
-int	atoi_check(const char *str)
+int	atoi_check(char *str)
 {
-	int		num;
-	int		i;
-	int		pos_neg;
-	char	*src;
+	int	i[3];
 
-	num = 0;
-	i = 0;
-	pos_neg = 1;
-	src = (char *)str;
-	while (src[i] == '\t' || src[i] == '\v' || src[i] == '\n' || src[i] == '\r'
-		|| src[i] == '\f' || src[i] == ' ')
-		i++;
-	if (src[i] == '-' || src[i] == '+')
+	i[0] = 0;
+	i[1] = 1;
+	i[2] = 0;
+	while (ft_iswhitespace(str[i[0]]))
+		i[0]++;
+	if (str[i[0]] == '-' || str[i[0]] == '+')
 	{
-		if (src[i] == '-' )
-			pos_neg = -1;
-		i++;
+		if (str[i[0]++] == '-' )
+			i[1] = -1;
 	}
-	if (ft_isdigit(src[i]))
+	if (ft_isdigit(str[i[0]]))
 	{
-		while (src[i] && ft_isdigit(src[i]))
-			{
-				num = num * 10 + src[i] - '0';
-				i++;
-			}
-		return (num * pos_neg);
+		while (str[i[0]] && ft_isdigit(str[i[0]]))
+				i[2] = i[2] * 10 + str[i[0]++] - '0';
+		return (i[2] * i[1]);
 	}
 	else
 	{
@@ -71,7 +62,7 @@ int	atoi_check(const char *str)
 	}
 }
 
-void pushatoi(t_list *stack, char **array)
+void	pushatoi(t_list *stack, char **array)
 {
 	size_t	i;
 
@@ -83,7 +74,7 @@ void pushatoi(t_list *stack, char **array)
 	}
 }
 
-void	check_args(int argc, char  **argv, t_list *stack_a)
+void	check_args(int argc, char **argv, t_list *stack_a)
 {
 	char	**array;
 
@@ -105,22 +96,19 @@ void	check_args(int argc, char  **argv, t_list *stack_a)
 
 int	check_sort(t_list *stack)
 {
-    t_element *current;
-	int is_sorted;
+	t_element	*current;
+	int			is_sorted;
 
-	is_sorted = 0;
-    current = stack->first;
-    while (current)
-    {
-		
+	is_sorted = 1;
+	current = stack->first;
+	while (current)
+	{
 		if (current->nxt)
 		{
 			if (current->val > current->nxt->val)
-				is_sorted = 1;
+				is_sorted = 0;
 		}
 		current = current->nxt;
-    }
-	if (is_sorted != 0)
-		return (is_sorted);
+	}
 	return (is_sorted);
 }
