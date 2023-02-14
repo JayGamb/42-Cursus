@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/13 17:07:33 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:20:28 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct s_best_ops
 	int			ops_ab;
 }	t_best_ops;
 
-
 /* Functions listes chainées */
 t_list		*list_init(t_list *stack, int value);
 void		stacking(t_list *list, int new_val);
@@ -101,7 +100,7 @@ void		small_sort(t_list *stack_a, t_list *stack_b, int size);
 
 /* Sorting utils */
 /* t_element	*min_ops(t_list *stack_a, t_list *stack_b); */
-t_element	*min_ops(t_list *stack_a, t_list *stack_b, int limit_1, int limit_2, int limit_3);
+t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1, int l2);
 t_best_ops	cheapest_op(t_list *stack_a, t_list *stack_b);
 int			rrr_ops(int ops_a, int ops_b);
 int			get_index(t_list *stack, int pos);
@@ -111,9 +110,8 @@ int			count_op(t_list *stack, int position);
 int			get_closest(t_element *element, t_list *stack_b);
 int			total_ops(int ops_a, int ops_b);
 void		get_position(t_list *stack);
-void		pb_sorting(t_list *stack_a, t_list *stack_b);
+void		big_sort(t_list *stack_a, t_list *stack_b);
 void		rotate_ops(t_list *stack_a, t_list *stack_b, \
 				int ops, char *stack_name);
-void		pa_sorting(t_list *stack_a, t_list *stack_b);
 void		put_index(t_list *stack);
 #endif

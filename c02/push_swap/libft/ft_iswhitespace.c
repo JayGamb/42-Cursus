@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:17:09 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/11 16:24:10 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:22:49 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_iswhitespace(char c)
 {
-	if (c == '\t' || c == '\v' || c == '\n' || c == '\r' ||
-		c == '\f' || c == ' ')
-		return 1;
-	return 0;
+	if (c == '\t' || c == '\v' || c == '\n' || c == '\r'
+		|| c == '\f' || c == ' ')
+		return (1);
+	return (0);
 }

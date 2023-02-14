@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/11 17:15:10 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:18:44 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,14 @@ int	is_reverse(char *inst)
 int	stack_size(t_list *stack)
 {
 	t_element	*current;
-	int size;
-
+	int			size;
 
 	size = 0;
 	current = stack->first;
 	while (current)
 	{
 		current = current->nxt;
-	 	size++;
+		size++;
 	}
 	return (size);
 }
