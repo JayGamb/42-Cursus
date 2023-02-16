@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   linkdlist_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/12 13:09:26 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:58:04 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*list_init(t_list *stack, int value)
+/* t_list	*list_init(t_list *stack, int value)
 {
 	t_element	*element;
 
@@ -30,7 +30,7 @@ t_list	*list_init(t_list *stack, int value)
 	element->prev = NULL;
 	stack->first = element;
 	return (stack);
-}
+} */
 
 void	stacking(t_list *stack, int new_val)
 {
@@ -68,7 +68,6 @@ void	printlist(t_list *stack)
 	current = stack->first;
 	while (current != NULL)
 	{
-		printf("%d\t pos:%d\n", current->val, current->pos);
 		current = current->nxt;
 	}
 	ft_printf("----------\n");

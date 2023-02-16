@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:20:28 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:49:58 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void		printlist(t_list *list);
 void		printstacks(t_list *list_a, t_list *list_b);
 
 /* Check Utils */
+int			find_occurrences(t_list *stack);
 int			arrlen(char **str);
-int			find_occurrences(char **array);
 int			check_sort(t_list *stack);
 void		check_args(int argc, char **argv, t_list *stack_a);
 void		pushatoi(t_list *stack, char **array);

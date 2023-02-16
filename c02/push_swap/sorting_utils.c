@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:19:36 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:52:16 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ int	get_permutation(t_list *stack)
 		current = current->nxt;
 		i++;
 	}
+	free(array);
 	return (comb);
 }

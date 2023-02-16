@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/13 14:00:02 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:53:04 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_occurrences(char **array)
+int	find_occurrences(t_list *stack)
 {
-	int	i;
-	int	j;
+	t_element	*current;
+	t_element	*comp;
 
-	i = 0;
-	while (array[i])
+	current = stack->first;
+	while (current)
 	{
-		j = i + 1;
-		while (array[j])
-		{
-			if (!ft_strcmp(array[i], array[j]))
-			{
-				ft_printf("Error\n");
-				exit (1);
+			comp = current->nxt;
+			while (comp)
+			{	
+				if (current->pos == comp->pos)
+				{
+					ft_printf("Error\n");
+					exit (1);
+				}
+				comp = comp->nxt;
 			}
-			j++;
-		}
-		i++;
+			current = current->nxt;
 	}
 	return (0);
 }
@@ -84,13 +84,15 @@ void	check_args(int argc, char **argv, t_list *stack_a)
 	{
 		array = malloc(sizeof(array) * argc + 1);
 		array = ft_split(argv[1], ' ');
-		find_occurrences(array);
 		pushatoi(stack_a, array);
+		get_position(stack_a);
+		find_occurrences(stack_a);
 	}
 	else
 	{
-		find_occurrences(&argv[1]);
 		pushatoi(stack_a, &argv[1]);
+		get_position(stack_a);
+		find_occurrences(stack_a);
 	}
 }
 
