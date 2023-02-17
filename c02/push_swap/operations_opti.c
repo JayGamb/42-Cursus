@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:18:16 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:16:24 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/17 18:05:48 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	count_op(t_list *stack, int position)
 	return (ops);
 }
 
-t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1, int l2)
+t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1)
 {
 	t_element	*best_option;
 	t_element	*current;
@@ -81,7 +81,7 @@ t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1, int l2)
 	{
 		put_index(stack_a);
 		if ((current->index >= 0 && current->index <= l1)
-			|| (current->index <= l2 && current->index >= l1 + l2))
+			/* || (current->index <= l2 && current->index >= l2) */)
 		{
 			var[1] = count_op(stack_a, current->pos);
 			var[2] = count_op(stack_b, get_closest(current, stack_b));
@@ -104,15 +104,15 @@ t_best_ops	cheapest_op(t_list *stack_a, t_list *stack_b)
 
 	if (stack_size(stack_a) + stack_size(stack_b) <= 250)
 	{
-		limit[0] = 7;
-		limit[1] = limit[0] * 2;
+		limit[0] = 5;
+		limit[1] = limit[0];
 	}
 	if (stack_size(stack_a) + stack_size(stack_b) > 250)
 	{
-		limit[0] = 13;
-		limit[1] = limit[0] * 2;
+		limit[0] = 10;
+		limit[1] = limit[0];
 	}
-	cheap.best_pos = min_ops(stack_a, stack_b, limit[0], limit[1]);
+	cheap.best_pos = min_ops(stack_a, stack_b, limit[0]);
 	cheap.closest_pos = get_closest(cheap.best_pos, stack_b);
 	cheap.ops_a = count_op(stack_a, cheap.best_pos->pos);
 	cheap.ops_b = count_op(stack_b, cheap.closest_pos);

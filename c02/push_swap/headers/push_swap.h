@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/16 14:49:58 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:56:12 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define RRB "rrb"
 # define RRR "rrr"
 
+
+# define blabla(c) c == 1 || c > 8 
 /* Structures */
 typedef struct s_element	t_element;
 struct s_element
@@ -100,7 +102,7 @@ void		small_sort(t_list *stack_a, t_list *stack_b, int size);
 
 /* Sorting utils */
 /* t_element	*min_ops(t_list *stack_a, t_list *stack_b); */
-t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1, int l2);
+t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1);
 t_best_ops	cheapest_op(t_list *stack_a, t_list *stack_b);
 int			rrr_ops(int ops_a, int ops_b);
 int			get_index(t_list *stack, int pos);

@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/16 15:53:04 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:18:36 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ int	find_occurrences(t_list *stack)
 	current = stack->first;
 	while (current)
 	{
-			comp = current->nxt;
-			while (comp)
-			{	
-				if (current->pos == comp->pos)
-				{
-					ft_printf("Error\n");
-					exit (1);
-				}
-				comp = comp->nxt;
+		comp = current->nxt;
+		while (comp)
+		{	
+			if (current->pos == comp->pos)
+			{
+				ft_printf("Error\n");
+				exit (1);
 			}
-			current = current->nxt;
+			comp = comp->nxt;
+		}
+		current = current->nxt;
 	}
 	return (0);
 }
