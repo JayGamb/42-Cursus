@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/18 18:26:24 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:26:13 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,35 +71,43 @@ void	get_position(t_list *stack)
 	}
 }
 
-int	get_permutation(t_list *stack)
-{	
+int	*save_inarray(t_list *stack)
+{
 	t_element	*current;
-	int			comb;
 	int			*array;
 	int			i;
 
+	current = stack->first;
+	i = 0;
 	array = malloc(sizeof(int) * stack_size(stack));
 	if (!array)
 		return (0);
-	current = stack->first;
-	i = 0;
 	while (current)
 	{
 		array[i++] = current->pos;
 		current = current->nxt;
 	}
-	get_position(stack);
+	return (array);
+}
+
+int	get_permutation(t_list *stack)
+{
+	t_element	*current;
+	int			*array;
+	int			comb;
+	int			i;
+
 	current = stack->first;
 	comb = 0;
 	i = 0;
+	array = save_inarray(stack);
+	get_position(stack);
 	while (current)
 	{
 		comb = comb * 10 + current->pos;
-		current->pos = array[i];
+		current->pos = array[i++];
 		current = current->nxt;
-		i++;
 	}
 	free(array);
 	return (comb);
 }
-

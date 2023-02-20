@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 12:28:07 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:51:41 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_all_digits(const char *str)
 {
-	int	i;	
-	
+	int	i;
+
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -28,10 +28,10 @@ int	is_all_digits(const char *str)
 	return (1);
 }
 
-int find_occurrences(t_list *stack)
+int	find_occurrences(t_list *stack)
 {
-	t_element *current;
-	t_element *comp;
+	t_element	*current;
+	t_element	*comp;
 
 	current = stack->first;
 	while (current)
@@ -48,7 +48,7 @@ int find_occurrences(t_list *stack)
 	return (0);
 }
 
-int pushatoi(t_list *stack, char **array)
+int	pushatoi(t_list *stack, char **array)
 {
 	size_t	i;
 	long	val;
@@ -66,23 +66,8 @@ int pushatoi(t_list *stack, char **array)
 	return (0);
 }
 
-int check_args(int argc, char **argv, t_list *stack_a, t_list *stack_b)
+int	check_args(char **array, t_list *stack_a, t_list *stack_b)
 {
-	char **array;
-
-	if (argc < 2)
-		return (0);
-	array = malloc(sizeof(char *) * (argc - 1) + 1);
-	if (!array)
-		return (0);
-	if (argc == 2)
-		array = ft_split(argv[1], ' ');
-	else
-	{
-		for (int i = 0; i < argc - 1; i++)
-			array[i] = argv[i + 1];
-		array[argc - 1] = NULL;
-	}
 	if (pushatoi(stack_a, array))
 	{
 		free_all(stack_a, stack_b);
@@ -97,13 +82,13 @@ int check_args(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 		error();
 	}
 	free(array);
-	return (1);
+	return (0);
 }
 
-int check_sort(t_list *stack)
+int	check_sort(t_list *stack)
 {
-	t_element *current;
-	int is_sorted;
+	t_element	*current;
+	int			is_sorted;
 
 	is_sorted = 1;
 	current = stack->first;

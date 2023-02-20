@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:04:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/19 14:46:23 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:23:35 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	pa_sorting(t_list *stack_a, t_list *stack_b)
 
 	while (stack_size(stack_b) > 0)
 	{
-
 		c.closest_pos = get_closest(stack_b->first, stack_a);
 		c.ops_a = count_op(stack_a, c.closest_pos);
 		rotate_ops(stack_a, stack_b, c.ops_a, "a");
@@ -83,7 +82,6 @@ void	pa_sorting(t_list *stack_a, t_list *stack_b)
 	c.ops_a = count_op(stack_a, 1);
 	rotate_ops(stack_a, stack_b, c.ops_a, "a");
 }
-
 
 void	big_sort(t_list *stack_a, t_list *stack_b)
 {

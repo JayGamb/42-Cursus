@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:27:03 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/18 15:53:21 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:28:24 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,10 @@ void	instructions(int num, t_list *stack_a, t_list *stack_b, ...)
 			ft_printf("Error: instruction '%s' does not exist.", inst);
 		num--;
 	}
+}
+
+void	error(void)
+{
+	ft_printf("Error\n");
+	exit (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:18:16 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 12:03:31 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:54:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	get_closest(t_element *element, t_list *stack_b)
 	t_element	*comp_b;
 
 	comp_b = stack_b->first;
-	var[0] = comp_b->pos; // closest
-	var[1] = ft_abs(element->pos - comp_b->pos); //diff
-	var[2] = comp_b->pos; // the greatest
-	var[3] = 1; // is_smaller
+	var[0] = comp_b->pos;
+	var[1] = ft_abs(element->pos - comp_b->pos);
+	var[2] = comp_b->pos;
+	var[3] = 1;
 	comp_b = comp_b->nxt;
 	while (comp_b)
 	{
@@ -102,7 +102,7 @@ t_best_ops	cheapest_op(t_list *stack_a, t_list *stack_b)
 
 	limit[0] = 4;
 	limit[1] = stack_size(stack_a) - 4;
-	if (stack_size(stack_a) + stack_size(stack_b) >100)
+	if (stack_size(stack_a) + stack_size(stack_b) > 100)
 	{
 		limit[0] = 8;
 		limit[1] = stack_size(stack_a) - 8;
