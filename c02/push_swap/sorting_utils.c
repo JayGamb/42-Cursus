@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:30:19 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/16 16:52:16 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:26:24 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int	get_permutation(t_list *stack)
 	int			i;
 
 	array = malloc(sizeof(int) * stack_size(stack));
+	if (!array)
+		return (0);
 	current = stack->first;
 	i = 0;
 	while (current)
@@ -100,3 +102,4 @@ int	get_permutation(t_list *stack)
 	free(array);
 	return (comb);
 }
+

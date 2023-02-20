@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/11 17:09:50 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:43:55 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	ft_putnbr_fd(int n, int fd);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_char_malloc(size_t size);
 int		ft_strcmp(char *s1, char *s2);
+long	ft_atol(char *str);
 #endif

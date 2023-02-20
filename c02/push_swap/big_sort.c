@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:04:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/14 16:51:28 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/19 14:46:23 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,34 +55,42 @@ void	rotate_ops(t_list *stack_a, t_list *stack_b, int ops, char *stack_name)
 {
 	if (ops < 0)
 	{
-		while (ops < 0)
-		{
+		while (ops++ < 0)
 			rra_rrb(stack_a, stack_b, ft_strjoin("rr", stack_name));
-			ops++;
-		}
 	}
 	else if (ops > 0)
 	{
-		while (ops > 0)
-		{
+		while (ops-- > 0)
 			ra_rb(stack_a, stack_b, ft_strjoin("r", stack_name));
-			ops--;
-		}
 	}
 }
+
+void	pa_sorting(t_list *stack_a, t_list *stack_b)
+{
+	t_best_ops	c;
+
+	while (stack_size(stack_b) > 0)
+	{
+
+		c.closest_pos = get_closest(stack_b->first, stack_a);
+		c.ops_a = count_op(stack_a, c.closest_pos);
+		rotate_ops(stack_a, stack_b, c.ops_a, "a");
+		if (stack_b->first->pos < c.closest_pos)
+			pa_pb(stack_a, stack_b, PA);
+		else
+			instructions(2, stack_a, stack_b, RA, PA);
+	}
+	c.ops_a = count_op(stack_a, 1);
+	rotate_ops(stack_a, stack_b, c.ops_a, "a");
+}
+
 
 void	big_sort(t_list *stack_a, t_list *stack_b)
 {
 	t_best_ops	c;
-	int			ops;
 
-	ops = count_op(stack_a, 1);
-	rotate_ops(stack_a, stack_b, ops, "a");
-	instructions(1, stack_a, stack_b, PB);
-	ops = count_op(stack_a, stack_size(stack_a) + 1);
-	rotate_ops(stack_a, stack_b, ops, "a");
-	instructions(1, stack_a, stack_b, PB);
-	while (stack_size(stack_a) > 0)
+	instructions(2, stack_a, stack_b, PB, PB);
+	while (stack_size(stack_a) > 3)
 	{
 		c = cheapest_op(stack_a, stack_b);
 		if (c.best_pos->pos < c.closest_pos)
@@ -93,8 +101,6 @@ void	big_sort(t_list *stack_a, t_list *stack_b)
 		rotate_ops(stack_a, stack_b, c.ops_b - c.ops_ab, "b");
 		pa_pb(stack_a, stack_b, PB);
 	}
-	while (stack_size(stack_b) > 0)
-		instructions(1, stack_a, stack_b, PA);
-	ops = count_op(stack_a, 1);
-	rotate_ops(stack_a, stack_b, ops, "a");
+	sort_three(stack_a, stack_b);
+	pa_sorting(stack_a, stack_b);
 }

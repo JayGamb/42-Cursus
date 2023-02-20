@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:27:03 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/12 14:24:53 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:53:21 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 void	select_sort(char *inst, int size, t_list *stack_a, t_list *stack_b)
 {
-	if (ft_strcmp(inst, "pb") == 0)
+	if (ft_strcmp(inst, PB) == 0)
 	{
-		size--;
 		if (size == 3)
 		{
 			sort_three(stack_a, stack_b);
-			pa_pb(stack_a, stack_b, "pa");
+			pa_pb(stack_a, stack_b, PA);
 		}
 		else if (size == 4)
 		{
 			sort_four(stack_a, stack_b);
-			pa_pb(stack_a, stack_b, "pa");
-			sa_sb(stack_a, stack_b, "sa");
+			instructionsf(2, stack_a, stack_b, PA, SA);
 		}
 	}
 }
@@ -35,19 +33,17 @@ void	instructionsf(int num, t_list *stack_a, t_list *stack_b, ...)
 {
 	va_list	args;
 	char	*inst;
-	int		size;
 
 	va_start(args, stack_b);
 	while (num > 0)
 	{	
-		size = stack_size(stack_a);
 		inst = va_arg(args, char *);
 		if (is_swap(inst))
 			sa_sb(stack_a, stack_b, inst);
 		else if (is_push(inst))
 		{
 			pa_pb(stack_a, stack_b, inst);
-			select_sort(inst, size, stack_a, stack_b);
+			select_sort(inst, stack_size(stack_a), stack_a, stack_b);
 		}
 		else if (is_rotate(inst))
 			ra_rb(stack_a, stack_b, inst);

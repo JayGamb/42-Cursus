@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 21:27:07 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/17 15:19:50 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:19:07 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,10 @@ int	stack_size(t_list *stack)
 		size++;
 	}
 	return (size);
+}
+
+void	error(void)
+{
+		ft_printf("Error\n");
+		exit (EXIT_FAILURE);
 }

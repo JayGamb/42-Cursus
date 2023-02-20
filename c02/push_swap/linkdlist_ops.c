@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkdlist_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/16 16:58:04 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:21:01 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	printlist(t_list *stack)
 	current = stack->first;
 	while (current != NULL)
 	{
+		ft_printf("%d\t", current->val);
+		printf("%d\n", current->pos);
 		current = current->nxt;
 	}
 	ft_printf("----------\n");

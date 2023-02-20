@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 09:43:14 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/11 17:08:26 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/19 14:40:03 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,31 @@ void	sort_four(t_list *stack_a, t_list *stack_b)
 		instructionsf(2, stack_a, stack_b, SA, PB);
 }
 
+int second_smallest(t_list *stack) {
+	int smallest = stack->first->pos;
+	int second_smallest = 501;
+	t_element *current = stack->first;
+
+	while (current != NULL) {
+		int pos = current->pos;
+
+		if (pos < smallest) {
+			second_smallest = smallest;
+			smallest = pos;
+		} else if (pos < second_smallest && pos != smallest) {
+			second_smallest = pos;
+		}
+		current = current->nxt;
+	}
+	return second_smallest;
+}
+
 void	sort_five(t_list *stack_a, t_list *stack_b)
 {
 	int	i;
 
-	i = get_index(stack_a, 2);
+	i = second_smallest(stack_a);
+	i = get_index(stack_a, i);
 	if (i == 0)
 		instructionsf(1, stack_a, stack_b, PB);
 	if (i == 1)

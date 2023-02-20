@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/17 17:56:12 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:56:58 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@
 # define RRB "rrb"
 # define RRR "rrr"
 
-
-# define blabla(c) c == 1 || c > 8 
 /* Structures */
 typedef struct s_element	t_element;
 struct s_element
@@ -75,8 +73,11 @@ void		printstacks(t_list *list_a, t_list *list_b);
 int			find_occurrences(t_list *stack);
 int			arrlen(char **str);
 int			check_sort(t_list *stack);
-void		check_args(int argc, char **argv, t_list *stack_a);
-void		pushatoi(t_list *stack, char **array);
+int			check_args(int argc, char **argv, t_list *stack_a, t_list *stack_b);
+int		pushatoi(t_list *stack, char **array);
+void		free_all(t_list *stack_a, t_list *stack_b);
+void		free_stack(t_list *stack_a);
+void		error(void);
 
 /* Instructions functions */
 int			is_swap(char *inst);
@@ -102,8 +103,9 @@ void		small_sort(t_list *stack_a, t_list *stack_b, int size);
 
 /* Sorting utils */
 /* t_element	*min_ops(t_list *stack_a, t_list *stack_b); */
-t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1);
+t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1, int l2);
 t_best_ops	cheapest_op(t_list *stack_a, t_list *stack_b);
+int			*stock_pos(t_list *stack);
 int			rrr_ops(int ops_a, int ops_b);
 int			get_index(t_list *stack, int pos);
 int			stack_size(t_list *stack);

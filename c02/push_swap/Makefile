@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 12:54:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/02/12 16:18:51 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/02/20 11:29:15 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(NAME)			:	$(OBJ_DIR) $(OBJETS)
 					make -C libft && make -C ft_printf
 					$(AR) $(LPUSH_SWAP) $(OBJETS)
 					$(LIBS_MERGE)
-					$(CC) $(CFLAGS) -I $(HEADERS) $(LPUSH_SWAP) push_swap.c -o $(NAME)  
+					$(CC) $(CFLAGS) -I $(HEADERS) $(LPUSH_SWAP) push_swap.c -o $(NAME)
 
 $(OBJ_DIR)		:
 					mkdir -p $(OBJ_DIR)
