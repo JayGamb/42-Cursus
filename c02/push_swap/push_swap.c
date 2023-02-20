@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 12:10:36 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:31:43 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,17 @@
 	}
 } */
 
-void free_stack(t_list *stack_a) {
-    t_element *current = stack_a->first;
-    while (current) {
-        t_element *next = current->nxt;
-        free(current);
-        current = next;
-    }
-    stack_a->first = NULL;
-    stack_a->last = NULL;
+void free_stack(t_list *stack_a)
+{
+	t_element *current = stack_a->first;
+	while (current)
+	{
+		t_element *next = current->nxt;
+		free(current);
+		current = next;
+	}
+	stack_a->first = NULL;
+	stack_a->last = NULL;
 }
 void free_all(t_list *stack_a, t_list *stack_b)
 {
