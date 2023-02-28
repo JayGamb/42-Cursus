@@ -5,23 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/24 11:06:26 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/02/28 15:21:33 by jgamboa-         ###   ########.fr        #
+#    Created: 2023/02/28 15:35:38 by jgamboa-          #+#    #+#              #
+#    Updated: 2023/02/28 17:19:29 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME	=	pipex
 
-SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c\
-		ft_iswhitespace.c ft_abs.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c\
-		ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c\
-		ft_atoi.c ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c\
-		ft_substr.c ft_strjoin.c ft_strtrim.c  ft_split.c ft_itoa.c ft_strmapi.c \
-		ft_striteri.c\
-		ft_strcmp.c ft_strcat.c ft_atol.c\
-		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
+LPIPEX = pipex.a
+LIBS_MERGE = libtool -static -o $(LPIPEX) $(LPIPEX) ./sources/ft_printf/libftprintf.a\
+			 ./sources/libft/libft.a ./sources/p-master/p.a
+HEADERS = ./headers
+SOURCES	=	test_p.c
 
-HEADERS = ../headers
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -31,23 +27,31 @@ RM		=	rm -rf
 OBJ_DIR	=	objets
 OBJETS	=	$(SOURCES:%.c=$(OBJ_DIR)/%.o)
 
-# REiGLES
+
 $(OBJ_DIR)/%.o	:		%.c
 					$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
-					
-all				:	$(NAME)
 
+all				:	$(NAME)
+		
 $(NAME)			:	$(OBJ_DIR) $(OBJETS) 
-					$(AR) $(NAME) $(OBJETS)
+					make -C ./sources/libft && make -C ./sources/ft_printf && make -C ./sources/p-master
+					$(AR) $(LPIPEX) $(OBJETS)
+					$(LIBS_MERGE)
+					$(CC) $(CFLAGS) -g -I $(HEADERS) $(LPIPEX) main.c -o $(NAME)
 
 $(OBJ_DIR)		:
 					mkdir -p $(OBJ_DIR)
 
-clean			: 
-					$(RM) -f $(OBJ_DIR)
+
+
+
+clean		:
+					$(RM) $(OBJ_DIR)
 
 fclean			:	clean
-						rm -f $(NAME)
+						$(RM) $(NAME) $(LPIPEX) 
+						make fclean -C ./sources/libft
+						make fclean -C ./sources/ft_printf
+						make fclean -C ./sources/p-master
 
-re: fclean all
-
+re				:	fclean all

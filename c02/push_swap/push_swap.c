@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 13:58:02 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:50:12 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 	if (check_sort(stack_a))
 	{
 		free_all(stack_a, stack_b);
+
 		return (0);
 	}
 	if (stack_size(stack_a) <= 5)

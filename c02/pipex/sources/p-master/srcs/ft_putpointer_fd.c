@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   p_putpointer_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 01:23:18 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:34:22 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/12/17 02:37:42 by albaud            #+#    #+#             */
+/*   Updated: 2022/12/18 13:07:00 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
+#include "p.h"
 
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+void	p_putpointer_fd(long long d, int fd)
+{
+	if (*base() == 10)
+	{
+		p_putstr_fd("0x", fd);
+		*base() = 16;
+		p_putnbr_fd(d, fd);
+		*base() = 10;
+	}
+	else
+		p_putnbr_fd(d, fd);
 }

@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 01:23:18 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:34:22 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/02/28 16:01:42 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/02/28 16:35:38 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
+#ifndef PIPEX_H
+# define PIPEX_H
 
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
-}
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include "libft.h"
+# include "p.h"
+# include "ft_printf.h"
+
+void test_print(void);
+
+#endif

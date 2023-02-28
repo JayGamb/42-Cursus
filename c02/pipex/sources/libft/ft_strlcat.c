@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/19 18:39:30 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 13:21:42 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/28 16:27:09 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 16:34:34 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atol(char *str)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	long	i[3];
+	size_t	i;
+	size_t	j;
+	size_t	len;
 
-	i[0] = 0;
-	i[1] = 1;
-	i[2] = 0;
-	while (ft_iswhitespace(str[i[0]]))
-		i[0]++;
-	if (str[i[0]] == '-' || str[i[0]] == '+')
+	i = ft_strlen(dest);
+	j = 0;
+	len = ft_strlen(src);
+	if (size == 0)
+		return (len);
+	if (size < i)
+		len += size;
+	else
+		len += i;
+	while (src[j] && i < size - 1)
 	{
-		if (str[i[0]++] == '-')
-			i[1] = -1;
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	while (str[i[0]] && ft_isdigit(str[i[0]]))
-		i[2] = i[2] * 10 + str[i[0]++] - '0';
-	return (i[2] * i[1]);
+	dest[i] = 0;
+	return (len);
 }

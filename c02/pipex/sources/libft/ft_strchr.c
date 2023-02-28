@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 01:23:18 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:34:22 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/29 13:02:06 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 15:57:00 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
+#include "libft.h"
 
+char	*ft_strchr(const char *s, int c)
+{
+	char	*letter;
+	int		i;
+
+	letter = (char *)s;
 	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	while (letter[i])
+	{
+		if (letter[i] == (unsigned char)c)
+			return (&letter[i]);
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	if (letter[i] == (unsigned char)c)
+		return (&letter[i]);
+	return (0);
 }

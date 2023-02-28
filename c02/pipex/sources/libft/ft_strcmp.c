@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 15:13:49 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/10 20:33:18 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/01/14 01:23:18 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/02/14 17:34:22 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list	*ft_lstnew(void *content)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_list	*element;
+	int	i;
 
-	element = malloc(sizeof(t_list));
-	if (!element)
-		return (0);
-	element->content = content;
-	element->next = NULL;
-	return (element);
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
 }

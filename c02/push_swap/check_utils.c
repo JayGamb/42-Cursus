@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 13:51:41 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:51:42 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,35 @@ int	pushatoi(t_list *stack, char **array)
 	return (0);
 }
 
+void	free_array(char **array)
+{
+	int	i;
+
+	i= 0;
+		while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
 int	check_args(char **array, t_list *stack_a, t_list *stack_b)
 {
 	if (pushatoi(stack_a, array))
 	{
 		free_all(stack_a, stack_b);
-		free(array);
+		free_array(array);
 		error();
 	}
 	get_position(stack_a);
 	if (find_occurrences(stack_a))
 	{
 		free_all(stack_a, stack_b);
-		free(array);
+		free_array(array);
 		error();
 	}
-	free(array);
+	free_array(array);
 	return (0);
 }
 

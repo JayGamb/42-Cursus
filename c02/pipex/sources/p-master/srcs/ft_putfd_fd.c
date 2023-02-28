@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   p_putfd_fd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 19:05:43 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/10 20:16:02 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/12/17 02:51:39 by albaud            #+#    #+#             */
+/*   Updated: 2022/12/18 13:06:43 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "p.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	p_putfd_fd(int src, int dest)
 {
-	if (lst)
+	char	buffer[1000];
+	int		size;
+
+	size = 1;
+	while (size)
 	{
-		del(lst->content);
-		free(lst);
+		size = read(src, buffer, 999);
+		if (size == -1 && p(2 SS "cannot read file" END))
+			return ;
+		buffer[size] = 0;
+		p(dest SS buffer END);
 	}
 }

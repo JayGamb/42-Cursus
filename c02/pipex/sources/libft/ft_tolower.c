@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 16:57:04 by jgamboa-          #+#    #+#             */
-/*   Updated: 2022/11/10 20:32:55 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/28 17:30:13 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 17:58:56 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_tolower(int c)
 {
-	while (lst && lst->next != NULL)
-	{
-		lst = lst->next;
-	}
-	return (lst);
+	if (c < 65 || c > 90)
+		return (c);
+	else
+		c += 32;
+	return (c);
 }

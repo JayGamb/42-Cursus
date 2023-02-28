@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/19 18:39:30 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 13:21:42 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/05 13:35:24 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 15:47:10 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atol(char *str)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	long	i[3];
+	char	*new_s;
 
-	i[0] = 0;
-	i[1] = 1;
-	i[2] = 0;
-	while (ft_iswhitespace(str[i[0]]))
-		i[0]++;
-	if (str[i[0]] == '-' || str[i[0]] == '+')
+	if (start >= ft_strlen(s) || !(*s) || len == 0)
+		return (ft_strdup(""));
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	new_s = (char *)malloc((len + 1) * sizeof(char));
+	if (new_s)
 	{
-		if (str[i[0]++] == '-')
-			i[1] = -1;
+		ft_strlcpy(new_s, s + start, len + 1);
+		return (new_s);
 	}
-	while (str[i[0]] && ft_isdigit(str[i[0]]))
-		i[2] = i[2] * 10 + str[i[0]++] - '0';
-	return (i[2] * i[1]);
+	return (0);
 }

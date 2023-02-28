@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_dectohex_maj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/19 18:39:30 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 13:21:42 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/14 16:56:51 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/21 01:09:36 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-long	ft_atol(char *str)
+int	ft_dectohex_maj(unsigned int n)
 {
-	long	i[3];
+	int		i;
+	int		j;
+	int		temp;
+	char	num[100];
 
-	i[0] = 0;
-	i[1] = 1;
-	i[2] = 0;
-	while (ft_iswhitespace(str[i[0]]))
-		i[0]++;
-	if (str[i[0]] == '-' || str[i[0]] == '+')
+	i = 1;
+	if (n == 0)
+		return (ft_printchar('0'));
+	while (n != 0)
 	{
-		if (str[i[0]++] == '-')
-			i[1] = -1;
+		temp = n % 16;
+		if (temp < 10)
+			temp = temp + 48;
+		else
+			temp = temp + 55;
+		num[i++] = temp;
+		n = n / 16;
 	}
-	while (str[i[0]] && ft_isdigit(str[i[0]]))
-		i[2] = i[2] * 10 + str[i[0]++] - '0';
-	return (i[2] * i[1]);
+	j = i - 1;
+	while (j > 0)
+		ft_printchar(num[j--]);
+	return (i - 1);
 }

@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 11:06:26 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/02/28 15:21:33 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/02/28 17:13:21 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_st
 		ft_strcmp.c ft_strcat.c ft_atol.c\
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 
-HEADERS = ../headers
+HEADERS = ../../headers
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
