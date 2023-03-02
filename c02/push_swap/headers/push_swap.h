@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 18:09:31 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:34:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,12 @@ void		printstacks(t_list *list_a, t_list *list_b);
 int			find_occurrences(t_list *stack);
 int			arrlen(char **str);
 int			check_sort(t_list *stack);
-int			check_args(char **array, t_list *stack_a, t_list *stack_b);
+int			check_args(int argc, char **array, t_list *stack_a, t_list *stack_b);
 int			pushatoi(t_list *stack, char **array);
-void		free_all(t_list *stack_a, t_list *stack_b);
+void		free_all(t_list *stack_a);
 void		free_stack(t_list *stack_a);
 void		error(void);
+void		free_array(char **array);
 
 /* Instructions functions */
 int			is_swap(char *inst);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:04:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/20 13:23:35 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:58:37 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,23 @@ int	total_ops(int ops_a, int ops_b)
 
 void	rotate_ops(t_list *stack_a, t_list *stack_b, int ops, char *stack_name)
 {
+	char	*ret;
+
+	ret = ft_strjoin("rr", stack_name);
 	if (ops < 0)
 	{
 		while (ops++ < 0)
-			rra_rrb(stack_a, stack_b, ft_strjoin("rr", stack_name));
+			rra_rrb(stack_a, stack_b, ret);
 	}
 	else if (ops > 0)
 	{
+		ret = ft_strjoin("r", stack_name);
 		while (ops-- > 0)
-			ra_rb(stack_a, stack_b, ft_strjoin("r", stack_name));
+			ra_rb(stack_a, stack_b, ret);
 	}
+	free(ret);
 }
+
 
 void	pa_sorting(t_list *stack_a, t_list *stack_b)
 {

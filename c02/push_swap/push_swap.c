@@ -6,32 +6,35 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/28 17:50:12 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:33:50 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**parsing(int argc, char **argv)
+void parsing(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 {
 	char	**array;
 	int		i;
 
 	if (argc < 2)
-		return (0);
+		return ;
 	array = malloc(sizeof(char *) * (argc - 1) + 1);
 	if (!array)
-		return (NULL);
+		return ;
 	if (argc == 2)
-		array = ft_split(argv[1], ' ');
+	{
+		check_args(argc, ft_split(argv[1], ' '), stack_a, stack_b);
+	}
 	else
 	{
 		i = -1;
 		while (++i < argc - 1)
 			array[i] = argv[i + 1];
-		array[argc - 1] = NULL;
+		array[argc - 1] = 0;
+		check_args(argc, array, stack_a, stack_b);
 	}
-	return (array);
+	free(array);
 }
 
 void	free_stack(t_list *stack_a)
@@ -50,12 +53,11 @@ void	free_stack(t_list *stack_a)
 	stack_a->last = NULL;
 }
 
-void	free_all(t_list *stack_a, t_list *stack_b)
+void	free_all(t_list *stack_a)
 {
-	free_stack(stack_a);
-	free_stack(stack_b);
+	if (stack_a->first)
+		free_stack(stack_a);
 	free(stack_a);
-	free(stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -67,17 +69,12 @@ int	main(int argc, char **argv)
 	stack_b = malloc(sizeof(t_list));
 	if (!stack_a || !stack_b)
 		exit(0);
-	check_args(parsing(argc, argv), stack_a, stack_b);
-	if (check_sort(stack_a))
-	{
-		free_all(stack_a, stack_b);
-
-		return (0);
-	}
+	parsing(argc, argv, stack_a, stack_b);
 	if (stack_size(stack_a) <= 5)
 		small_sort(stack_a, stack_b, stack_size(stack_a));
 	else
 		big_sort(stack_a, stack_b);
-	free_all(stack_a, stack_b);
+	free_all(stack_a);
+	free_all(stack_b);
 	return (0);
 }
