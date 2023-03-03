@@ -6,13 +6,13 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/02 17:33:50 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:30:08 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void parsing(int argc, char **argv, t_list *stack_a, t_list *stack_b)
+void	parsing(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 {
 	char	**array;
 	int		i;
@@ -24,7 +24,7 @@ void parsing(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 		return ;
 	if (argc == 2)
 	{
-		check_args(argc, ft_split(argv[1], ' '), stack_a, stack_b);
+		check_args(argc, 0, ft_split(argv[1], ' '), stack_a, stack_b);
 	}
 	else
 	{
@@ -32,7 +32,7 @@ void parsing(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 		while (++i < argc - 1)
 			array[i] = argv[i + 1];
 		array[argc - 1] = 0;
-		check_args(argc, array, stack_a, stack_b);
+		check_args(argc, 1, array, stack_a, stack_b);
 	}
 	free(array);
 }

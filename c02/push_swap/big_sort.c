@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:04:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/02 15:58:37 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:12:31 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,43 @@ int	total_ops(int ops_a, int ops_b)
 
 void	rotate_ops(t_list *stack_a, t_list *stack_b, int ops, char *stack_name)
 {
-	char	*ret;
-
-	ret = ft_strjoin("rr", stack_name);
 	if (ops < 0)
 	{
-		while (ops++ < 0)
-			rra_rrb(stack_a, stack_b, ret);
+		if (ft_strcmp(stack_name, "a") == 0)
+		{
+			while (ops++ < 0)
+				rra_rrb(stack_a, stack_b, "rra");
+		}
+		else if (ft_strcmp(stack_name, "b") == 0)
+		{
+			while (ops++ < 0)
+				rra_rrb(stack_a, stack_b, "rrb");
+		}
+		else
+		{
+			while (ops++ < 0)
+				rra_rrb(stack_a, stack_b, "rrr");
+		}
 	}
 	else if (ops > 0)
 	{
-		ret = ft_strjoin("r", stack_name);
-		while (ops-- > 0)
-			ra_rb(stack_a, stack_b, ret);
+		if (ft_strcmp(stack_name, "a") == 0)
+		{
+			while (ops-- > 0)
+				ra_rb(stack_a, stack_b, "ra");
+		}
+		else if (ft_strcmp(stack_name, "b") == 0)
+		{
+			while (ops-- > 0)
+				ra_rb(stack_a, stack_b, "rb");
+		}
+		else
+		{
+			while (ops-- > 0)
+				ra_rb(stack_a, stack_b, "rr");
+		}
 	}
-	free(ret);
 }
-
 
 void	pa_sorting(t_list *stack_a, t_list *stack_b)
 {
