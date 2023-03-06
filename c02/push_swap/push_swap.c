@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:24:26 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/06 15:23:04 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:56:08 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 
 void	parsing(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 {
-	char	**array;
 	char	**split_array;
-	int		i;
 
 	if (argc < 2)
-		return ;
-	array = malloc(sizeof(char *) * (argc - 1) + 1);
-	if (!array)
 		return ;
 	if (argc == 2)
 	{
@@ -36,15 +31,8 @@ void	parsing(int argc, char **argv, t_list *stack_a, t_list *stack_b)
 		free(split_array);
 	}
 	else
-	{
-		i = 0;
-		while (i++ < argc - 1)
-			array[i] = argv[i + 1];
-		array[argc - 1] = 0;
-		if (check_args(&argv[2], stack_a, stack_b))
+		if (check_args(&argv[1], stack_a, stack_b))
 			exit(1);
-	}
-	free(array);
 }
 
 int	main(int argc, char **argv)
