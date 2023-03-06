@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   instruction_push.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 14:21:48 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/11 15:17:47 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:55:35 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_push(char *inst)
+{
+	return (ft_strcmp(inst, PA) == 0 || ft_strcmp(inst, PB) == 0);
+}
 
 void	push(t_list *dest, t_list *src)
 {

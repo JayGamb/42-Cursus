@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:11:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/03 18:29:47 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:34:53 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			find_occurrences(t_list *stack);
 int			is_all_digits(const char *str);
 int			arrlen(char **str);
 int			check_sort(t_list *stack);
-int			check_args(int argc, int is_array, char **array, t_list *stack_a, t_list *stack_b);
+int			check_args(char **array, t_list *stack_a, t_list *stack_b);
 int			pushatoi(t_list *stack, char **array);
 void		free_all(t_list *stack_a);
 void		free_stack(t_list *stack_a);
@@ -96,6 +96,8 @@ void		sa_sb(t_list *stack_a, t_list *stack_b, char *inst);
 void		pa_pb(t_list *stack_a, t_list *stack_b, char *inst);
 void		ra_rb(t_list *stack_a, t_list *stack_b, char *inst);
 void		rra_rrb(t_list *stack_a, t_list *stack_b, char *inst);
+void		rotrev_ops(t_list *stack_a, t_list *stack_b,
+				int ops, char *stack_name);
 
 /* sorting */
 void		sort_three(t_list *stack_a, t_list *stack_b);
@@ -104,7 +106,6 @@ void		sort_five(t_list *stack_a, t_list *stack_b);
 void		small_sort(t_list *stack_a, t_list *stack_b, int size);
 
 /* Sorting utils */
-/* t_element	*min_ops(t_list *stack_a, t_list *stack_b); */
 t_element	*min_ops(t_list *stack_a, t_list *stack_b, int l1, int l2);
 t_best_ops	cheapest_op(t_list *stack_a, t_list *stack_b);
 int			*stock_pos(t_list *stack);

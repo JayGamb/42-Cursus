@@ -1,16 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   instruction_rotate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 14:23:51 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/11 15:15:20 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:46:30 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	rrr_ops(int ops_a, int ops_b)
+{
+	int	ops_ab;
+
+	ops_ab = 0;
+	if ((ops_a > 0 && ops_b > 0) || (ops_a < 0 && ops_b < 0))
+	{
+		if (ops_a > ops_b)
+		{
+			ops_ab = ops_b;
+			ops_a = ops_a - ops_b;
+			ops_b = 0;
+		}
+		else
+		{
+			ops_ab = ops_a;
+			ops_b = ops_b - ops_a;
+			ops_a = 0;
+		}
+	}
+	return (ops_ab);
+}
+
+int	is_rotate(char *inst)
+{
+	return (ft_strcmp(inst, RA) == 0 || ft_strcmp(inst, RB) == 0
+		|| ft_strcmp(inst, RR) == 0);
+}
+
+int	is_reverse(char *inst)
+{
+	return (ft_strcmp(inst, RRA) == 0 || ft_strcmp(inst, RRB) == 0
+		|| ft_strcmp(inst, RRR) == 0);
+}
 
 void	rotate(t_list *stack)
 {

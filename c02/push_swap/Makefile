@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 12:54:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/02/20 15:12:09 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/03/06 15:47:08 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ LPUSH_SWAP = push_swap.a
 LIBS_MERGE = libtool -static -o $(LPUSH_SWAP) $(LPUSH_SWAP) ./ft_printf/libftprintf.a\
 			 ./libft/libft.a
 HEADERS = ./headers
-SOURCES	=	push_swap_utils.c linkdlist_ops.c check_utils.c instructions.c\
-			operations_opti.c sorting_utils.c big_sort.c small_sort.c swap.c push.c rotate.c reverse.c
-
+SOURCES	=	stack_utils.c check_utils.c instructions.c free_utils.c\
+			operations_opti.c sort_utils.c sort_bigstack.c sort_smallstack.c\
+			instruction_swap.c instruction_push.c instruction_rotate.c instruction_reverse.c
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror

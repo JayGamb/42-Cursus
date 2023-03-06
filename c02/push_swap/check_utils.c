@@ -6,24 +6,11 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/03 18:30:46 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:26:27 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_array(char **array)
-{
-	int	i;
-
-	i = 0;
-
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-}
 
 int	is_all_digits(const char *str)
 {
@@ -79,51 +66,33 @@ int	pushatoi(t_list *stack, char **array)
 	return (0);
 }
 
-int	check_sort(t_list *stack)
+int	check_stack(t_list *stack_a, t_list *stack_b)
 {
-	t_element	*current;
-	int			is_sorted;
-
-	is_sorted = 1;
-	current = stack->first;
-	while (current)
-	{
-		if (current->nxt)
-		{
-			if (current->val > current->nxt->val)
-				is_sorted = 0;
-		}
-		current = current->nxt;
-	}
-	return (is_sorted);
-}
-
-int	check_args(int argc, int is_array, char **array, t_list *stack_a, t_list *stack_b)
-{
-	if (argc == 2)
-	{
-		if (is_array == 1)
-		{
-			free_array(array);
-			free(array);
-		}
-	}
-	if (pushatoi(stack_a, array))
-	{
-		error();
-	}
 	get_position(stack_a);
 	if (find_occurrences(stack_a))
 	{
 		free_all(stack_a);
 		free_all(stack_b);
 		error();
+		return (1);
 	}
 	if (check_sort(stack_a))
 	{
 		free_all(stack_a);
 		free_all(stack_b);
-		exit(1);
+		return (1);
 	}
+	return (0);
+}
+
+int	check_args(char **array, t_list *stack_a, t_list *stack_b)
+{
+	if (pushatoi(stack_a, array))
+	{
+		error();
+		return (1);
+	}
+	if (check_stack(stack_a, stack_b))
+		return (1);
 	return (0);
 }

@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linkdlist_ops.c                                    :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 23:52:24 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/18 22:21:01 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:46:52 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* t_list	*list_init(t_list *stack, int value)
-{
-	t_element	*element;
-
-	element = malloc(sizeof(t_element));
-	if (!stack || !element)
-	{
-		if (stack == NULL)
-			free(element);
-		if (element == NULL)
-			free(stack);
-		exit (EXIT_FAILURE);
-	}
-	element->val = value;
-	element->nxt = NULL;
-	element->prev = NULL;
-	stack->first = element;
-	return (stack);
-} */
 
 void	stacking(t_list *stack, int new_val)
 {
@@ -54,6 +34,21 @@ void	stacking(t_list *stack, int new_val)
 	}
 }
 
+int	stack_size(t_list *stack)
+{
+	t_element	*current;
+	int			size;
+
+	size = 0;
+	current = stack->first;
+	while (current)
+	{
+		current = current->nxt;
+		size++;
+	}
+	return (size);
+}
+
 void	printlist(t_list *stack)
 {
 	t_element	*current;
@@ -73,4 +68,23 @@ void	printlist(t_list *stack)
 		current = current->nxt;
 	}
 	ft_printf("----------\n");
+}
+
+int	check_sort(t_list *stack)
+{
+	t_element	*current;
+	int			is_sorted;
+
+	is_sorted = 1;
+	current = stack->first;
+	while (current)
+	{
+		if (current->nxt)
+		{
+			if (current->val > current->nxt->val)
+				is_sorted = 0;
+		}
+		current = current->nxt;
+	}
+	return (is_sorted);
 }

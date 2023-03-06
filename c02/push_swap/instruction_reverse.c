@@ -1,16 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse.c                                          :+:      :+:    :+:   */
+/*   instruction_reverse.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 14:27:34 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/11 15:15:43 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:28:10 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	reverse_ops(t_list *stack_a, t_list *stack_b, int ops, char *stack_name)
+{
+	if (ft_strcmp(stack_name, "a") == 0)
+	{
+		while (ops++ < 0)
+			rra_rrb(stack_a, stack_b, "rra");
+	}
+	else if (ft_strcmp(stack_name, "b") == 0)
+	{
+		while (ops++ < 0)
+			rra_rrb(stack_a, stack_b, "rrb");
+	}
+	else
+	{
+		while (ops++ < 0)
+			rra_rrb(stack_a, stack_b, "rrr");
+	}
+}
+
+void	rotate_ops(t_list *stack_a, t_list *stack_b, int ops, char *stack_name)
+{
+	if (ft_strcmp(stack_name, "a") == 0)
+	{
+		while (ops-- > 0)
+			ra_rb(stack_a, stack_b, "ra");
+	}
+	else if (ft_strcmp(stack_name, "b") == 0)
+	{
+		while (ops-- > 0)
+			ra_rb(stack_a, stack_b, "rb");
+	}
+	else
+	{
+		while (ops-- > 0)
+			ra_rb(stack_a, stack_b, "rr");
+	}
+}
+
+void	rotrev_ops(t_list *stack_a, t_list *stack_b, int ops, char *stack_name)
+{
+	if (ops < 0)
+		reverse_ops(stack_a, stack_b, ops, stack_name);
+	else if (ops > 0)
+		rotate_ops(stack_a, stack_b, ops, stack_name);
+}
 
 void	reverse(t_list *stack)
 {
