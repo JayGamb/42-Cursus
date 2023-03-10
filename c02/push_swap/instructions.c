@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 13:27:03 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/06 14:11:54 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:01:37 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,5 @@ void	instructions(int num, t_list *stack_a, t_list *stack_b, ...)
 
 void	error(void)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 }

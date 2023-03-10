@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:52 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/06 15:26:27 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:10:33 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int	is_all_digits(const char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (!str[i])
+		return (0);
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]) || str[i] == '-'
+			|| str[i] == '+' || str[i] == 0)
 			return (0);
 		i++;
 	}
@@ -58,7 +61,7 @@ int	pushatoi(t_list *stack, char **array)
 	while (array[i])
 	{
 		val = ft_atol(array[i]);
-		if (val > INT_MAX || !is_all_digits(array[i]))
+		if (val > INT_MAX || val < INT_MIN || !is_all_digits(array[i]))
 			return (1);
 		stacking(stack, (int)val);
 		i++;
