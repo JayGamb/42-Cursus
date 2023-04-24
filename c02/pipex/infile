@@ -1,0 +1,40 @@
+int main (int argc, char **argv)
+{
+	t_args	args;
+	t_fd	fd;
+
+	fd.infile = open(argv[1], O_RDONLY);
+	fd.outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (fd.infile < 0 || fd.outfile < 0)
+	{
+		perror("Error opening files");
+		return 1;
+	}
+	if (pipe(fd.pipe) < 0)
+	{
+		perror("Error creating pipe");
+		return 1;
+	}
+	args.cmd1[2] = NULL;
+	if (ft_check_args(argc, argv, fd) == 0)
+		ft_setargs(&args, argv);
+	fd.process_id = fork();
+	if (fd.process_id == -1)
+	{
+		perror("Error: Fork failed");
+		exit(1);
+	}
+	if (fd.process_id == 0)
+	{
+		close(fd.pipe[0]);
+		ft_stdout_to_pipe(args.cmd1, fd.infile, fd.pipe[1]);
+	}
+	else
+	{
+		close(fd.pipe[1]);
+		ft_pipeoutput_to_file(args.cmd2, fd.outfile, fd.pipe[0]);
+		waitpid(fd.process_id, NULL, 0);
+		
+	}
+	return (0);
+}
