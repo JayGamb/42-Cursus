@@ -3,37 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:19:00 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/03/16 17:03:00 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:05:14 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* main.c */
+
 #include "pipex.h"
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
+	t_args	args;
+	t_fd	fd;
 
-	char	*command_path;
-	char	*arguments[3];
-	char	**commands1;
-	char	*file1;
 
-	file1 = argv + 1;
-
-	commands1 = ft_split(argv + 2, ' ');
-	command_path = ft_strcat("/bin/";
-	arguments[0] = command_path;
-	arguments[1] = "-la";
-	arguments[2] = NULL;
-	if (argc  == 5)
-	if (argc > 2)
+	if (fd.infile < 0 || fd.outfile < 0)
 	{
-
-		p(1 SS (argv[1]) NL);
-		execve(command_path, arguments, NULL);
-		printf("OK!");
+		perror("Error opening files");
+		return (1);
+	}
+	if (ft_set_pipe(fd.pipe))
+		return (1);
+	args.cmd1[2] = NULL;
+	if (ft_check_args(argc, argv, fd) == 0)
+		ft_setargs(&args, argv, envp);
+	fd.process_id = fork();
+	if (fd.process_id == -1)
+	{
+		perror("Error: Fork failed");
+		exit(1);
+	}
+	if (fd.process_id == 0)
+		ft_stdout_to_pipe(args, fd);
+	else
+	{
+		ft_pipeoutput_to_file(args, fd);
+		waitpid(fd.process_id, NULL, 0);
 	}
 	return (0);
 }

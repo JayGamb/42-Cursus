@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:22:47 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/04/20 18:33:36 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:11:36 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	ft_check_args(int argc, char **argv, t_fd fd)
+int	ft_check_args(int argc, char **argv, t_fd *fd)
 {
 	if (argc < 5)
 	{
-		ft_printf(FEW_ARGS);
+		perror(FEW_ARGS); 
 		exit(1);
 	}
 	else if (argc > 5)
 	{
-		ft_printf(TOOMANY_ARGS);
+		perror(TOOMANY_ARGS);
 		exit(1);
 	}
+	fd->infile = open(argv[1], O_RDONLY, 0777);
+	fd->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd.infile == -1)
 		perror(argv[1]);
 	else if (fd.outfile == -1)

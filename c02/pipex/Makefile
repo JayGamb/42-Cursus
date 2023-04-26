@@ -6,21 +6,21 @@
 #    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 15:35:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/02/28 17:19:29 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/04/26 15:49:55 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	pipex
 
 LPIPEX = pipex.a
-LIBS_MERGE = libtool -static -o $(LPIPEX) $(LPIPEX) ./sources/ft_printf/libftprintf.a\
-			 ./sources/libft/libft.a ./sources/p-master/p.a
+LIBS_MERGE = libtool -static -o $(LPIPEX) $(LPIPEX) ./libs/ft_printf/libftprintf.a\
+			 ./libs/libft/libft.a ./libs/p-master/p.a
 HEADERS = ./headers
-SOURCES	=	test_p.c
+SOURCES	=	check_args.c set_pipes.c
 
 
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address -g3
 AR		=	ar rc
 RM		=	rm -rf
 
@@ -34,7 +34,7 @@ $(OBJ_DIR)/%.o	:		%.c
 all				:	$(NAME)
 		
 $(NAME)			:	$(OBJ_DIR) $(OBJETS) 
-					make -C ./sources/libft && make -C ./sources/ft_printf && make -C ./sources/p-master
+					make -C ./libs/libft && make -C ./libs/ft_printf && make -C ./libs/p-master
 					$(AR) $(LPIPEX) $(OBJETS)
 					$(LIBS_MERGE)
 					$(CC) $(CFLAGS) -g -I $(HEADERS) $(LPIPEX) main.c -o $(NAME)
@@ -50,8 +50,8 @@ clean		:
 
 fclean			:	clean
 						$(RM) $(NAME) $(LPIPEX) 
-						make fclean -C ./sources/libft
-						make fclean -C ./sources/ft_printf
-						make fclean -C ./sources/p-master
+						make fclean -C ./libs/libft
+						make fclean -C ./libs/ft_printf
+						make fclean -C ./libs/p-master
 
 re				:	fclean all
