@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:22:47 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/04/26 16:11:36 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:40:24 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@ int	ft_check_args(int argc, char **argv, t_fd *fd)
 {
 	if (argc < 5)
 	{
+		ft_printf("Error: %s\n", strerror("gg"));
 		perror(FEW_ARGS); 
 		exit(1);
 	}
 	else if (argc > 5)
 	{
-		perror(TOOMANY_ARGS);
+		perror("TOOMANY_ARGS");
 		exit(1);
 	}
 	fd->infile = open(argv[1], O_RDONLY, 0777);
 	fd->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fd.infile == -1)
+	if (fd->infile == -1)
 		perror(argv[1]);
-	else if (fd.outfile == -1)
+	else if (fd->outfile == -1)
 		perror(argv[4]);
-	if (fd.infile == -1 || fd.outfile == -1)
+	if (fd->infile == -1 || fd->outfile == -1)
 		exit (1);
 	return (0);
 }

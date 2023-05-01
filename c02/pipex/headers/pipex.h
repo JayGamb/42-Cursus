@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:01:42 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/04/20 18:30:49 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:22:51 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_fd
 }	t_fd;
 
 void	test_print(void);
-int		ft_check_args(int argc, char **argv, t_fd fd);
+int		ft_check_args(int argc, char **argv, t_fd *fd);
 int		ft_set_pipe(int *pipefd);
 int		ft_set_pipes(int *pipefd, int *pipedfd_out);
 void	ft_setargs(t_args *args, char **argv, char **envp);

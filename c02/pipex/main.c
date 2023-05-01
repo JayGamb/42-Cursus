@@ -6,11 +6,9 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:19:00 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/04/26 16:05:14 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:06:42 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* main.c */
 
 #include "pipex.h"
 
@@ -20,15 +18,10 @@ int	main(int argc, char **argv, char **envp)
 	t_fd	fd;
 
 
-	if (fd.infile < 0 || fd.outfile < 0)
-	{
-		perror("Error opening files");
-		return (1);
-	}
 	if (ft_set_pipe(fd.pipe))
 		return (1);
 	args.cmd1[2] = NULL;
-	if (ft_check_args(argc, argv, fd) == 0)
+	if (ft_check_args(argc, argv, &fd) == 0)
 		ft_setargs(&args, argv, envp);
 	fd.process_id = fork();
 	if (fd.process_id == -1)

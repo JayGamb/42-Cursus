@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_pipes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 09:11:01 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/04/20 18:16:18 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:12:10 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	ft_pipeoutput_to_file(t_args args, t_fd fd)
 	dup2(fd.outfile, STDOUT_FILENO);
 	close(fd.outfile);
 	if(execve(args.cmd2[0], args.cmd2, NULL) < 0)
-		perror("execve2");
+		perror("execvcd e2");
 }
