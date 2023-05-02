@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:22:47 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/01 14:40:24 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:20:34 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ int	ft_check_args(int argc, char **argv, t_fd *fd)
 {
 	if (argc < 5)
 	{
-		ft_printf("Error: %s\n", strerror("gg"));
-		perror(FEW_ARGS); 
+		ft_printerror(FEW_ARGS);
 		exit(1);
 	}
 	else if (argc > 5)
 	{
-		perror("TOOMANY_ARGS");
+		ft_printerror(TOOMANY_ARGS);
 		exit(1);
 	}
 	fd->infile = open(argv[1], O_RDONLY, 0777);
@@ -36,31 +35,17 @@ int	ft_check_args(int argc, char **argv, t_fd *fd)
 	return (0);
 }
 
-char	*ft_get_path(char **envp, char *prog)
+/* char	*ft_dqextract(char **argv)
 {
-	char	**var_paths;
-	char	*path;
 	int		i;
+	char	*argv_str;
 
-	i = 0;
-	while (envp[i])
+	i = 1;
+	while (argv[++i])
 	{
-		if (ft_strncmp("PATH=", envp[i], 5) == 0)
-			break ;
-		i++;
+		argv_str = ft_strjoin(argv[i], argv[i+1]);
 	}
-	var_paths = ft_split(envp[i] + 5, ':');
-	i = 0;
-	while (var_paths[i])
-	{
-		path = ft_strjoin(var_paths[i], "/");
-		path = ft_strjoin(path, prog);
-		if (access(path, X_OK) == 0)
-			return (path);
-		i++;
-	}
-	return (0);
-}
+} */
 
 void	ft_setargs(t_args *args, char **argv, char **envp)
 {
@@ -70,12 +55,15 @@ void	ft_setargs(t_args *args, char **argv, char **envp)
 	char	*path_to_command2;
 
 	command_tokens1 = ft_split(argv[2], ' ');
-	path_to_command1 = ft_get_path(envp, command_tokens1[0]);
+	path_to_command1 = ft_getpath(envp, command_tokens1[0]);
 	args->cmd1[0] = path_to_command1;
 	args->cmd1[1] = command_tokens1[1];
+	args->cmd1[2] = command_tokens1[2];
+	args->cmd2[3] = NULL;
 	command_tokens2 = ft_split(argv[3], ' ');
-	path_to_command2 = ft_get_path(envp, command_tokens2[0]);
+	path_to_command2 = ft_getpath(envp, command_tokens2[0]);
 	args->cmd2[0] = path_to_command2;
 	args->cmd2[1] = command_tokens2[1];
-	args->cmd2[2] = NULL;
+	args->cmd2[2] = command_tokens2[2];
+	args->cmd2[3] = NULL;
 }

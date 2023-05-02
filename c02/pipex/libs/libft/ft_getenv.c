@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 09:41:02 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 14:01:20 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/05/02 14:35:34 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/05/02 14:45:20 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(const char *s, int fd)
+const char	ft_getenv(char *variable)
 {
-	int	i;
+	i = 0;
+	while (envp[i])
+	{
+		if (ft_strncmp("PATH=", envp[i], 5) == 0)
+			break ;
+		i++;
+	}
 
-	i = -1;
-	while (s[++i])
-		ft_putchar_fd(s[i], fd);
 }

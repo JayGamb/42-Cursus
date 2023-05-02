@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:37:22 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 17:48:07 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:45:19 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 # include <libc.h>
 
 char	*get_next_line(int fd);
-int		ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dest, const char *src, size_t n);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *s, int c);
-char	*free_join(char *dst, char *buff);
+int		ft_strlen_gnl(const char *s);
+size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t n);
+char	*ft_strjoin_gnl(char const *s1, char const *s2);
+char	*ft_strchr_gnl(const char *s, int c);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5

@@ -1,40 +1,22 @@
-int main (int argc, char **argv)
-{
-	t_args	args;
-	t_fd	fd;
+Ah, je comprends maintenant que vous parlez des "pipes" dans le contexte des systèmes d'exploitation Linux. Voici une histoire drôle mettant en scène les pipes dans Linux :
 
-	fd.infile = open(argv[1], O_RDONLY);
-	fd.outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fd.infile < 0 || fd.outfile < 0)
-	{
-		perror("Error opening files");
-		return 1;
-	}
-	if (pipe(fd.pipe) < 0)
-	{
-		perror("Error creating pipe");
-		return 1;
-	}
-	args.cmd1[2] = NULL;
-	if (ft_check_args(argc, argv, fd) == 0)
-		ft_setargs(&args, argv);
-	fd.process_id = fork();
-	if (fd.process_id == -1)
-	{
-		perror("Error: Fork failed");
-		exit(1);
-	}
-	if (fd.process_id == 0)
-	{
-		close(fd.pipe[0]);
-		ft_stdout_to_pipe(args.cmd1, fd.infile, fd.pipe[1]);
-	}
-	else
-	{
-		close(fd.pipe[1]);
-		ft_pipeoutput_to_file(args.cmd2, fd.outfile, fd.pipe[0]);
-		waitpid(fd.process_id, NULL, 0);
-		
-	}
-	return (0);
-}
+Un jour, deux amis, Bash et Python, discutaient de leur amour pour les systèmes d'exploitation Linux et de leurs compétences en programmation. Bash, toujours prêt à montrer son expertise, voulait épater Python avec une astuce de programmation rapide.
+
+Bash dit : "Hé, Python, veux-tu voir comment je peux trier une liste de chiffres en une seule ligne de code ?"
+Python, intrigué, répond : "Bien sûr, montre-moi ce que tu sais faire !"
+
+Bash, tout fier, écrit la commande suivante dans le terminal :
+- echo "9 7 3 5 1" | tr ' ' '\n' | sort -n | tr '\n' ' '
+
+Python regarde attentivement la commande et dit : "Wow, c'est impressionnant ! Mais tu sais, je peux faire la même chose avec une seule ligne de code aussi."
+
+Bash, sceptique, rétorque : "Vraiment ? Montre-moi !"
+
+Python tape alors la commande suivante :
+- print(sorted([9, 7, 3, 5, 1]))
+
+Bash, impressionné, sourit et dit : "Eh bien, je suppose que nous avons chacun nos propres astuces !"
+
+Les deux amis se mirent à rire, réalisant que malgré leurs différences, ils partageaient tous les deux un amour pour Linux et la programmation. Ils décidèrent de continuer à apprendre et à échanger leurs connaissances, sachant que les possibilités étaient infinies dans le monde de l'informatique.
+
+Moralité de l'histoire : Les pipes et les langages de programmation peuvent varier, mais l'amour pour Linux et la collaboration restent les mêmes.

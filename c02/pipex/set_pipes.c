@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_pipes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 09:11:01 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/01 16:12:10 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:30:11 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int ft_set_pipe(int *pipefd)
 	return (0);
 }
 
-int ft_set_pipes(int *pipefd, int *pipefd_out)
+int	ft_set_pipes(int *pipefd, int *pipefd_out)
 {
 	if (ft_set_pipe(pipefd) != 0|| ft_set_pipe(pipefd_out) != 0)
 		return (1);
@@ -49,6 +49,6 @@ void	ft_pipeoutput_to_file(t_args args, t_fd fd)
 	close(fd.infile);
 	dup2(fd.outfile, STDOUT_FILENO);
 	close(fd.outfile);
-	if(execve(args.cmd2[0], args.cmd2, NULL) < 0)
+	if (execve(args.cmd2[0], args.cmd2, NULL) < 0)
 		perror("execvcd e2");
 }

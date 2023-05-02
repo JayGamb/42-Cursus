@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_getpath.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 09:41:02 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 14:01:20 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/05/02 14:20:14 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/05/02 14:45:57 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(const char *s, int fd)
+char	*ft_getpath(char **envp, char *prog)
 {
-	int	i;
+	char	**env;
+	char	*path;
+	int		i;
 
-	i = -1;
-	while (s[++i])
-		ft_putchar_fd(s[i], fd);
+	i = 0;
+	while (envp[i])
+	{
+		if (ft_strncmp("PATH=", envp[i], 5) == 0)
+			break ;
+		i++;
+	}
+	env = ft_split(envp[i] + 5, ':');
+	i = 0;
+	while (env[i])
+	{
+		path = ft_strjoin(env[i], "/");
+		path = ft_strjoin(path, prog);
+		if (access(path, X_OK) == 0)
+			return (path);
+		i++;
+	}
+	return (0);
 }

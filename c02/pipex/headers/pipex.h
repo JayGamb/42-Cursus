@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:01:42 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/01 14:22:51 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:14:40 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,15 @@
 # include <errno.h>
 # include <profile.h>
 
-# define FEW_ARGS "Error: Not enough arguments. Please provide input file, \
-command 1, command 2, and output file.\n"
-# define TOOMANY_ARGS "Error: too many arguments provided. Please provide \
-input file, command 1, command 2, and output file.\n"
+# define FEW_ARGS "not enough arguments provided."
+# define TOOMANY_ARGS "too many arguments provided."
 # define PIPE "pipe"
-/* Structures */
+
 /* Structures */
 typedef struct s_args
 {
-	char	*cmd1[3];
-	char	*cmd2[3];
+	char	*cmd1[4];
+	char	*cmd2[4];
 }	t_args;
 
 typedef struct s_fd

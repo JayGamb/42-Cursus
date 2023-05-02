@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 09:41:02 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 14:01:20 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/05/02 16:20:02 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/05/02 16:26:13 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(const char *s, int fd)
+size_t	ft_arrlen(char **array)
 {
 	int	i;
 
-	i = -1;
-	while (s[++i])
-		ft_putchar_fd(s[i], fd);
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
 }

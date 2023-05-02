@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/02/19 18:43:55 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:52:14 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include "get_next_line.h"
+
+
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -52,11 +55,24 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(const char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_char_malloc(size_t size);
 int		ft_strcmp(char *s1, char *s2);
 long	ft_atol(char *str);
+void	ft_printerror(const char *message);
+char	*ft_getpath(char **envp, char *prog);
+size_t	ft_arrlen(char **array);
+char	*free_join(char *dst, char *buff);
+/* char	*get_next_line(int fd);
+int		ft_strlen_gnl(const char *s);
+size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t n);
+char	*ft_strchr_gnl(const char *s, int c); */
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
 #endif
