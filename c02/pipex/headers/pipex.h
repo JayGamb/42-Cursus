@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:01:42 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 15:14:40 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:32:53 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define FEW_ARGS "not enough arguments provided."
 # define TOOMANY_ARGS "too many arguments provided."
 # define PIPE "pipe"
+# define INFILERR "Error opening file for reading"
+# define OUTFILERR "Error opening file for writing"
 
 /* Structures */
 typedef struct s_args

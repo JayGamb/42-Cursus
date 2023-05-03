@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:22:47 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 18:20:34 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:15:04 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,27 @@ int	ft_check_args(int argc, char **argv, t_fd *fd)
 		exit(1);
 	}
 	fd->infile = open(argv[1], O_RDONLY, 0777);
-	fd->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fd->infile == -1)
-		perror(argv[1]);
-	else if (fd->outfile == -1)
-		perror(argv[4]);
-	if (fd->infile == -1 || fd->outfile == -1)
-		exit (1);
+	fd->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 00700);
+	if (fd->infile < 0)
+	{
+		ft_printerror(INFILERR);
+		exit(1);
+	}
+	else if (fd->outfile < 0)
+	{
+		ft_printerror(OUTFILERR);
+		exit(1);
+	}
 	return (0);
 }
 
-/* char	*ft_dqextract(char **argv)
+
+
+
+
+/* char	*ft_extractargs(char **argv)
 {
+
 	int		i;
 	char	*argv_str;
 

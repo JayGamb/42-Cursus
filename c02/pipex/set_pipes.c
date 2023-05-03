@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_pipes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 09:11:01 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 18:30:11 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:55:59 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_stdout_to_pipe(t_args args, t_fd fd)
 	dup2(fd.pipe[1], STDOUT_FILENO);
 	close(fd.pipe[1]);
 	if (execve(args.cmd1[0], args.cmd1, NULL) < 0)
-		perror("execve1");
+		ft_printerror("Error: Executing program2");
 }
 
 void	ft_pipeoutput_to_file(t_args args, t_fd fd)
@@ -50,5 +50,5 @@ void	ft_pipeoutput_to_file(t_args args, t_fd fd)
 	dup2(fd.outfile, STDOUT_FILENO);
 	close(fd.outfile);
 	if (execve(args.cmd2[0], args.cmd2, NULL) < 0)
-		perror("execvcd e2");
+		ft_printerror("Error: Executing program2");
 }
