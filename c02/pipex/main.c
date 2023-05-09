@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:19:00 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/03 15:50:46 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:51:11 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ char	*get_commandline(char **argv)
 
 int	main(int argc, char **argv, char **envp)
 {
-/* 	t_args	args;
-	t_fd	fd; */
+	t_args	args;
+	t_fd	fd;
 
-/* 	if (ft_set_pipe(fd.pipe))
+	if (ft_set_pipe(fd.pipe))
 		return (1);
 	args.cmd1[2] = NULL;
 	if (ft_check_args(argc, argv, &fd) == 0)
@@ -60,13 +60,13 @@ int	main(int argc, char **argv, char **envp)
 	{
 		ft_pipeoutput_to_file(args, fd);
 		waitpid(fd.process_id, NULL, 0);
-	} */
-	(void)envp;
+	}
+/* 	(void)envp;
 
 	
 	if (argc < 1)
 		return (1);
 	char *string = get_commandline(argv);
-	printf("%s\n", string);
+	printf("%s\n", string); */
 	return (0);
 }
