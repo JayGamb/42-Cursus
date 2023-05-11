@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:19:00 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/09 13:51:11 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:37:34 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv, char **envp)
 		exit(1);
 	}
 	if (fd.process_id == 0)
-		ft_stdout_to_pipe(args, fd);
+		ft_stdout_to_pipe(args, fd, envp);
 	else
 	{
 		ft_pipeoutput_to_file(args, fd);

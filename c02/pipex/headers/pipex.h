@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:01:42 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/03 14:32:53 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:38:42 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		ft_check_args(int argc, char **argv, t_fd *fd);
 int		ft_set_pipe(int *pipefd);
 int		ft_set_pipes(int *pipefd, int *pipedfd_out);
 void	ft_setargs(t_args *args, char **argv, char **envp);
-void	ft_stdout_to_pipe(t_args args, t_fd fd);
+void	ft_stdout_to_pipe(t_args args, t_fd fd, char **envp);
 void	ft_pipeoutput_to_file(t_args args, t_fd fd);
 
 #endif
