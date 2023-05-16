@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 09:11:01 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/11 15:56:29 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:16:22 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_stdout_to_pipe(t_args args, t_fd fd, char **envp)
 		ft_printf("Error: %s\n", strerror(errno));
 		exit(127);
 	}
-
 }
 
 void	ft_pipeoutput_to_file(t_args args, t_fd fd)

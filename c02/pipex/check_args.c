@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 18:22:47 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/11 15:08:01 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:19:58 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_check_args(int argc, char **argv, t_fd *fd)
 		exit(1);
 	}
 	fd->infile = open(argv[1], O_RDONLY, 0777);
-	fd->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 00700);
+	fd->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd->infile < 0)
 	{
 		// if (access(argv[1], F_OK) < 0)
@@ -54,8 +54,8 @@ void	ft_setargs(t_args *args, char **argv, char **envp)
 	args->cmd1[0] = path_to_command1;
 	args->cmd1[1] = command_tokens1[1];
 	args->cmd1[2] = command_tokens1[2];
-	args->cmd2[3] = NULL;
-	
+	args->cmd1[3] = NULL;
+
 	command_tokens2 = ft_split(argv[3], ' ');
 	path_to_command2 = ft_getpath(envp, command_tokens2[0]);
 	args->cmd2[0] = path_to_command2;

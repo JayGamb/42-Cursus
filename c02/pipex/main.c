@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:19:00 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/11 13:37:34 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:33:35 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,19 @@ char	*get_commandline(char **argv)
 	return (cmd_line);
 }
 
+void	ft_secondchild(t_args args, t_fd fd)
+{
+	ft_pipeoutput_to_file(args, fd);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_args	args;
 	t_fd	fd;
+	int		id2;
 
+	id2 = 0;
+	id2++;
 	if (ft_set_pipe(fd.pipe))
 		return (1);
 	args.cmd1[2] = NULL;
@@ -51,22 +59,17 @@ int	main(int argc, char **argv, char **envp)
 	fd.process_id = fork();
 	if (fd.process_id == -1)
 	{
+		
 		perror("Error: Fork failed");
 		exit(1);
 	}
 	if (fd.process_id == 0)
 		ft_stdout_to_pipe(args, fd, envp);
-	else
-	{
-		ft_pipeoutput_to_file(args, fd);
-		waitpid(fd.process_id, NULL, 0);
-	}
-/* 	(void)envp;
-
-	
-	if (argc < 1)
-		return (1);
-	char *string = get_commandline(argv);
-	printf("%s\n", string); */
+	fd.process_id2 =  fork();
+	if (fd.process_id2 == 0)
+		ft_secondchild(args, fd);
+	close(fd.pipe[1]);
+	waitpid(fd.process_id, NULL, 0);
+	waitpid(id2, NULL, 0);
 	return (0);
 }
