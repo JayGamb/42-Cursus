@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 18:52:14 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/21 15:41:19 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <string.h>
 # include <unistd.h>
 # include "get_next_line.h"
-
-
+# include <sys/wait.h>
+# include "ft_printf.h"
+# include <errno.h>
+# include <profile.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -62,8 +64,7 @@ char	*ft_strcat(char *dest, const char *src);
 char	*ft_char_malloc(size_t size);
 int		ft_strcmp(char *s1, char *s2);
 long	ft_atol(char *str);
-void	ft_printerror(const char *message);
-char	*ft_getpath(char **envp, char *prog);
+void	ft_printerror(char *message, int exitcode);
 size_t	ft_arrlen(char **array);
 char	*free_join(char *dst, char *buff);
 /* char	*get_next_line(int fd);

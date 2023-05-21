@@ -3,17 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printerror.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:08:48 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/11 15:55:37 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:52:19 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* ft_printerror.c */
+
 #include "libft.h"
 
-void	ft_printerror(const char *message)
+void	ft_printerror(char *message, int exitcode)
 {
-	ft_putstr_fd("error: ", 2);
-	ft_putstr_fd(message, 2);
+	if (errno == 0)
+		ft_putendl_fd(message, 2);
+	else
+		perror(message);
+	exit(exitcode);
 }

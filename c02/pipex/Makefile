@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 15:35:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/05/02 18:25:24 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/05/21 15:33:28 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME	=	pipex
 
 LPIPEX = pipex.a
 LIBS_MERGE = libtool -static -o $(LPIPEX) $(LPIPEX) ./libs/ft_printf/libftprintf.a\
-			 ./libs/libft/libft.a ./libs/p-master/p.a
+			 ./libs/libft/libft.a
 HEADERS = ./headers
-SOURCES	=	check_args.c set_pipes.c
+SOURCES	=	pipex_utils.c
 
 
 CC		=	gcc
@@ -34,7 +34,7 @@ $(OBJ_DIR)/%.o	:		%.c
 all				:	$(NAME)
 		
 $(NAME)			:	$(OBJ_DIR) $(OBJETS) 
-					make -C ./libs/libft && make -C ./libs/ft_printf && make -C ./libs/p-master
+					make -C ./libs/libft && make -C ./libs/ft_printf
 					$(AR) $(LPIPEX) $(OBJETS)
 					$(LIBS_MERGE)
 					$(CC) $(CFLAGS) -g -I $(HEADERS) $(LPIPEX) main.c -o $(NAME)
@@ -52,6 +52,5 @@ fclean			:	clean
 						$(RM) $(NAME) $(LPIPEX) 
 						make fclean -C ./libs/libft
 						make fclean -C ./libs/ft_printf
-						make fclean -C ./libs/p-master
 
 re				:	fclean all

@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 11:06:26 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/05/02 18:53:11 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/05/21 15:16:50 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SOURCES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_st
 		ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c\
 		ft_atoi.c ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c\
 		ft_substr.c ft_strjoin.c ft_strtrim.c  ft_split.c ft_itoa.c ft_strmapi.c \
-		ft_striteri.c ft_strcmp.c ft_strcat.c ft_atol.c ft_getpath.c ft_printerror.c\
+		ft_striteri.c ft_strcmp.c ft_strcat.c ft_atol.c ft_printerror.c\
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_arrlen.c free_join.c get_next_line.c get_next_line_utils.c\
 
 HEADERS = ../../headers
