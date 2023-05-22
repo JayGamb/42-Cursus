@@ -3,16 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:19:00 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/21 15:36:35 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:50:14 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* main.c */
 
 #include "pipex.h"
+
+int	ft_check_args(int argc, char **argv, t_fd *fd)
+{
+	if (argc < 5)
+		ft_printerror(FEW_ARGS, 2);
+	else if (argc > 5)
+		ft_printerror(TOOMANY_ARGS, 2);
+	fd->infile = open(argv[1], O_RDONLY, 0777);
+	fd->outfile = open(argv[4], O_TRUNC | O_CREAT | O_RDWR, 0000644);
+	if (fd->infile < 0)
+		ft_printerror(argv[1], 2);
+	else if (fd->outfile < 0)
+		ft_printerror(OUTFILERR, 2);
+	return (0);
+}
 
 int	main(int argc, char **argv, char **envp)
 {

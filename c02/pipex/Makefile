@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 15:35:38 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/05/21 15:33:28 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/05/22 14:09:34 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME)			:	$(OBJ_DIR) $(OBJETS)
 					make -C ./libs/libft && make -C ./libs/ft_printf
 					$(AR) $(LPIPEX) $(OBJETS)
 					$(LIBS_MERGE)
-					$(CC) $(CFLAGS) -g -I $(HEADERS) $(LPIPEX) main.c -o $(NAME)
+					$(CC) $(CFLAGS) -I $(HEADERS) $(LPIPEX) main.c -o $(NAME)
 
 $(OBJ_DIR)		:
 					mkdir -p $(OBJ_DIR)
