@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/29 14:30:03 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 17:46:12 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+char	*ft_strrchr(const char *s, int c)
 {
-	ft_printchar('f');
+	char	*letter;
+	int		i;
+
+	letter = (char *)s;
+	i = ft_strlen(s);
+	if (!s)
+		return (0);
+	while (i >= 0)
+	{
+		if (letter[i] == (unsigned char)c)
+			return (&letter[i]);
+		i--;
+	}
 	return (0);
 }

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/05/02 16:20:02 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/05/02 16:26:13 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+size_t	ft_arrlen(char **array)
 {
-	ft_printchar('f');
-	return (0);
+	int	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
 }

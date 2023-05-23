@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/28 17:30:13 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 17:58:56 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+int	ft_tolower(int c)
 {
-	ft_printchar('f');
-	return (0);
+	if (c < 65 || c > 90)
+		return (c);
+	else
+		c += 32;
+	return (c);
 }

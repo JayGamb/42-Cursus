@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/08 11:35:16 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/08 16:33:35 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
+#include <unistd.h>
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+void	ft_putendl_fd(char *s, int fd)
 {
-	ft_printchar('f');
-	return (0);
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }

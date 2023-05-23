@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/27 14:08:53 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/10/27 14:18:37 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+int	ft_isprint(int c)
 {
-	ft_printchar('f');
-	return (0);
+	if (c < 32 || c > 126)
+		return (0);
+	return (1);
 }

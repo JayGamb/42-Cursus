@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/08 16:48:42 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/08 17:37:44 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	ft_printchar('f');
-	return (0);
+	char	*string;
+	int		i;
+
+	if (!s)
+		return (0);
+	string = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!string)
+		return (0);
+	i = -1;
+	while (s[++i])
+		string[i] = f(i, s[i]);
+	string[i] = 0;
+	return (string);
 }

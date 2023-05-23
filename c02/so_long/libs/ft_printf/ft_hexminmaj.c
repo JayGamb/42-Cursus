@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_hexminmaj.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/21 00:36:20 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/21 12:13:09 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+int	ft_hexminmaj(char c, va_list args)
 {
-	ft_printchar('f');
+	if (c == 'x')
+		return (ft_dectohex_min(va_arg(args, int)));
+	else if (c == 'X')
+		return (ft_dectohex_maj(va_arg(args, unsigned int)));
+	else if (c == 'p')
+		return (ft_dectohex_min_ptr(va_arg(args, unsigned long long)));
 	return (0);
 }

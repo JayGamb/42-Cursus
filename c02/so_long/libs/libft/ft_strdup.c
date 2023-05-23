@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/11/02 17:01:02 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/05 18:04:09 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+char	*ft_strdup(const char *s)
 {
-	ft_printchar('f');
-	return (0);
+	char	*mem;
+
+	mem = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (mem == NULL)
+		return (0);
+	ft_memcpy(mem, s, ft_strlen(s) * sizeof(char) + 1);
+	mem[ft_strlen(s)] = 0;
+	return (mem);
 }

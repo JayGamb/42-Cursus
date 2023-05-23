@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2022/10/27 17:23:50 by jgamboa-          #+#    #+#             */
+/*   Updated: 2022/11/08 16:01:05 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	ft_printchar('f');
-	return (0);
+	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	d = dest;
+	s = src;
+	if (!dest && !src)
+		return (0);
+	i = -1;
+	if (src > dest)
+		while (++i < n)
+			d[i] = s[i];
+	else if (dest > src)
+	{
+		i = n;
+		while (i--)
+		{
+			d[i] = s[i];
+		}
+	}
+	return (dest);
 }

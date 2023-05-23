@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_join.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 16:21:58 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/05/02 17:16:20 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/05/02 17:17:10 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-
-// check args
-// check extension fichier .ber |||| example map.ber \\ a.ber
-// check la map si elle est rectangulaire
-
-int	main()
+char	*free_join(char *dst, char *buff)
 {
-	ft_printchar('f');
-	return (0);
+	char	*ret_line;
+
+	if (!dst)
+	{
+		dst = (char *)malloc(1 * sizeof(char));
+		dst[0] = 0;
+	}
+	ret_line = ft_strjoin(dst, buff);
+	free(dst);
+	return (ret_line);
 }
