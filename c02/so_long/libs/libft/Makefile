@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 11:06:26 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/05/21 15:16:50 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/05/24 17:08:35 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(OBJ_DIR)/%.o	:		%.c
 					
 all				:	$(NAME)
 
-$(NAME)			:	$(OBJ_DIR) $(OBJETS) 
+$(NAME)			:	$(OBJ_DIR) $(OBJETS)
 					$(AR) $(NAME) $(OBJETS)
 
 $(OBJ_DIR)		:

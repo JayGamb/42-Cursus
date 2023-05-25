@@ -3,50 +3,56 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 13:09:34 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/05/23 16:45:21 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/05/25 05:45:23 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	so_long
+NAME = so_long
 
-LSO_LONG =	so_long.a
+LSO_LONG = so_long.a
 
-LIBS_MERGE = libtool -static -o $(LSO_LONG) $(LSO_LONG) ./libs/ft_printf/libftprintf.a\
-			 ./libs/libft/libft.a
+LIBFTPRINTF_DIR = ./libs/ft_printf
+LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
 
-HEADERS = ./headers
-SOURCES	= so_long_utils.c
+LIBFT_DIR = ./libs/libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address -g3
-AR		=	ar rc
-RM		=	rm -rf
+HEADERS = headers
+SOURCES_DIR = sources
+SOURCES = $(shell find $(SOURCES_DIR) -type f -name '*.c')
 
-OBJ_DIR	=	objets
-OBJETS	=	$(SOURCES:%.c=$(OBJ_DIR)/%.o)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+LDFLAGS = -Imlx -framework OpenGL -framework AppKit
+AR = ar rc
+RM = rm -rf
 
-$(OBJ_DIR)/%.o	:		%.c
-					$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $@
+OBJ_DIR = objets
+OBJ_FILES = $(patsubst $(SOURCES_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
 
-all				:	$(NAME)
-		
-$(NAME)			:	$(OBJ_DIR) $(OBJETS)
-					make -C ./libs/libft && make -C ./libs/ft_printf
-					$(AR) $(LSO_LONG) $(OBJETS)
-					$(LIBS_MERGE)
-					$(CC) $(CFLAGS) -I $(HEADERS) $(LSO_LONG) main.c -o $(NAME)
+$(OBJ_DIR)/%.o: $(SOURCES_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(HEADERS) -c $< -o $@
 
-$(OBJ_DIR)		:
-					mkdir -p $(OBJ_DIR)
+all: $(NAME)
 
-clean		:
-					$(RM) $(OBJ_DIR)
+$(NAME): $(OBJ_FILES)
+	make -C $(LIBFT_DIR)
+	make -C $(LIBFTPRINTF_DIR)
+	$(AR) $(LSO_LONG) $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(LDFLAGS) -I$(HEADERS) $(LSO_LONG) main.c -o $(NAME)
 
-fclean			:	clean
-						$(RM) $(NAME) $(LSO_LONG) 
-						make fclean -C ./libs/libft
-						make fclean -C ./libs/ft_printf
-re				:	fclean all
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+clean:
+	$(RM) $(OBJ_DIR)
+
+fclean: clean
+	$(RM) $(NAME) $(LSO_LONG)
+	make fclean -C $(LIBFT_DIR)
+	make fclean -C $(LIBFTPRINTF_DIR)
+
+re: fclean all
