@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/23 13:35:24 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:59:39 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <profile.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+
+# define MALLOC_ERR "malloc() failed"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
