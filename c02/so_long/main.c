@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/25 16:54:46 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:19:08 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 // check args
 // check extension fichier .ber |||| example map.ber \\ a.ber
 // check la map si elle est rectangulaire
+
+void	ft_free_printerr(char *message, t_map *map, int exit_code)
+{
+	free(map);
+	ft_printerror(message, exit_code);
+}
 
 void	ft_printarray(char **array)
 {
@@ -42,56 +48,52 @@ size_t	ft_fcountlines(char *filename)
 	return (lines);
 }
 
-/* char	**ft_get_map_compo(char *map_name)
+void	ft_check_args(int argc, char **argv, t_map *map)
 {
-	int		file_fd;
-	char	**map;
-	size_t	lines;
-	size_t	w;
+	int	ext_idx;
 
-	t_map	*map_data;
+	if (argc < 2)
+		ft_printerror(FEW_ARGS_ERR, 1);
+	if (argc > 2)
+		ft_printerror(MANY_ARGS_ERR, 1);
+	ext_idx = ft_strlen(argv[1]) - 4;
+	if (!ft_strnstr(&argv[1][ext_idx], EXPECTED_EXTENSION, 4))
+		ft_printerror(EXTENSION_ERR, 1);
+	map->name = argv[1];
+}
 
-	map_data->h = ft_fcountlines(map_name);
-	map_data->compo = (char **)malloc((map_data->h  + 1) * sizeof(char *));
-	if (!map_data->compo)
-		ft_printerror(MALLOC_ERR, EXIT_FAILURE);
-	map_data->file_fd = open(map_name, O_RDONLY, 0777);
-	if (map_data->file_fd < 0)
-		ft_printerror(map_name, errno);
-	i = 0;
-	while (i < lines)
+void	ft_get_map(t_map *map)
+{
+	char	*temp_line;
+	char	*line;
+	char	*temp;
+	
+	map->r = ft_fcountlines(map->name);
+	map->fd = open(map->name);
+	if (map->fd < 0)
+		ft_free_printerr(FOPEN_ERR, map, errno);
+	while (get_next_line(map->fd) != NULL)
 	{
-		map_data->compo[i] = get_next_line(map_data->file_fd);
-		j = 0;
-		while (map_data->compo[i][j] != '\n')
-				j++;
-		i++;
+		temp = get_next_line(map->fd);
+		temp_line = ft_strjoin(ft_)
+		ft_strlcpy(temp)
 	}
-	close(map_data->file_fd);
-	return (map);
-} */
-
-/* t_map	*ft_get_mapinfo(char *map_name)
-{
-	int	i;
-	int	j;
-	i = 0;
-*/
+}
 
 
-int	main(/* int argc, char **argv */)
+int	main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*mlx_win;
-
-/* 	if (argc < 2)
-		return (1);
-	else
-		ft_checkmap(argv[1]);
-	 */
+	(void)argc;
+	
+	/* ft_check_args(argc, argv, ); */
+	ft_printf("nb lines : %d\n", ft_fcountlines(argv[1]));
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	if (mlx_win == 0)
+		return (1);
 	mlx_loop(mlx);
 	return (0);
 }
