@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_delchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/06/06 16:48:57 by jgamboa-         ###   ########.fr       */
+/*   Created: 2023/06/06 16:32:26 by jgamboa-          #+#    #+#             */
+/*   Updated: 2023/06/06 16:38:19 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include "libft.h"
-# include "../mlx/mlx.h"
-
-# define EXTENSION_ERR		"Invalid file extension. Expected .ber"
-# define WALL '1'
-# define PLAYER 'P'
-
-
-# define EXPECTED_EXTENSION	".ber"
-
-
-typedef struct s_map
+void	ft_delchar(char *str, char c)
 {
-	int		fd;
-	char	*name;
-	char	**map;
-	size_t	r;
-	size_t	c;
+	int	i;
+	int	j;
+	int	len;
 
-}	t_map;
-
-char	*printthis(const char *str);
-
-#endif
+	i = 0;
+	j = 0;
+	len = ft_strlen(str);
+	while (i < len)
+	{
+		if (str[i] != c)
+		{
+			str[j++] = str[i];
+		}
+		i++;
+	}
+	str[j] = '\0';
+}

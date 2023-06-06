@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/06/05 19:19:08 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:50:11 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,32 +64,43 @@ void	ft_check_args(int argc, char **argv, t_map *map)
 
 void	ft_get_map(t_map *map)
 {
-	char	*temp_line;
 	char	*line;
-	char	*temp;
-	
+	size_t	i;
+
 	map->r = ft_fcountlines(map->name);
-	map->fd = open(map->name);
+	map->map = (char **)malloc(map->r * sizeof(char*) + 1);
+	if (!map->map)
+		ft_printerror(MALLOC_ERR, errno);
+	ft_printf("number of lines: %d\n", map->r);
+	map->fd = open(map->name, O_RDONLY);
 	if (map->fd < 0)
 		ft_free_printerr(FOPEN_ERR, map, errno);
-	while (get_next_line(map->fd) != NULL)
+	i = 0;
+	while (i < map->r)
 	{
-		temp = get_next_line(map->fd);
-		temp_line = ft_strjoin(ft_)
-		ft_strlcpy(temp)
+		line = get_next_line(map->fd);
+		map->map[i] = ft_strdup(line);
+		ft_delchar(map->map[i], '\n');
+		i++;
 	}
+	map->map[i] = 0;
+	free(line);
+	close(map->fd );
+	printf("DONE!\n");
 }
+
 
 
 int	main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*mlx_win;
-	(void)argc;
-	
-	/* ft_check_args(argc, argv, ); */
-	ft_printf("nb lines : %d\n", ft_fcountlines(argv[1]));
+	t_map	*map;
 
+	map = malloc(sizeof(t_map));
+	ft_check_args(argc, argv, map);
+	ft_get_map(map);
+	ft_printarray(map->map);
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 	if (mlx_win == 0)

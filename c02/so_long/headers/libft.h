@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/25 15:59:39 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:48:06 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include "ft_printf.h"
 
 # define MALLOC_ERR "malloc() failed"
+# define FOPEN_ERR			"Error open file"
+# define FEW_ARGS_ERR		"Too few arguments"
+# define MANY_ARGS_ERR		"Too many arguments"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -69,6 +72,7 @@ long	ft_atol(char *str);
 void	ft_printerror(char *message, int exitcode);
 size_t	ft_arrlen(char **array);
 char	*free_join(char *dst, char *buff);
+void	ft_delchar(char *str, char c);
 /* char	*get_next_line(int fd);
 int		ft_strlen_gnl(const char *s);
 size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t n);

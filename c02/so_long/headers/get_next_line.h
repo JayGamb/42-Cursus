@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:37:22 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 18:45:19 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:34:05 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_strlen_gnl(const char *s);
 size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t n);
 char	*ft_strjoin_gnl(char const *s1, char const *s2);
 char	*ft_strchr_gnl(const char *s, int c);
+char	*readline(int fd, char *dst);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5

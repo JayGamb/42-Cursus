@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:40:44 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 18:47:27 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:32:07 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*get_line(char *dst)
 	return (ret_line);
 }
 
-static char	*readline(int fd, char *dst)
+char	*readline(int fd, char *dst)
 {
 	int		c;
 	char	*buff;
