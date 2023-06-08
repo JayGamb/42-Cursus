@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/06/06 16:50:11 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:19:52 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,66 @@ void	ft_get_map(t_map *map)
 	}
 	map->map[i] = 0;
 	free(line);
-	close(map->fd );
+	close(map->fd);
 	printf("DONE!\n");
 }
 
+int	ft_check_ncolumn(t_map *map)
+{
+	int	i;
+	size_t	column;
 
+	i = 0;
+	column = ft_strlen(map->map[0]);
+	while (map->map[i])
+	{
+		if (column != ft_strlen(map->map[i]))
+			return (-1);
+		i++;
+	}
+	map->c = column;
+	return (map->c);
+}
+
+int	ft_chekc_walls(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map->map[i])
+	{
+		if (i == 0 || i == map->r - 1)
+		{
+			j = 0;
+			while (map->map[i][j])
+			{
+				if (map->map[i][j] != WALL)
+					return (-1);
+				j++;
+			}
+		}
+	}
+}
+
+/* ft_check_map(t_map *map)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	while (map->map[i])
+	{
+		j = 0;
+		while (map->map[i][j])
+		{
+			if (map->map[i][j] )
+			{
+				
+			}
+		}
+	}
+} */
 
 int	main(int argc, char **argv)
 {
@@ -100,6 +155,9 @@ int	main(int argc, char **argv)
 	map = malloc(sizeof(t_map));
 	ft_check_args(argc, argv, map);
 	ft_get_map(map);
+	if (ft_check_ncolumn(map) < 0)
+		ft_free_printerr("Error C", map, 1);
+	ft_printf("Nb columns : %d", map->c);
 	ft_printarray(map->map);
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
