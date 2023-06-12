@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/06/06 16:48:57 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:45:11 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_map
 	int		fd;
 	char	*name;
 	char	**map;
-	size_t	r;
-	size_t	c;
+	int	r;
+	int	c;
 
 }	t_map;
 

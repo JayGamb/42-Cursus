@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/06/08 16:19:52 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:31:14 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_check_args(int argc, char **argv, t_map *map)
 void	ft_get_map(t_map *map)
 {
 	char	*line;
-	size_t	i;
+	int	i;
 
 	map->r = ft_fcountlines(map->name);
 	map->map = (char **)malloc(map->r * sizeof(char*) + 1);
@@ -106,7 +106,7 @@ int	ft_check_ncolumn(t_map *map)
 	return (map->c);
 }
 
-int	ft_chekc_walls(t_map *map)
+int	ft_check_walls(t_map *map)
 {
 	int	i;
 	int	j;
@@ -124,27 +124,27 @@ int	ft_chekc_walls(t_map *map)
 				j++;
 			}
 		}
+		else
+		{
+			if (map->map[i][0] != WALL || map->map[i][map->c - 1] != WALL)
+				return (-1);
+		}
+		i++;
 	}
+	return (0);
 }
 
-/* ft_check_map(t_map *map)
-{
-	int	i;
-	int j;
+/* int ft_check */
 
-	i = 0;
-	while (map->map[i])
-	{
-		j = 0;
-		while (map->map[i][j])
-		{
-			if (map->map[i][j] )
-			{
-				
-			}
-		}
-	}
-} */
+
+
+void ft_check_map(t_map *map)
+{
+	if (ft_check_ncolumn(map) < 0)
+		ft_free_printerr("Error C", map, 1);
+	if (ft_check_walls(map) < 0)
+		ft_free_printerr("Errors with walls", map, 1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -153,11 +153,11 @@ int	main(int argc, char **argv)
 	t_map	*map;
 
 	map = malloc(sizeof(t_map));
+	if (!map)
+		ft_printerror(MALLOC_ERR, errno);
 	ft_check_args(argc, argv, map);
 	ft_get_map(map);
-	if (ft_check_ncolumn(map) < 0)
-		ft_free_printerr("Error C", map, 1);
-	ft_printf("Nb columns : %d", map->c);
+	ft_check_map(map);
 	ft_printarray(map->map);
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
