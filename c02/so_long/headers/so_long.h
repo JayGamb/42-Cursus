@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/25 15:32:57 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:27:36 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "libft.h"
 # include "../mlx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
+/* # include <X11/X.h>
+# include <X11/keysym.h> */
 
 
 # define WALL '1'
@@ -36,54 +36,14 @@
 
  # define KEY_ESC			53
  # define KEY_Q				12
+ # define KEY_LEFT			123
+ # define KEY_RIGHT			124
+ # define KEY_DOWN			125
+ # define KEY_UP			126
 
 
 # define INIT_MALLOC_ERR -1
 # define ARGS_ERROR 2
-
-/* typedef struct s_position{
-	int	x;
-	int	y;
-}	t_position;
-
-typedef struct s_map
-{
-	int			fd;
-	int			size[2];
-	int			player;
-	int			collectable;
-	int			exit;
-	char		*name;
-	char		**map;
-	t_position	p;
-	bool		**visited;
-
-}	t_map;
-
-typedef struct s_element
-{
-	t_position			position;
-	struct s_element	*next;
-}	t_element;
-
-typedef struct s_queue
-{
-	t_element	*first;
-	t_element	*last;
-}	t_queue;
-
-typedef struct s_image
-{
-	void	*xpm_ptr;
-	int		img_width;
-	int		img_height;
-}	t_image;
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
- */
 
 typedef struct s_position{
 	int	x;
