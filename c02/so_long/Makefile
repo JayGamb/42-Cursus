@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 13:09:34 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/06/06 16:51:03 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/09/20 14:21:07 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ SOURCES_DIR		= sources
 SOURCES			= $(shell find $(SOURCES_DIR) -type f -name '*.c')
 
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address -g3
-LDFLAGS			= -Lmlx -lmlx -framework OpenGL -framework AppKit -lm
+CFLAGS			= -Wall -Wextra -Werror -I/opt/X11/include -Imlx -I$(HEADERS) #-Wall -Wextra -Werror #-fsanitize=address -g3
+LDFLAGS			= -Lmlx -L/opt/X11/lib -lX11 -lmlx -framework OpenGL -framework AppKit -lm #-Lmlx -lmlx -framework OpenGL -framework AppKit -lm
 AR				= ar rc
 RM				= rm -rf
 
@@ -35,16 +35,17 @@ OBJ_DIR			= objets
 OBJ_FILES		= $(patsubst $(SOURCES_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
 
 $(OBJ_DIR)/%.o: $(SOURCES_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -Imlx -I$(HEADERS) -c $< -o $@
+#	$(CC) $(CFLAGS) -Imlx -I$(HEADERS) -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -I$(HEADERS) -I/opt/X11/include -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
 	make -C $(LIBFT_DIR)
 	make -C $(LIBFTPRINTF_DIR)
-	make -C ./mlx
+	 make -C ./mlx
 	$(AR) $(LIBFTSO_LONG) $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(LDFLAGS) -I$(HEADERS) $(LIBS_A) main.c -o $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) -I$(HEADERS) $(LIBS_A) -g main.c -o $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

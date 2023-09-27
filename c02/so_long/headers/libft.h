@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:19:29 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/06/06 16:48:06 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:12:05 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/wait.h>
 # include <errno.h>
 # include <profile.h>
+# include <stdbool.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
 
