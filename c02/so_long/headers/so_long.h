@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/27 15:27:36 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/09/28 19:01:58 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,20 @@
 			defined."
 # define MAP_ERR "Invalid map. Review the map content."
 # define ELEMENTS_ERR "Invalid element count. Ensure there's 1 player ('P') and\
-			 1 exit ('E')."
+ 1 exit ('E') and at least 1 collectable 'C'."
 # define COLLECTABLE_ERR "all collectables can be reached by the player. Please\
  check the map layout."
 
- # define KEY_ESC			53
- # define KEY_Q				12
- # define KEY_LEFT			123
- # define KEY_RIGHT			124
- # define KEY_DOWN			125
- # define KEY_UP			126
+# define KEY_ESC			53
+# define KEY_Q				12
+# define KEY_LEFT			123
+# define KEY_RIGHT			124
+# define KEY_DOWN			125
+# define KEY_UP				126
+# define KEY_A				0
+# define KEY_S				1
+# define KEY_D				2
+# define KEY_W				13
 
 
 # define INIT_MALLOC_ERR -1
@@ -94,6 +98,7 @@ typedef struct	s_game
 	t_map		map;
 	t_queue		queue;
 	t_image		image;
+	int			steps;
 }				t_game;
 
 
@@ -118,7 +123,7 @@ t_position	ft_check_south(t_game *game, t_position current);
 t_position	ft_check_east(t_game *game, t_position current);
 t_position	ft_check_west(t_game *game, t_position current);
 void		t_explore_neighbors(t_game *game, t_position current);
-void		ft_navigate(t_game *game);
+int			ft_navigate(t_game *game);
 char		*printthis(const char *str);
 /* void		ft_check_initalloc(t_game *game); */
 void		ft_free_elements(int exit_code, char *err_message, t_game *game);

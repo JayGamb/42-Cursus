@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/27 16:27:08 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/09/28 19:14:21 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ t_position ft_check_south(t_game *game, t_position current)
 
 	new_element.x = -1;
 	new_element.y = -1;
-	if (current.y + 1 < game->map.size[0] && game->map.map[current.y + 1][current.x] != WALL)
+	if (current.y + 1 < game->map.size[0] && game->map.map[current.y + 1]\
+		[current.x] != WALL)
 	{
 		if (game->map.visited[current.y + 1][current.x] == false)
 		{
@@ -91,7 +92,8 @@ t_position	ft_check_east(t_game *game, t_position current)
 
 	new_element.x = -1;
 	new_element.y = -1;
-	if (current.x + 1 < game->map.size[1] && game->map.map[current.y][current.x + 1] != WALL)
+	if (current.x + 1 < game->map.size[1] && \
+		game->map.map[current.y][current.x + 1] != WALL)
 	{
 		if (game->map.visited[current.y][current.x + 1] == false)
 		{
@@ -143,65 +145,88 @@ void	ft_explore_neighbors(t_game *game, t_position current)
 		ft_enqueue(&game->queue, west);
 }
 
-void	ft_navigate(t_game *game)
+int	ft_navigate(t_game *game)
 {
 	t_element	*current;
+	int			reached;
 
+	reached = 0;
 	if (ft_enqueue(&game->queue, game->map.p) < 0)
 		ft_printerr("enqueue ft_enqueue error", 2);
-		/* ft_free_elements(5, MALLOC_ERR, &game->map, &game->queue); */
 	current = game->queue.first;
 	while (current)
 	{
 		ft_explore_neighbors(game, current->position);
 		if (ft_iscollectable(
 				game->map.map[current->position.y][current->position.x]))
-			game->map.collectable--;
-		/* printf("number of exits :%d\t number of collectables :%d\n", game->map.exit, game->map.collectable); */
+			reached++;
 		current = current->next;
 	}
+	return (reached);
 }
 
-t_image	ft_get_image(char element, void *mlx)
+char	*ft_walk(int step)
+{
+	if (step % 2 == 0)
+		return ("./images/2Walk.xpm");
+	else if (step % 3 == 0)
+		return ("./images/3walk.xpm");
+	else if (step % 4 == 0)
+		return ("./images/4walk.xpm");
+	else if (step % 5 == 0)
+		return ("./images/5walk.xpm");
+	else
+		return ("./images/1walk.xpm");
+}
+
+t_image	ft_get_image(char element, void *mlx, t_game *game)
 {
 	t_image	image;
 
 	if (element == WALL)
-		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/Block_A_02.xpm", &image.img_width, &image.img_height);
- 	if (element == SPACE)
-		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/SPACE.xpm", &image.img_width, &image.img_height);
+		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/Block_A_02.xpm", \
+		&image.img_width, &image.img_height);
+	if (element == SPACE)
+		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/SPACE.xpm", \
+		&image.img_width, &image.img_height);
 	if (element == COLLECTABLE)
-		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/ball.xpm", &image.img_width, &image.img_height);
+		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/ball.xpm", \
+		&image.img_width, &image.img_height);
 	if (element == EXIT)
-		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/Flag_B.xpm", &image.img_width, &image.img_height);
+		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/exit.xpm", \
+		&image.img_width, &image.img_height);
 	if (element == PLAYER)
-		image.xpm_ptr = mlx_xpm_file_to_image(mlx, "./images/1walk.xpm", &image.img_width, &image.img_height);
+	{
+		image.xpm_ptr = mlx_xpm_file_to_image(mlx, ft_walk(game->steps), \
+		&image.img_width, &image.img_height);
+	}
 	return (image);
 }
 
 int	ft_init_game(t_game *game)
 {
-
 	int		i;
 	int		j;
 	void	*space_ptr;
-	int		sp_width, sp_height;
-	
+	int		sp_width;
+	int		sp_height;
+
 	i = 0;
-	space_ptr = mlx_xpm_file_to_image(game->vars.mlx, "./images/SPACE.xpm", &sp_width, &sp_height);
-	printf("size0: %d\tsize1: %d\n", game->map.size[0], game->map.size[1]);
+	space_ptr = mlx_xpm_file_to_image(game->vars.mlx, "./images/SPACE.xpm", \
+	&sp_width, &sp_height);
 	while (i < game->map.size[0])
 	{
 		j = 0;
-		printf("Je suis là %d\n", i);
 		while (j < game->map.size[1])
-		{printf("Je suis làjjj %d\n", j);
-			mlx_put_image_to_window(game->vars.mlx, game->vars.win, space_ptr, j * sp_width, i * sp_height);
-			game->image = ft_get_image(game->map.map[i][j], game->vars.mlx);
+		{
+			mlx_put_image_to_window(game->vars.mlx, game->vars.win, space_ptr, \
+			j * sp_width, i * sp_height);
+			game->image = ft_get_image(game->map.map[i][j], game->vars.mlx, game);
 			{
-				printf("%p\n", game->image.xpm_ptr);
-				mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->image.xpm_ptr, j * game->image.img_width, i * game->image.img_height);
-				printf("oups %d\n", j);
+
+				mlx_put_image_to_window(game->vars.mlx, game->vars.win, \
+				game->image.xpm_ptr, j * game->image.img_width, \
+				i * game->image.img_height);
 			}
 			j++;
 		}
@@ -227,79 +252,69 @@ int	ft_close(int keycode, t_vars *vars)
 
 	if (keycode == KEY_Q || keycode == KEY_ESC)
 		mlx_destroy_window(vars->mlx, vars->win);
-	else
-		printf("KEY : %d \n", keycode);
 	return (0);
 }
 
-
-int ft_move_player(int keycode, t_game *game)
+int	ft_handle_key(int keycode, t_game *game)
 {
-	t_map	*map = &game->map;
+	t_map	*map;
+	int		new_x;
+	int		new_y;
 
-	if (keycode == KEY_LEFT)
+	map = &game->map;
+	new_x = map->p.x;
+	new_y = map->p.y;
+
+	if (keycode == KEY_Q || keycode == KEY_ESC)
 	{
-		
-/* 		map->map[map->p.y][map->p.x] = '0'; */
-		map->map[map->p.y][map->p.x-1] = 'P';
-		ft_init_game(game);
-	}
-	else if (keycode == KEY_RIGHT)
-	{
-		
-		map->map[map->p.y][map->p.x+1] = 'P';
-		ft_init_game(game);
-	}
-	else if (keycode == KEY_DOWN)
-	{
-		map->map[map->p.y-1][map->p.x] = 'P';
-		ft_init_game(game);
-	}
-	if (keycode == KEY_UP)
-	{
-		
-		map->map[map->p.y][map->p.x] = '0';
-		map->map[map->p.y+1][map->p.x] = 'P';
-		ft_init_game(game);
+		mlx_destroy_window(game->vars.mlx, game->vars.win);
+		exit(0);
 	}
 
+	if (keycode == KEY_LEFT || keycode == KEY_A)
+		new_x = map->p.x - 1;
+	else if (keycode == KEY_RIGHT || keycode == KEY_D)
+		new_x = map->p.x + 1;
+	else if (keycode == KEY_DOWN || keycode == KEY_S)
+		new_y = map->p.y + 1;
+	else if (keycode == KEY_UP || keycode == KEY_W)
+		new_y = map->p.y - 1;
 	else
-		printf("Ca marche pas!");
-	return 0;
+		ft_printf("Mouvement non valide !");
+	if (map->map[new_y][new_x] == SPACE || map->map[new_y][new_x] == COLLECTABLE)
+	{
+		game->steps++;
+		if (map->map[new_y][new_x] == COLLECTABLE)
+			map->collectable--;
+		map->map[map->p.y][map->p.x] = SPACE;
+		map->map[new_y][new_x] = PLAYER;
+		map->p.x = new_x;
+		map->p.y = new_y;
+		ft_init_game(game);
+	}
+	return (0);
 }
+
 
 int main(int argc, char **argv)
 {
 	t_game game;
 
-	printf("Je suis là -1\n");
 	game.map = (t_map){0};
 	game.queue = (t_queue){0};
-	// ft_check_initalloc(&game);
-	printf("Je suis là 0\n");
+/* 	game.steps = 0; */
 	ft_check_args(argc, argv, &game);
-	printf("Je suis là 1\n");
 	ft_get_map(&game);
-	printf("Je suis là 2\n");
 	ft_check_map(&game);
-	printf("Je suis là 3\n");
-	printf("OK, C'EST FAIT!\n");
-
- 	game.vars.mlx = mlx_init();
+	game.vars.mlx = mlx_init();
 	if (!game.vars.mlx)
 		exit(1);
-//		ft_free_elements(5, "An error with 'mlx_init' occurred", &game);
 	game.vars.win = mlx_new_window(game.vars.mlx, game.map.size[1] * 50,\
 	game.map.size[0] * 50, "so_long");
-	printf("Je suis là 4\n");
 	if (!game.vars.win)
 		exit(1);
-//	ft_free_elements(5, "An error with 'mlx_win' occurred", &game);
 	ft_init_game(&game);
-	printf("Je suis là 5\n");
-	mlx_hook(game.vars.win, 2, 0, ft_close, &game.vars);
-	mlx_hook(game.vars.win, 2, 0, ft_move_player, &game.vars);
+	mlx_hook(game.vars.win, 2, 0, ft_handle_key, &game);
 	mlx_loop(game.vars.mlx); 
-
 	return (0);
 }

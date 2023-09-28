@@ -6,20 +6,20 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:25:45 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:40 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:47:23 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free_map(t_map* map)
+void	ft_free_map(t_map *map)
 {
 	int	y;
-	
+
 	y = 0;
 	while (y < map->size[0])
 	{
-			free(map->map[y]);
+		free(map->map[y]);
 		y++;
 	}
 	free(map->map);
@@ -33,7 +33,7 @@ void	ft_free_visited(t_map *map)
 	i = 0;
 	while (i < map->size[0])
 	{
-			free(map->visited[i]);
+		free(map->visited[i]);
 		i++;
 	}
 	free(map->visited);
@@ -44,12 +44,11 @@ void	ft_free_visited(t_map *map)
 void	ft_clean_map(t_map *map)
 {
 	if (!map)
-		return;
+		return ;
 	if (map->map)
 		ft_free_map(map);
 	if (map->visited)
 		ft_free_visited(map);
-	free(map);
 }
 
 void	ft_clean_queue(t_queue *queue)
