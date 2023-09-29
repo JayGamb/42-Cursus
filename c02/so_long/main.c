@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/28 19:14:21 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:47:40 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,12 +247,28 @@ int ft_close_game(int keycode, t_vars *vars)
 	return (0);
 }
 
-int	ft_close(int keycode, t_vars *vars)
+/* void	ft_game_win(t_game *game, t_map *map, int new_x, int new_y)
+{
+	if (game->map.collectable == 0 && map->map[new_y][new_x] == EXIT)
+	{
+		map->map[map->p.y][map->p.x] = SPACE;
+		map->map[new_y][new_x] = PLAYER;
+		map->p.x = new_x;
+		map->p.y = new_y;
+		ft_init_game(game);
+		mlx_destroy_window(game->vars.mlx, game->vars.win);
+		exit (0);
+	}
+} */
+
+void	ft_close(int keycode, t_vars *vars)
 {
 
 	if (keycode == KEY_Q || keycode == KEY_ESC)
+	{
 		mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
+		exit (0);
+	}
 }
 
 int	ft_handle_key(int keycode, t_game *game)
@@ -264,13 +280,7 @@ int	ft_handle_key(int keycode, t_game *game)
 	map = &game->map;
 	new_x = map->p.x;
 	new_y = map->p.y;
-
-	if (keycode == KEY_Q || keycode == KEY_ESC)
-	{
-		mlx_destroy_window(game->vars.mlx, game->vars.win);
-		exit(0);
-	}
-
+	ft_close(keycode, &game->vars);
 	if (keycode == KEY_LEFT || keycode == KEY_A)
 		new_x = map->p.x - 1;
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
@@ -292,25 +302,27 @@ int	ft_handle_key(int keycode, t_game *game)
 		map->p.y = new_y;
 		ft_init_game(game);
 	}
-	if (map->collectable == 0 && map->map[new_y][new_x] == EXIT)
+	if (game->map.collectable == 0 && map->map[new_y][new_x] == EXIT)
 	{
 		map->map[map->p.y][map->p.x] = SPACE;
 		map->map[new_y][new_x] = PLAYER;
 		map->p.x = new_x;
 		map->p.y = new_y;
 		ft_init_game(game);
+		ft_free_elements(1, "WIN!", game);
+		mlx_destroy_window(game->vars.mlx, game->vars.win);
+		exit (0);
 	}
 	return (0);
 }
 
-
 int main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	game.map = (t_map){0};
 	game.queue = (t_queue){0};
-/* 	game.steps = 0; */
+	/* 	game.steps = 0; */
 	ft_check_args(argc, argv, &game);
 	ft_get_map(&game);
 	ft_check_map(&game);
