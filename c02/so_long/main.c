@@ -292,6 +292,14 @@ int	ft_handle_key(int keycode, t_game *game)
 		map->p.y = new_y;
 		ft_init_game(game);
 	}
+	if (map->collectable == 0 && map->map[new_y][new_x] == EXIT)
+	{
+		map->map[map->p.y][map->p.x] = SPACE;
+		map->map[new_y][new_x] = PLAYER;
+		map->p.x = new_x;
+		map->p.y = new_y;
+		ft_init_game(game);
+	}
 	return (0);
 }
 
