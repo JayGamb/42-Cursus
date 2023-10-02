@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_join.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:16:20 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 17:17:10 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:05:42 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*free_join(char *dst, char *buff)
 		dst = (char *)malloc(1 * sizeof(char));
 		dst[0] = 0;
 	}
-	ret_line = ft_strjoin(dst, buff);
+	ret_line = ft_strjoin_gnl(dst, buff);
 	free(dst);
 	return (ret_line);
 }

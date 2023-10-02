@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_manipulation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:38:10 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/28 17:06:32 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:55:02 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,30 @@ size_t	ft_fcountlines(char *filename)
 {
 	int	file_fd;
 	int	lines;
+	int		c;
+	char	buff;
 
 	file_fd = open(filename, O_RDONLY, 0777);
 	if (file_fd < 0)
 		return (-1);
 	lines = 0;
-	while (get_next_line(file_fd) != NULL)
+
+/* 	buff = 0; */
+	c = 1;
+	while (c > 0)
 	{
-		lines++;
+		read(file_fd, &c,1);
+	/* 	if (c == -1)
+		{
+			free(dst);
+			free(buff);
+			return (0);
+		}
+		buff[c] = 0; */
+		if ((buff = '\n'))
+			lines++;
 	}
-	close(file_fd);
+	printf("LINES : %d\n", lines);
 	return (lines);
 }
 
@@ -49,10 +63,10 @@ void	ft_get_map(t_game *game)
 		line = get_next_line(game->map.fd);
 		game->map.map[y] = ft_strdup(line);
 		ft_delchar(game->map.map[y], '\n');
+		free(line);
 		y++;
 	}
 	game->map.map[y] = 0;
-	free(line);
 	close(game->map.fd);
 }
 

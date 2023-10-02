@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:35:02 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/28 18:46:59 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:47:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ int	ft_check_args(int argc, char **argv, t_game *game)
 
 	ext_idx = ft_strlen(argv[1]) - 4;
 	if (argc < 2)
-		ft_printerr("err_message", 1);
-//		ft_free_elements(1, FEW_ARGS_ERR, &game->map, &game->queue);
+		ft_free_elements(1, FEW_ARGS_ERR, game);
 	if (argc > 2)
-//		ft_free_elements(1, MANY_ARGS_ERR, &game->map, &game->queue);
+		ft_free_elements(1, MANY_ARGS_ERR, game);
 	if (!ft_strnstr(&argv[1][ext_idx], EXPECTED_EXTENSION, 4))
-		ft_printerr("err_message", 1);
-//		ft_free_elements(1, EXTENSION_ERR, &game->map, &game->queue);
+		ft_free_elements(1, EXTENSION_ERR, game);
 	game->map.name = argv[1];
 	return (0);
 }

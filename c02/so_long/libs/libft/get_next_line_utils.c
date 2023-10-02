@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:39:36 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/05/02 18:37:22 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:29:35 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen_gnl(const char *s)
+ int	ft_strlen_gnl(const char *s)
 {
 	size_t	i;
 
@@ -65,3 +65,26 @@ size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t n)
 	dest[i] = 0;
 	return (ft_strlen_gnl(src));
 }
+
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
+{
+	char	*new_s;
+	size_t	len;
+	size_t	i;
+
+	if (!s1 || !s2)
+		return (0);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	new_s = (char *)malloc((len + 1) * sizeof(char));
+	if (!new_s)
+		return (0);
+	len = ft_strlen(s1);
+	i = -1;
+	while (s1[++i])
+		new_s[i] = s1[i];
+	i = -1;
+	while (s2[++i])
+		new_s[len + i] = s2[i];
+	new_s[len + i] = 0;
+	return (new_s);
+} 

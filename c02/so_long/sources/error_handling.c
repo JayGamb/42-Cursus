@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:25:45 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/28 18:47:23 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:32:49 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_free_map(t_map *map)
 	int	y;
 
 	y = 0;
+	printf("taille rows : %d\n", map->size[0]);
 	while (y < map->size[0])
 	{
 		free(map->map[y]);
@@ -45,6 +46,7 @@ void	ft_clean_map(t_map *map)
 {
 	if (!map)
 		return ;
+	printf("Youpi!");
 	if (map->map)
 		ft_free_map(map);
 	if (map->visited)
