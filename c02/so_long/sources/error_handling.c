@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:25:45 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/02 15:32:49 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:49:18 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_free_map(t_map *map)
 	int	y;
 
 	y = 0;
-	printf("taille rows : %d\n", map->size[0]);
 	while (y < map->size[0])
 	{
 		free(map->map[y]);
@@ -41,12 +40,10 @@ void	ft_free_visited(t_map *map)
 	map->visited = NULL;
 }
 
-
 void	ft_clean_map(t_map *map)
 {
 	if (!map)
 		return ;
-	printf("Youpi!");
 	if (map->map)
 		ft_free_map(map);
 	if (map->visited)
@@ -69,7 +66,6 @@ void	ft_clean_queue(t_queue *queue)
 	queue->last = NULL;
 	free(queue);
 }
-
 
 int	ft_printerr(char *message, int exit_code)
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 13:09:34 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/09/28 13:22:05 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/10/04 16:20:22 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CC				= gcc
 #CFLAGS			= -Wall -Wextra -Werror -I/opt/X11/include -Imlx -I$(HEADERS) #-Wall -Wextra -Werror #-fsanitize=address -g3
 #LDFLAGS			= -Lmlx -L/opt/X11/lib -lX11 -lmlx -framework OpenGL -framework AppKit -lm 
 
-CFLAGS			= -Wall -Wextra -Werror  #-Imlx -I$(HEADERS) #-Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address -g3
 LDFLAGS			=-Lmlx -lmlx -framework OpenGL -framework AppKit -lm
 
 

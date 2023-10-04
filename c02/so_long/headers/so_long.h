@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/28 19:01:58 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:43:04 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define EXIT 'E'
 # define SPACE '0'
 # define EXPECTED_EXTENSION	".ber"
-# define EXTENSION_ERR "Invalid file extension. '.ber' expected."
+# define EXTENSION_ERR "Invalid file type. '.ber' expected."
 # define WALLS_ERR "Invalid map structure. Please ensure walls are correctly \
 			defined."
 # define MAP_ERR "Invalid map. Review the map content."

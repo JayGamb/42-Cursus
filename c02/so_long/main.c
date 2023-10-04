@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/09/29 17:47:40 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:21:46 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_init_visited(t_game *game)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_map	*map = &game->map;
 
 	i = 0;
@@ -67,9 +67,9 @@ t_position	ft_check_north(t_game *game, t_position current)
 	return (new_element);
 }
 
-t_position ft_check_south(t_game *game, t_position current)
+t_position	ft_check_south(t_game *game, t_position current)
 {
-	t_position new_element;
+	t_position	new_element;
 
 	new_element.x = -1;
 	new_element.y = -1;
@@ -223,7 +223,6 @@ int	ft_init_game(t_game *game)
 			j * sp_width, i * sp_height);
 			game->image = ft_get_image(game->map.map[i][j], game->vars.mlx, game);
 			{
-
 				mlx_put_image_to_window(game->vars.mlx, game->vars.win, \
 				game->image.xpm_ptr, j * game->image.img_width, \
 				i * game->image.img_height);
@@ -289,11 +288,10 @@ int	ft_handle_key(int keycode, t_game *game)
 		new_y = map->p.y + 1;
 	else if (keycode == KEY_UP || keycode == KEY_W)
 		new_y = map->p.y - 1;
-	else
-		ft_printf("Mouvement non valide !");
-	if (map->map[new_y][new_x] == SPACE || map->map[new_y][new_x] == COLLECTABLE)
+	if (map->map[new_y][new_x] == SPACE || map->map[new_y][new_x] \
+	== COLLECTABLE)
 	{
-		game->steps++;
+		ft_printf("Steps: %d\n", ++game->steps);
 		if (map->map[new_y][new_x] == COLLECTABLE)
 			map->collectable--;
 		map->map[map->p.y][map->p.x] = SPACE;
@@ -316,25 +314,24 @@ int	ft_handle_key(int keycode, t_game *game)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	game;
 
 	game.map = (t_map){0};
 	game.queue = (t_queue){0};
-	/* 	game.steps = 0; */
 	ft_check_args(argc, argv, &game);
 	ft_get_map(&game);
 	ft_check_map(&game);
 	game.vars.mlx = mlx_init();
 	if (!game.vars.mlx)
 		exit(1);
-	game.vars.win = mlx_new_window(game.vars.mlx, game.map.size[1] * 50,\
+	game.vars.win = mlx_new_window(game.vars.mlx, game.map.size[1] * 50, \
 	game.map.size[0] * 50, "so_long");
 	if (!game.vars.win)
 		exit(1);
 	ft_init_game(&game);
 	mlx_hook(game.vars.win, 2, 0, ft_handle_key, &game);
-	mlx_loop(game.vars.mlx); 
+	mlx_loop(game.vars.mlx);
 	return (0);
 }
