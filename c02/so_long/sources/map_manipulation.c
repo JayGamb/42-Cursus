@@ -12,34 +12,52 @@
 
 #include "so_long.h"
 
+/* size_t	ft_fcountlines(char *filename)
+{
+  int fd;
+    char ch;
+    int count = 0;
+    ssize_t read_size;
+
+    fd = open(filename, O_RDONLY);
+    if (fd == -1) {
+        perror("Erreur d'ouverture du fichier");
+        return -1;
+    }
+
+    while ((read_size = read(fd, &ch, 1)) > 0) {
+        if (ch == '\n') {
+            count++;
+        }
+    }
+
+    if (read_size == -1) {
+        perror("Erreur de lecture du fichier");
+        close(fd);
+        return -1;
+    }
+
+    close(fd);
+	printf("%d\n", count);
+    return count;
+} */
+
 size_t	ft_fcountlines(char *filename)
 {
-	int	file_fd;
-	int	lines;
-	int		c;
-	char	buff;
+	int		file_fd;
+	int		lines;
+	char	*line;
 
 	file_fd = open(filename, O_RDONLY, 0777);
 	if (file_fd < 0)
 		return (-1);
 	lines = 0;
-
-/* 	buff = 0; */
-	c = 1;
-	while (c > 0)
+	while ((line = get_next_line(file_fd)) != NULL)
 	{
-		read(file_fd, &c,1);
-	/* 	if (c == -1)
-		{
-			free(dst);
-			free(buff);
-			return (0);
-		}
-		buff[c] = 0; */
-		if ((buff = '\n'))
-			lines++;
+		lines++;
+		free(line);
 	}
-	printf("LINES : %d\n", lines);
+	close(file_fd);
 	return (lines);
 }
 
@@ -133,8 +151,8 @@ int	ft_check_map(t_game *game)
 	}
 	c = ft_navigate(game);
 	if (game->map.collectable != c)
-		ft_free_elements(2, COLLECTABLE_ERR, game);
+		ft_free_elements(1, COLLECTABLE_ERR, game);
 	if (game->map.exit != 1 || game->map.collectable < 1)
-		ft_free_elements(2, ELEMENTS_ERR, game);
+		ft_free_elements(1, ELEMENTS_ERR, game);
 	return (0);
 }
