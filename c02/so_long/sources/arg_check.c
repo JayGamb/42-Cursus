@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:35:02 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/04 13:41:35 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:16:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,18 @@ int	ft_check_args(int argc, char **argv, t_game *game)
 	return (0);
 }
 
-/* void	ft_check_initalloc(t_game *game)
+void	ft_free_elements(int exit_code, char *message, \
+	t_game *game)
 {
-	if (!game->map && game->queue)
+	if (exit_code == 0)
 	{
-		free(&game->queue);
-		ft_printerr(MALLOC_ERR,INIT_MALLOC_ERR);
-		exit(EXIT_FAILURE);
+		ft_clean_map(&game->map);
+		ft_printf("%s\n", message);
+		mlx_destroy_window(game->vars.mlx, game->vars.win);
 	}
-	else if (!game->queue && game->map)
-	{
-		free(&game->map);
-		ft_printerr(MALLOC_ERR,INIT_MALLOC_ERR);
-		exit(EXIT_FAILURE);
-	}
-} */
-
-void	ft_free_elements(int exit_code, char *err_message,\
-t_game *game)
-{
 	if (exit_code == 1)
 	{
 		ft_clean_map(&game->map);
-		ft_printerror(err_message, exit_code);
-	}
-	if (exit_code == 2)
-	{
-		free(game->map.map);
-		free(game->queue.first);
-		ft_printerror(err_message, exit_code);
+		ft_printerror(message, exit_code);
 	}
 }

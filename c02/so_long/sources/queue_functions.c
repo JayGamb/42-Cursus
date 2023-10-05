@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:45:48 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/08/29 15:06:18 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:42:58 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_enqueue(t_queue *queue, t_position positon)
 {
-	t_element *new_element;
+	t_element	*new_element;
 
 	new_element = malloc(sizeof(t_element));
 	if (!new_element)
@@ -34,10 +34,10 @@ int	ft_enqueue(t_queue *queue, t_position positon)
 	return (0);
 }
 
-t_position ft_dequeue(t_queue *queue)
+t_position	ft_dequeue(t_queue *queue)
 {
-	t_element *temp;
-	t_position temp_position;
+	t_element	*temp;
+	t_position	temp_position;
 
 	temp_position.x = -1;
 	temp_position.y = -1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/04 13:43:04 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:52:32 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define MAP_ERR "Invalid map. Review the map content."
 # define ELEMENTS_ERR "Invalid element count. Ensure there's 1 player ('P') and\
  1 exit ('E') and at least 1 collectable 'C'."
-# define COLLECTABLE_ERR "all collectables can be reached by the player. Please\
+# define COLLECTABLE_ERR "Not all collectables can be reached by the player. Please\
  check the map layout."
 
 # define KEY_ESC			53
@@ -86,13 +86,13 @@ typedef struct s_map
 	bool		**visited;
 }	t_map;
 
-typedef struct	s_vars
+typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
 }				t_vars;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	t_vars		vars;
 	t_map		map;
@@ -100,8 +100,6 @@ typedef struct	s_game
 	t_image		image;
 	int			steps;
 }				t_game;
-
-
 
 int			ft_printerr(char *message, int exit_code);
 int			ft_check_args(int argc, char **argv, t_game *game);
@@ -122,13 +120,18 @@ t_position	ft_check_north(t_game *game, t_position current);
 t_position	ft_check_south(t_game *game, t_position current);
 t_position	ft_check_east(t_game *game, t_position current);
 t_position	ft_check_west(t_game *game, t_position current);
-void		t_explore_neighbors(t_game *game, t_position current);
+void		ft_explore_neighbors(t_game *game, t_position current);
 int			ft_navigate(t_game *game);
 char		*printthis(const char *str);
-/* void		ft_check_initalloc(t_game *game); */
-void		ft_free_elements(int exit_code, char *err_message, t_game *game);
-void		ft_free_map(t_map* map);
+void		ft_free_elements(int exit_code, char *message, t_game *game);
+void		ft_free_map(t_map *map);
 void		ft_clean_map(t_map *map);
 void		ft_clean_queue(t_queue *queue);
+int			ft_handle_key(int keycode, t_game *game);
+char		*ft_walk(int step);
+t_image		ft_get_image(char element, void *mlx, t_game *game);
+int			ft_init_game(t_game *game);
+void		ft_close(int keycode, t_game *game);
+int			ft_exit_accessible(t_game *game);
 
 #endif

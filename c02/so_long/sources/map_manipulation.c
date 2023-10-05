@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_manipulation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:38:10 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/04 16:20:02 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:56:53 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ size_t	ft_fcountlines(char *filename)
 
 void	ft_get_map(t_game *game)
 {
-	/* char	*line; */
 	int		y;
 
 	game->map.size[0] = ft_fcountlines(game->map.name);
@@ -47,17 +46,14 @@ void	ft_get_map(t_game *game)
 	game->map.fd = open(game->map.name, O_RDONLY);
 	if (game->map.fd < 0)
 		ft_printerror(FOPEN_ERR, 1);
-	game->map.map = (char **)malloc(game->map.size[0] * sizeof(char *) + 1);
+	game->map.map = (char **)malloc((game->map.size[0] + 1) * sizeof(char *));
 	if (!game->map.map)
 		ft_printerror(MALLOC_ERR, 1);
 	y = 0;
 	while (y < game->map.size[0])
 	{
 		game->map.map[y] = get_next_line(game->map.fd);
-		/* line = get_next_line(game->map.fd);
-		game->map.map[y] = ft_strdup(line); */
 		ft_delchar(game->map.map[y], '\n');
-		/* free(line); */
 		y++;
 	}
 	game->map.map[y] = 0;
@@ -130,5 +126,7 @@ int	ft_check_map(t_game *game)
 		ft_free_elements(1, COLLECTABLE_ERR, game);
 	if (game->map.exit != 1 || game->map.collectable < 1)
 		ft_free_elements(1, ELEMENTS_ERR, game);
+	if (!ft_exit_accessible(game))
+		ft_free_elements(1, "EXIT NOT ACCESSIBLE", game);
 	return (0);
 }

@@ -6,16 +6,19 @@
 /*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:34:37 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/08/10 17:11:51 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:51:25 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*printthis(const char *str)
+void	ft_close(int keycode, t_game *game)
 {
-	printf("hezye : %s", str);
-	return ("sheeesh!");
+	if (keycode == KEY_Q || keycode == KEY_ESC)
+	{
+		mlx_destroy_window(game->vars.mlx, game->vars.win);
+		exit(0);
+	}
 }
 
 int	ft_isplayer(char c)
