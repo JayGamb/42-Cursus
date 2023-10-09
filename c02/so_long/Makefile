@@ -6,7 +6,7 @@
 #    By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 13:09:34 by jgamboa-          #+#    #+#              #
-#    Updated: 2023/10/04 16:20:22 by jgamboa-         ###   ########.fr        #
+#    Updated: 2023/10/09 14:10:43 by jgamboa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CC				= gcc
 #CFLAGS			= -Wall -Wextra -Werror -I/opt/X11/include -Imlx -I$(HEADERS) #-Wall -Wextra -Werror #-fsanitize=address -g3
 #LDFLAGS			= -Lmlx -L/opt/X11/lib -lX11 -lmlx -framework OpenGL -framework AppKit -lm 
 
-CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address -g3
 LDFLAGS			=-Lmlx -lmlx -framework OpenGL -framework AppKit -lm
 
 
@@ -50,7 +50,7 @@ $(NAME): $(OBJ_FILES)
 	make -C $(LIBFTPRINTF_DIR)
 	 make -C ./mlx
 	$(AR) $(LIBFTSO_LONG) $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(LDFLAGS) -I$(HEADERS) $(LIBS_A) -g main.c -o $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) -I$(HEADERS) $(LIBS_A) main.c -o $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:34:37 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/05 20:51:25 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:33:24 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_close(int keycode, t_game *game)
+int	ft_close(int keycode, t_game *game)
 {
-	if (keycode == KEY_Q || keycode == KEY_ESC)
-	{
+	if (keycode == KEY_ESC)
 		mlx_destroy_window(game->vars.mlx, game->vars.win);
-		exit(0);
-	}
+	exit(0);
+	return (0);
 }
 
 int	ft_isplayer(char c)

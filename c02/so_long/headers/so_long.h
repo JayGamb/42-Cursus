@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/05 18:52:32 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:27:23 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../mlx/mlx.h"
 /* # include <X11/X.h>
 # include <X11/keysym.h> */
-
 
 # define WALL '1'
 # define PLAYER 'P'
@@ -44,7 +43,6 @@
 # define KEY_S				1
 # define KEY_D				2
 # define KEY_W				13
-
 
 # define INIT_MALLOC_ERR -1
 # define ARGS_ERROR 2
@@ -131,7 +129,8 @@ int			ft_handle_key(int keycode, t_game *game);
 char		*ft_walk(int step);
 t_image		ft_get_image(char element, void *mlx, t_game *game);
 int			ft_init_game(t_game *game);
-void		ft_close(int keycode, t_game *game);
+int			ft_close(int keycode, t_game *game);
 int			ft_exit_accessible(t_game *game);
+int			ft_check_mapbody(t_game *game);
 
 #endif

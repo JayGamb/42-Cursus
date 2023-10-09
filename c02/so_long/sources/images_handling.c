@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   images_handling.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:15:31 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/05 18:03:23 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:31:40 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*ft_walk(int step)
 	else
 		return ("./images/1walk.xpm");
 }
+
+
 
 t_image	ft_get_image(char element, void *mlx, t_game *game)
 {
@@ -90,7 +92,8 @@ int	ft_handle_key(int keycode, t_game *game)
 	int		new_y;
 
 	map = &game->map;
-	ft_close(keycode, game);
+	if (keycode == 53)
+		ft_close(keycode, game);
 	ft_update_player_position(keycode, map, &new_x, &new_y);
 	if (map->map[new_y][new_x] == SPACE || map->map[new_y][new_x] \
 		== COLLECTABLE)

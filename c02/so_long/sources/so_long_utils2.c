@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:36:36 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/05 20:51:17 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:53:05 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,31 @@ int	ft_init_visited(t_game *game)
 		i++;
 	}
 	return (0);
+}
+
+int	ft_check_mapbody(t_game *game)
+{
+	char	**map;
+	int		i;
+	int		j;
+	int		isvalid;
+
+	map = game->map.map;
+	i = 0;
+	isvalid = -1;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == WALL || map[i][j] == SPACE || map[i][j] == \
+			COLLECTABLE || map[i][j] == EXIT || map[i][j] == PLAYER)
+				isvalid = 0;
+			else
+				isvalid = -1;
+			j++;
+		}
+		i++;
+	}
+	return (isvalid);
 }

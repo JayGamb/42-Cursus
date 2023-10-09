@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/05 20:57:18 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:31:22 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	main(int argc, char **argv)
 	if (!game.vars.win)
 		exit(1);
 	ft_init_game(&game);
+	mlx_hook(game.vars.win, 17, 0, ft_close, &game);
 	mlx_hook(game.vars.win, 2, 0, ft_handle_key, &game);
 	mlx_loop(game.vars.mlx);
 	return (0);

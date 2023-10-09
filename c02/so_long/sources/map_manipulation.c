@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_manipulation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgamboa- <jgamboa-@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:38:10 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/05 18:56:53 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:53:26 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int	ft_check_map(t_game *game)
 	if (ft_check_ncolumn(game) < 0)
 		ft_free_elements(1, MAP_ERR, game);
 	if (ft_check_walls(game) < 0)
+		ft_free_elements(1, MAP_ERR, game);
+	if (ft_check_mapbody(game) < 0)
 		ft_free_elements(1, MAP_ERR, game);
 	if (ft_init_visited(game) < 0)
 		ft_free_elements(1, MALLOC_ERR, game);
