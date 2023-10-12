@@ -14,7 +14,7 @@
 
 int	ft_close(int keycode, t_game *game)
 {
-	if (keycode == KEY_ESC)
+	if (keycode == KEY_ESC || keycode == KEY_Q)
 		mlx_destroy_window(game->vars.mlx, game->vars.win);
 	exit(0);
 	return (0);

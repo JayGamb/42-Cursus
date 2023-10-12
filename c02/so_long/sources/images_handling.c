@@ -26,8 +26,6 @@ char	*ft_walk(int step)
 		return ("./images/1walk.xpm");
 }
 
-
-
 t_image	ft_get_image(char element, void *mlx, t_game *game)
 {
 	t_image	image;

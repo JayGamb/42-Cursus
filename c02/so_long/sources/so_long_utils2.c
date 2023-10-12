@@ -27,12 +27,13 @@ int	ft_exit_accessible(t_game *game)
 			if (map[xy[2]][xy[3]] == EXIT)
 			{
 				if ((xy[2] - 1 >= 0 && (map[xy[2] - 1][xy[3]] == '0' || \
-				map[xy[2] - 1][xy[3]] == 'C')) || (xy[2] + 1 < \
-				game->map.size[0] && (map[xy[2] + 1][xy[3]] == '0' || \
-				map[xy[2] + 1][xy[3]] == 'C')) || (xy[3] - 1 >= 0 && \
-				(map[xy[2]][xy[3] - 1] == '0' || map[xy[2]][xy[3] - 1] == \
-				'C')) || (xy[3] + 1 < game->map.size[1] && \
-				(map[xy[2]][xy[3] + 1] == '0' || map[xy[2]][xy[3] + 1] == 'C')))
+				map[xy[2] - 1][xy[3]] == 'C' || map[xy[2] - 1][xy[3]] == 'P')) \
+				|| (xy[2] + 1 < game->map.size[0] && (map[xy[2] + 1][xy[3]] == \
+				'0' || map[xy[2] + 1][xy[3]] == 'C' || map[xy[2] + 1][xy[3]] == \
+				'P')) || (xy[3] - 1 >= 0 && (map[xy[2]][xy[3] - 1] == '0' || \
+				map[xy[2]][xy[3] - 1] == 'C' || map[xy[2]][xy[3] - 1] == 'P')) \
+				|| (xy[3] + 1 < game->map.size[1] && (map[xy[2]][xy[3] + 1] == '0' \
+				|| map[xy[2]][xy[3] + 1] == 'C' || map[xy[2]][xy[3] + 1] == 'P')))
 					return (1);
 				return (0);
 			}
