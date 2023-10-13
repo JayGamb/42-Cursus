@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:36:36 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/09 13:53:05 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:03:32 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,14 @@ int	ft_exit_accessible(t_game *game)
 		{
 			if (map[xy[2]][xy[3]] == EXIT)
 			{
-				if ((xy[2] - 1 >= 0 && (map[xy[2] - 1][xy[3]] == '0' || \
-				map[xy[2] - 1][xy[3]] == 'C' || map[xy[2] - 1][xy[3]] == 'P')) \
-				|| (xy[2] + 1 < game->map.size[0] && (map[xy[2] + 1][xy[3]] == \
-				'0' || map[xy[2] + 1][xy[3]] == 'C' || map[xy[2] + 1][xy[3]] == \
-				'P')) || (xy[3] - 1 >= 0 && (map[xy[2]][xy[3] - 1] == '0' || \
-				map[xy[2]][xy[3] - 1] == 'C' || map[xy[2]][xy[3] - 1] == 'P')) \
-				|| (xy[3] + 1 < game->map.size[1] && (map[xy[2]][xy[3] + 1] == '0' \
-				|| map[xy[2]][xy[3] + 1] == 'C' || map[xy[2]][xy[3] + 1] == 'P')))
-					return (1);
-				return (0);
+				if (map[xy[2] - 1][xy[3]] == '1' && map[xy[2] + 1][xy[3]] \
+				== '1' && map[xy[2]][xy[3] - 1] == '1' && \
+				map[xy[2]][xy[3] + 1] == '1')
+					return (0);
 			}
 		}
 	}
-	return (0);
+	return (1);
 }
 
 int	init_row(t_game *game, int i)
