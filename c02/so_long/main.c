@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:50 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/09 15:31:22 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:34:42 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	ft_init_game(t_game *game)
 			mlx_put_image_to_window(game->vars.mlx, game->vars.win, \
 			game->image.xpm_ptr, var[1] * game->image.img_width, \
 			var[0] * game->image.img_height);
+			mlx_destroy_image(game->vars.mlx, game->image.xpm_ptr);
 		}
 	}
 	return (0);

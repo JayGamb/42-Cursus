@@ -6,7 +6,7 @@
 /*   By: jgamboa- <jgamboa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 13:19:41 by jgamboa-          #+#    #+#             */
-/*   Updated: 2023/10/09 15:27:23 by jgamboa-         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:52:50 by jgamboa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_queue
 typedef struct s_image
 {
 	void	*xpm_ptr;
+	void	*xpm_space;
 	int		img_width;
 	int		img_height;
 }	t_image;
