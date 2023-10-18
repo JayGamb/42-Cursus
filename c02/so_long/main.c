@@ -55,6 +55,7 @@ int	ft_init_game(t_game *game)
 			mlx_destroy_image(game->vars.mlx, game->image.xpm_ptr);
 		}
 	}
+	mlx_destroy_image(game->vars.mlx, space_ptr);
 	return (0);
 }
 

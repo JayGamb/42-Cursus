@@ -19,11 +19,20 @@ LIBFTPRINTF		= $(LIBFTPRINTF_DIR)/libftprintf.a
 
 LIBFT_DIR		=./libs/libft
 LIBFT			= $(LIBFT_DIR)/libft.a
-LIBS_A			= $(LIBFT) $(LIBFTPRINTF) $(LIBFTSO_LONG)
+LIBS_A			= $(LIBFTSO_LONG) $(LIBFT) $(LIBFTPRINTF)
 
 HEADERS			= headers
 SOURCES_DIR		= sources
-SOURCES			= $(shell find $(SOURCES_DIR) -type f -name '*.c')
+SOURCES			=	$(SOURCES_DIR)/arg_check.c \
+					$(SOURCES_DIR)/error_handling.c \
+					$(SOURCES_DIR)/images_handling.c \
+					$(SOURCES_DIR)/map_exploration.c \
+					$(SOURCES_DIR)/map_manipulation.c \
+					$(SOURCES_DIR)/queue_functions.c \
+					$(SOURCES_DIR)/so_long_utils.c \
+					$(SOURCES_DIR)/so_long_utils2.c
+
+
 
 CC				= gcc
 #CFLAGS			= -Wall -Wextra -Werror -I/opt/X11/include -Imlx -I$(HEADERS) #-Wall -Wextra -Werror #-fsanitize=address -g3
@@ -37,7 +46,14 @@ AR				= ar rc
 RM				= rm -rf
 
 OBJ_DIR			= objets
-OBJ_FILES		= $(patsubst $(SOURCES_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
+OBJ_FILES		= 	$(OBJ_DIR)/arg_check.o \
+					$(OBJ_DIR)/error_handling.o \
+					$(OBJ_DIR)/images_handling.o \
+					$(OBJ_DIR)/map_exploration.o \
+					$(OBJ_DIR)/map_manipulation.o \
+					$(OBJ_DIR)/queue_functions.o \
+					$(OBJ_DIR)/so_long_utils.o \
+					$(OBJ_DIR)/so_long_utils2.o
 
 $(OBJ_DIR)/%.o: $(SOURCES_DIR)/%.c | $(OBJ_DIR)
 #	$(CC) $(CFLAGS) -Imlx -I$(HEADERS) -c $< -o $@

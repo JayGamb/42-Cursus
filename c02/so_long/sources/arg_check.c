@@ -39,6 +39,8 @@ void	ft_free_elements(int exit_code, char *message, \
 	if (exit_code == 1)
 	{
 		ft_clean_map(&game->map);
+		if (game->queue.first)
+			ft_clean_queue(&game->queue);
 		ft_printerror(message, exit_code);
 	}
 }
